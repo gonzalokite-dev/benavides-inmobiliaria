@@ -1,0 +1,153 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "properties": "Propiedades",
+    "about": "Nosotros",
+    "contact": "Contacto",
+    "cta": "Hablar con un asesor"
+  },
+  "hero": {
+    "eyebrow": "Benavides Real Estate · Mallorca",
+    "title": "Asesoramiento inmobiliario integral.\nCon criterio jurídico y fiscal.",
+    "subtitle": "No somos una inmobiliaria. Somos el equipo profesional que protege su patrimonio, optimiza cada operación y le acompaña antes, durante y después de cada decisión inmobiliaria.",
+    "cta_primary": "Ver propiedades",
+    "cta_secondary": "Nuestros servicios"
+  },
+  "services": {
+    "eyebrow": "Nuestros servicios",
+    "title": "Un despacho detrás de cada operación.",
+    "subtitle": "Donde otros ponen un agente, nosotros ponemos abogados, fiscalistas y expertos inmobiliarios. Cada servicio está diseñado para proteger su interés, no para cerrar una comisión.",
+    "items": [
+      {
+        "title": "Asesoramiento Inmobiliario",
+        "description": "Asesoramiento estratégico antes de cualquier decisión inmobiliaria: due diligence completa del activo, análisis de riesgos jurídicos y fiscales, valoración independiente e informe de recomendación sin conflicto de interés."
+      },
+      {
+        "title": "Gestión de la Operación",
+        "description": "Coordinación integral de la operación de compraventa: desde el contrato de arras hasta el último trámite post-firma. Un único interlocutor para notaría, registro, gestoría, banco y administraciones."
+      },
+      {
+        "title": "Fiscal y Jurídico Inmobiliario",
+        "description": "Planificación fiscal previa a la compra, gestión del ITP, IVA, IRPF, IRNR, plusvalías y declaración de rentas inmobiliarias. Asesoramiento especializado tanto para residentes como para no residentes, inversores y estructuras patrimoniales en España."
+      },
+      {
+        "title": "Gestión del Inmueble",
+        "description": "Gestión integral de su inmueble en Mallorca: contratos de arrendamiento, interlocución con inquilinos, mantenimiento, pago de suministros y seguimiento periódico. Su propiedad en orden sin que usted tenga que intervenir."
+      },
+      {
+        "title": "Patrimonio Inmobiliario",
+        "description": "Diagnóstico, estructuración y planificación estratégica de su patrimonio inmobiliario. Sociedad patrimonial, planificación hereditaria, análisis de rentabilidad del portfolio y estrategia de transmisión generacional."
+      },
+      {
+        "title": "Servicio Internacional",
+        "description": "Servicio especializado para compradores e inversores extranjeros en Mallorca: obtención de NIE, guía completa del proceso de compra en España, asesoramiento sobre residencia fiscal y atención en inglés y otros idiomas."
+      },
+      {
+        "title": "Inversión Inmobiliaria",
+        "description": "Análisis de rentabilidad, estructuración fiscal de la inversión y seguimiento del portfolio para inversores inmobiliarios en Mallorca. Desde la identificación de la oportunidad hasta la estrategia de salida."
+      }
+    ]
+  },
+  "properties": {
+    "eyebrow": "Propiedades disponibles",
+    "title": "Propiedades disponibles",
+    "subtitle": "Cada propiedad que ofrecemos ha pasado por un análisis jurídico y fiscal previo. Sin cargas ocultas, sin sorpresas.",
+    "all": "Ver todas las propiedades",
+    "filter_all": "Todos",
+    "filter_venta": "En venta",
+    "back": "Volver a propiedades",
+    "request": "Solicitar información",
+    "specs_title": "Características",
+    "sqm": "Superficie",
+    "bedrooms": "Dormitorios",
+    "bathrooms": "Baños",
+    "floor": "Planta",
+    "garage": "Garaje",
+    "terrace": "Terraza",
+    "pool": "Piscina",
+    "elevator": "Ascensor",
+    "orientation": "Orientación",
+    "year": "Año construcción",
+    "energy": "Calificación energética",
+    "yes": "Sí",
+    "no": "No",
+    "for_sale": "En venta",
+    "type_piso": "Piso",
+    "type_chalet": "Chalet",
+    "type_oficina": "Oficina",
+    "type_local": "Local",
+    "type_terreno": "Terreno",
+    "type_garaje": "Garaje",
+    "contact_cta": "¿Le interesa este activo?",
+    "contact_body": "Contáctenos para organizar una visita o solicitar el análisis jurídico y fiscal del inmueble.",
+    "no_results": "No hay propiedades con estos filtros."
+  },
+  "about": {
+    "eyebrow": "Por qué somos distintos",
+    "title": "Lo que ninguna inmobiliaria puede ofrecerle",
+    "body": "Las inmobiliarias intermedian. Nosotros le representamos. Benavides Real Estate es la división inmobiliaria de un despacho multidisciplinar con más de veinte años de trayectoria en derecho patrimonial, fiscal y societario. No nacimos para vender pisos: nacimos para que nuestros clientes puedan comprar, vender e invertir en Mallorca con la misma seguridad jurídica y fiscal con la que estructuran una herencia o constituyen una sociedad. Cuando nos contrata, tiene a su lado a abogados y asesores fiscales especializados desde el primer día — no a un agente que trabaja para cerrar su comisión.",
+    "stats": [
+      { "value": "20+", "label": "Años de práctica jurídica" },
+      { "value": "500+", "label": "Operaciones asesoradas" },
+      { "value": "7", "label": "Líneas de servicio especializadas" },
+      { "value": "3", "label": "Especialidades: fiscal, jurídica e inmobiliaria" }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Contacto",
+    "title": "Cuéntenos su operación",
+    "subtitle": "Primera consulta sin coste. Le responderemos en menos de 24 horas con una valoración inicial de su caso.",
+    "form": {
+      "name": "Nombre completo",
+      "email": "Correo electrónico",
+      "phone": "Teléfono (opcional)",
+      "service": "Tipo de servicio",
+      "message": "Describa su operación o la propiedad de interés",
+      "submit": "Enviar consulta",
+      "placeholder_service": "Seleccione un servicio"
+    }
+  },
+  "team": {
+    "eyebrow": "Nuestro equipo",
+    "title": "Las personas detrás de cada operación.",
+    "members": [
+      {
+        "name": "Alfonso Benavides Colom",
+        "role": "Abogado y Asesor Fiscal",
+        "bio": [
+          "Miembro del Ilustre Colegio de Abogados de las Islas Baleares, combina una sólida formación jurídica con una amplia trayectoria como economista y auditor de cuentas, lo que le permite analizar cada operación desde una perspectiva global: legal, fiscal y financiera.",
+          "A lo largo de su carrera, ha asesorado a clientes en la estructuración de inversiones inmobiliarias, planificación fiscal de patrimonios y optimización de operaciones de compra y venta de activos, posicionándose como un referente en fiscalidad aplicada a la inversión inmobiliaria.",
+          "Su enfoque se centra en diseñar estructuras eficientes, anticipar implicaciones fiscales y acompañar al cliente en la toma de decisiones estratégicas, con el objetivo de maximizar la rentabilidad y garantizar la seguridad de cada inversión."
+        ]
+      },
+      {
+        "name": "Germán Álvarez de Sotomayor",
+        "role": "Abogado especializado en Derecho Inmobiliario",
+        "bio": [
+          "Abogado colegiado en el Ilustre Colegio de Abogados de las Islas Baleares (ICAIB), Germán lidera el área legal y el International Desk, asesorando a clientes nacionales e internacionales en operaciones inmobiliarias en Mallorca.",
+          "Su trabajo se centra en el asesoramiento integral en compraventas de inmuebles, la revisión y redacción de contratos, la due diligence jurídica y la estructuración de inversiones inmobiliarias. Acompaña al cliente durante todo el proceso, asegurando que cada operación se lleve a cabo con total seguridad jurídica.",
+          "Su objetivo es anticipar riesgos, proteger los intereses del cliente y garantizar una operación sólida y bien estructurada desde el punto de vista legal.",
+          "Con un enfoque cercano y orientado a resultados, Germán aporta tranquilidad y confianza en cada fase del proceso, desde la negociación hasta el cierre de la operación."
+        ]
+      },
+      {
+        "name": "Gonzalo Benavides López de Ayala",
+        "role": "Economista y Asesor Fiscal",
+        "bio": [
+          "Gonzalo es economista y asesor fiscal, especializado en la fiscalidad de operaciones inmobiliarias y en el asesoramiento a todo tipo de clientes, tanto residentes como no residentes en España.",
+          "Desde el despacho, acompaña a compradores e inversores —tanto nacionales como internacionales— en todo el proceso de adquisición, tenencia y transmisión de inmuebles, asegurando una correcta planificación fiscal desde el inicio de la operación.",
+          "Su trabajo se centra en anticipar el impacto fiscal de cada decisión, optimizar la tributación de la inversión y garantizar el cumplimiento de todas las obligaciones fiscales en España, aportando seguridad y tranquilidad al cliente en cada paso.",
+          "Gracias a su experiencia en consultoría y su enfoque práctico, Gonzalo traduce la complejidad fiscal en soluciones claras, ayudando a los clientes a tomar decisiones informadas y eficientes."
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "tagline": "Asesoramiento inmobiliario integral en Mallorca",
+    "legal": "Aviso legal",
+    "privacy": "Privacidad",
+    "cookies": "Cookies",
+    "rights": "Todos los derechos reservados."
+  }
+}

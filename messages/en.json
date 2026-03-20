@@ -1,0 +1,153 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "properties": "Properties",
+    "about": "About",
+    "contact": "Contact",
+    "cta": "Speak to an advisor"
+  },
+  "hero": {
+    "eyebrow": "Benavides Real Estate · Mallorca",
+    "title": "Integrated real estate advisory.\nLegal and tax expertise.",
+    "subtitle": "We are not an estate agency. We are the professional team that protects your assets, optimises every transaction and supports you before, during and after every real estate decision.",
+    "cta_primary": "View properties",
+    "cta_secondary": "Our services"
+  },
+  "services": {
+    "eyebrow": "Benavides Real Estate Services",
+    "title": "We don't sell square metres.\nWe manage your assets.",
+    "subtitle": "An estate agency closes deals. We protect your patrimonial interest, minimise your tax burden and coordinate every aspect of the transaction from a single trusted point of contact.",
+    "items": [
+      {
+        "title": "Real Estate Advisory",
+        "description": "Strategic advice before any real estate decision: full asset due diligence, legal and tax risk analysis, independent valuation and a recommendation report — with no conflict of interest."
+      },
+      {
+        "title": "Transaction Management",
+        "description": "End-to-end coordination of the purchase or sale: from the preliminary contract to the last post-signing formality. One single point of contact for notary, land registry, tax office and bank."
+      },
+      {
+        "title": "Fiscal & Legal Real Estate",
+        "description": "Tax planning before purchase, management of transfer tax, VAT, IRPF, IRNR, capital gains and rental income declarations. Specialist advice for both residents and non-residents, investors and patrimonial structures in Spain."
+      },
+      {
+        "title": "Property Management",
+        "description": "Full management of your Mallorca property: lease agreements, tenant relations, maintenance, utility payments and periodic reporting. Your property in order, without your involvement."
+      },
+      {
+        "title": "Patrimonial Real Estate",
+        "description": "Diagnosis, structuring and strategic planning of your real estate portfolio. Holding company, succession planning, portfolio profitability analysis and generational transfer strategy."
+      },
+      {
+        "title": "International Gateway",
+        "description": "Specialised service for foreign buyers and investors in Mallorca: NIE application, full guide to the buying process in Spain, tax residency advice and service in English and other languages."
+      },
+      {
+        "title": "Investment Advisory",
+        "description": "Profitability analysis, tax structuring and portfolio monitoring for real estate investors in Mallorca. From opportunity identification to exit strategy."
+      }
+    ]
+  },
+  "properties": {
+    "eyebrow": "Properties",
+    "title": "Selected assets",
+    "subtitle": "Every property we offer has undergone prior legal and tax analysis. No hidden encumbrances, no surprises.",
+    "all": "View all properties",
+    "filter_all": "All",
+    "filter_venta": "For sale",
+    "back": "Back to properties",
+    "request": "Request information",
+    "specs_title": "Features",
+    "sqm": "Floor area",
+    "bedrooms": "Bedrooms",
+    "bathrooms": "Bathrooms",
+    "floor": "Floor",
+    "garage": "Garage",
+    "terrace": "Terrace",
+    "pool": "Pool",
+    "elevator": "Elevator",
+    "orientation": "Orientation",
+    "year": "Year built",
+    "energy": "Energy rating",
+    "yes": "Yes",
+    "no": "No",
+    "for_sale": "For sale",
+    "type_piso": "Apartment",
+    "type_chalet": "Villa",
+    "type_oficina": "Office",
+    "type_local": "Commercial",
+    "type_terreno": "Land",
+    "type_garaje": "Garage",
+    "contact_cta": "Interested in this asset?",
+    "contact_body": "Contact us to arrange a viewing or to request the legal and tax report on the property.",
+    "no_results": "No properties match these filters."
+  },
+  "about": {
+    "eyebrow": "Why we are different",
+    "title": "What no estate agency can offer you",
+    "body": "Estate agencies act as intermediaries. We represent you. Benavides Real Estate is the property division of a multidisciplinary firm with over twenty years of experience in property, tax and corporate law. We were not created to sell apartments — we were created so that our clients can buy, sell and invest in Mallorca with the same legal and tax certainty they expect when structuring an inheritance or incorporating a company. When you instruct us, you have lawyers and tax advisors on your side from day one — not an agent working to close their commission.",
+    "stats": [
+      { "value": "20+", "label": "Years of legal practice" },
+      { "value": "500+", "label": "Transactions advised" },
+      { "value": "7", "label": "Specialised service lines" },
+      { "value": "3", "label": "Specialities: tax, legal & real estate" }
+    ]
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "title": "Tell us about your transaction",
+    "subtitle": "Free initial consultation. We will respond within 24 hours with a preliminary assessment of your case.",
+    "form": {
+      "name": "Full name",
+      "email": "Email address",
+      "phone": "Phone (optional)",
+      "service": "Type of service",
+      "message": "Describe your transaction or the property of interest",
+      "submit": "Send enquiry",
+      "placeholder_service": "Select a service"
+    }
+  },
+  "team": {
+    "eyebrow": "Our team",
+    "title": "The people behind every transaction.",
+    "members": [
+      {
+        "name": "Alfonso Benavides Colom",
+        "role": "Lawyer and Tax Advisor",
+        "bio": [
+          "A member of the Bar Association of the Balearic Islands, Alfonso combines a strong legal background with an extensive career as an economist and chartered auditor, enabling him to analyse every transaction from a holistic perspective: legal, tax and financial.",
+          "Throughout his career he has advised clients on the structuring of real estate investments, patrimonial tax planning and the optimisation of asset acquisition and disposal transactions, establishing himself as a reference in tax advisory applied to real estate investment.",
+          "His approach focuses on designing efficient structures, anticipating tax implications and guiding clients in strategic decision-making, with the aim of maximising returns and ensuring the security of every investment."
+        ]
+      },
+      {
+        "name": "Germán Álvarez de Sotomayor",
+        "role": "Lawyer specialised in Real Estate Law",
+        "bio": [
+          "A practising member of the Bar Association of the Balearic Islands (ICAIB), Germán leads the legal department and the International Desk, advising both domestic and international clients on real estate transactions in Mallorca.",
+          "His work focuses on providing comprehensive advice on property purchases and sales, contract drafting and review, legal due diligence and the structuring of real estate investments. He accompanies clients throughout the entire process, ensuring every transaction is completed with full legal certainty.",
+          "His goal is to anticipate risks, protect the client's interests and ensure every operation is sound and well-structured from a legal standpoint.",
+          "With a client-focused and results-driven approach, Germán brings peace of mind and confidence at every stage of the process, from negotiation through to completion."
+        ]
+      },
+      {
+        "name": "Gonzalo Benavides López de Ayala",
+        "role": "Economist and Tax Advisor",
+        "bio": [
+          "Gonzalo is an economist and tax advisor, specialised in the taxation of real estate transactions and in advising all types of clients — both residents and non-residents in Spain.",
+          "From the firm, he accompanies buyers and investors — both domestic and international — throughout the entire process of acquiring, holding and disposing of properties, ensuring sound tax planning from the outset of each transaction.",
+          "His work focuses on anticipating the tax impact of every decision, optimising the tax treatment of the investment and ensuring full compliance with all tax obligations in Spain, providing clients with security and peace of mind at every step.",
+          "Drawing on his consulting experience and practical approach, Gonzalo translates complex tax matters into clear solutions, helping clients make informed and efficient decisions."
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "tagline": "Integrated real estate advisory in Mallorca",
+    "legal": "Legal notice",
+    "privacy": "Privacy",
+    "cookies": "Cookies",
+    "rights": "All rights reserved."
+  }
+}

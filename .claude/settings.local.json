@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run:*)",
+      "Bash(taskkill /F /IM node.exe)",
+      "Bash(npx tsc:*)",
+      "Bash(find 'C:/Users/GonzaloBenavidesLópe/OneDrive - Benavides Asociados/Escritorio/Inmobiliaria/benavides-inmobiliaria/.claude/worktrees' -name *.tsx)",
+      "Bash(xargs sed:*)"
+    ]
+  }
+}
