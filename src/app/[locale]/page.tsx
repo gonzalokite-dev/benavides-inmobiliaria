@@ -39,7 +39,6 @@ export default async function HomePage({
         <NetBenefitCalculatorCompact />
         <Team />
         <InternationalClients />
-        <NetBenefitCalculator />
         <SmartValuation />
         <TaxDiagnostic />
         <LeadForm />
