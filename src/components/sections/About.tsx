@@ -91,7 +91,12 @@ export default function About() {
       <style>{`
         .about-stat:hover { background-color: #f0ede8 !important; }
         @media (max-width: 768px) {
-          .about-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+          .about-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+          #nosotros { padding: 64px 24px !important; }
+        }
+        @media (max-width: 480px) {
+          #nosotros { padding: 48px 16px !important; }
+          .about-stat { padding: 32px 20px !important; }
         }
       `}</style>
     </section>

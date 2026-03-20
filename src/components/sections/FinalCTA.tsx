@@ -104,6 +104,13 @@ export default function FinalCTA() {
       <style>{`
         .fcta-primary:hover { background-color: #d4af6e !important; }
         .fcta-secondary:hover { border-color: rgba(255,255,255,0.8) !important; }
+        @media (max-width: 768px) {
+          #contacto-final { padding: 72px 24px !important; }
+        }
+        @media (max-width: 480px) {
+          #contacto-final { padding: 48px 16px !important; }
+          .fcta-primary, .fcta-secondary { width: 100%; text-align: center; box-sizing: border-box; }
+        }
       `}</style>
     </section>
   );

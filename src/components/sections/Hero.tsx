@@ -218,6 +218,12 @@ export default function Hero() {
         @media (max-width: 900px) {
           .hero-inner { padding: 0 24px !important; }
         }
+        @media (max-width: 480px) {
+          .hero-inner { padding: 0 16px !important; }
+          .hero-inner h1 { font-size: 28px !important; }
+          .hero-inner > div > div:last-child { flex-direction: column !important; }
+          .hero-inner a { width: 100% !important; text-align: center !important; box-sizing: border-box !important; }
+        }
       `}</style>
     </section>
   );

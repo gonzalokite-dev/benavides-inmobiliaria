@@ -256,7 +256,12 @@ export default function NetBenefitCalculatorCompact() {
 
       <style>{`
         @media (max-width: 860px) {
-          .cbc-outer { grid-template-columns: 1fr !important; gap: 36px !important; }
+          .cbc-outer { grid-template-columns: 1fr !important; gap: 32px !important; }
+          #simulador { padding: 40px 24px !important; }
+        }
+        @media (max-width: 480px) {
+          #simulador { padding: 32px 16px !important; }
+          .cbc-outer > div:last-child { padding: 24px 20px !important; }
         }
         input[type=number]::-webkit-inner-spin-button,
         input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }

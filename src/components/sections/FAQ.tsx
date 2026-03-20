@@ -138,6 +138,12 @@ export default function FAQ() {
           })}
         </div>
       </div>
+      <style>{`
+        @media (max-width: 480px) {
+          #faq { padding: 48px 16px !important; }
+          #faq button { padding: 20px 0 !important; }
+        }
+      `}</style>
     </section>
   );
 }

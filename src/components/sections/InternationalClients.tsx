@@ -131,6 +131,11 @@ export default function InternationalClients() {
       <style>{`
         @media (max-width: 768px) {
           .intl-stats { grid-template-columns: 1fr !important; }
+          #clientes-internacionales { padding: 64px 24px !important; }
+        }
+        @media (max-width: 480px) {
+          #clientes-internacionales { padding: 48px 16px !important; }
+          .intl-stats > div { padding: 32px 20px !important; }
         }
       `}</style>
     </section>

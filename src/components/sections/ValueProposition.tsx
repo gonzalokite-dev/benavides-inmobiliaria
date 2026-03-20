@@ -93,14 +93,14 @@ export default function ValueProposition() {
       </div>
 
       <style>{`
-        .vp-card:hover {
-          background-color: #faf8f5;
-        }
+        .vp-card:hover { background-color: #faf8f5; }
         @media (max-width: 960px) and (min-width: 601px) {
           .vp-grid { grid-template-columns: repeat(2, 1fr) !important; }
         }
         @media (max-width: 600px) {
           .vp-grid { grid-template-columns: 1fr !important; }
+          #propuesta-valor { padding: 48px 16px !important; }
+          .vp-card { padding: 28px 20px !important; }
         }
       `}</style>
     </section>

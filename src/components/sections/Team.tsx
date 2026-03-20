@@ -117,7 +117,12 @@ export default function Team() {
           flex-direction: column;
         }
         @media (max-width: 900px) {
-          .team-grid { grid-template-columns: 1fr !important; gap: 56px !important; }
+          .team-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 40px !important; }
+          #equipo { padding: 64px 24px !important; }
+        }
+        @media (max-width: 600px) {
+          .team-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+          #equipo { padding: 48px 16px !important; }
         }
       `}</style>
     </section>

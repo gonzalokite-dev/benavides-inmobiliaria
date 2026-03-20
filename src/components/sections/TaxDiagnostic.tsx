@@ -296,7 +296,12 @@ export default function TaxDiagnostic() {
 
       <style>{`
         @media (max-width: 900px) {
-          .diag-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+          .diag-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+          #diagnostico { padding: 48px 24px !important; }
+        }
+        @media (max-width: 480px) {
+          #diagnostico { padding: 40px 16px !important; }
+          .diag-grid > div:last-child > div { padding: 24px 20px !important; }
         }
       `}</style>
     </section>

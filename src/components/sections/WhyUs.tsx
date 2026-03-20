@@ -109,11 +109,14 @@ export default function WhyUs() {
       </div>
 
       <style>{`
-        .why-card:hover {
-          background-color: #f0ede8;
-        }
+        .why-card:hover { background-color: #f0ede8; }
         @media (max-width: 768px) {
           .why-grid { grid-template-columns: 1fr !important; }
+          #por-que-elegirnos { padding: 64px 24px !important; }
+        }
+        @media (max-width: 480px) {
+          #por-que-elegirnos { padding: 48px 16px !important; }
+          .why-card { padding: 24px 20px !important; gap: 14px !important; }
         }
       `}</style>
     </section>

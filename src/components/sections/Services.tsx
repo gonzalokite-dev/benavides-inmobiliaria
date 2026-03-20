@@ -104,7 +104,11 @@ export default function Services() {
 
       <style>{`
         @media (max-width: 960px) { .svc-grid { grid-template-columns: repeat(2,1fr) !important; } }
-        @media (max-width: 600px) { .svc-grid { grid-template-columns: 1fr !important; } }
+        @media (max-width: 600px) {
+          .svc-grid { grid-template-columns: 1fr !important; }
+          #servicios { padding: 48px 16px !important; }
+          .svc-grid > div { padding: 28px 20px !important; }
+        }
       `}</style>
     </section>
   );

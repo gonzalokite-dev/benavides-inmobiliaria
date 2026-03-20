@@ -354,6 +354,11 @@ export default function SmartValuation() {
         input[type=number]::-webkit-inner-spin-button,
         input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; }
         input[type=number] { -moz-appearance: textfield; }
+        @media (max-width: 480px) {
+          #valoracion { padding: 40px 16px !important; }
+          #valoracion > div > div:last-child > div { padding: 28px 20px !important; }
+          #valoracion > div > div:last-child > div > div:first-child { padding: 16px 20px !important; }
+        }
       `}</style>
     </section>
   );

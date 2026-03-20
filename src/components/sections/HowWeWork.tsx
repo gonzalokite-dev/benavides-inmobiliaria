@@ -121,9 +121,12 @@ export default function HowWeWork() {
           .steps-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 40px !important; }
           .steps-line { display: none !important; }
           .step-item { padding: 0 16px !important; }
+          #proceso { padding: 64px 24px !important; }
         }
         @media (max-width: 560px) {
-          .steps-grid { grid-template-columns: 1fr !important; }
+          .steps-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+          #proceso { padding: 48px 16px !important; }
+          .step-item { padding: 0 !important; }
         }
       `}</style>
     </section>

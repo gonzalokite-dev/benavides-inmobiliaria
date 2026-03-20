@@ -171,11 +171,16 @@ export default function LeadForm() {
 
       <style>{`
         @media (max-width: 900px) {
-          .leadform-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+          .leadform-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
           .lf-row { grid-template-columns: 1fr !important; }
+          #contacto { padding: 64px 24px !important; }
         }
         @media (max-width: 600px) {
-          .leadform-inner { padding: 32px 24px !important; }
+          .leadform-inner { padding: 28px 20px !important; }
+        }
+        @media (max-width: 480px) {
+          #contacto { padding: 48px 16px !important; }
+          .leadform-inner { padding: 24px 16px !important; }
         }
         .leadform-inner input:focus,
         .leadform-inner textarea:focus,
