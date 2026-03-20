@@ -144,7 +144,9 @@ export default function Hero() {
                 {l.ctaPrimary}
               </a>
               <a
-                href="#servicios"
+                href="https://cal.com/benavides-asociados/consulta-asesor-fiscal"
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
                   backgroundColor: "transparent",
                   color: "#fff",

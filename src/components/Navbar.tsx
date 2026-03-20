@@ -122,28 +122,30 @@ export default function Navbar() {
             {otherLocale.toUpperCase()}
           </Link>
 
-          {/* CTA — opens booking modal */}
-          <button
-            onClick={() => setModalOpen(true)}
+          {/* CTA */}
+          <a
+            href="https://cal.com/benavides-asociados/consulta-asesor-fiscal"
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               backgroundColor: "#b8964a",
               color: "#fff",
-              border: "none",
+              textDecoration: "none",
               fontSize: "12px",
               fontWeight: 500,
               letterSpacing: "0.1em",
               textTransform: "uppercase",
               padding: "11px 24px",
               borderRadius: "2px",
-              cursor: "pointer",
               transition: "background-color 0.2s",
               fontFamily: "'Inter', sans-serif",
+              display: "inline-block",
             }}
             onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.backgroundColor = "#d4af6e")}
             onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.backgroundColor = "#b8964a")}
           >
             {t("cta")}
-          </button>
+          </a>
         </div>
 
         {/* Mobile toggle */}
@@ -192,12 +194,14 @@ export default function Navbar() {
             <Link href={localePath} style={{ color: "#9b9590", fontSize: "12px", textDecoration: "none" }}>
               {otherLocale.toUpperCase()}
             </Link>
-            <button
-              onClick={() => { setMenuOpen(false); setModalOpen(true); }}
-              style={{ backgroundColor: "#b8964a", color: "#fff", border: "none", fontSize: "12px", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", padding: "10px 20px", borderRadius: "2px", cursor: "pointer", fontFamily: "'Inter', sans-serif" }}
+            <a
+              href="https://cal.com/benavides-asociados/consulta-asesor-fiscal"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ backgroundColor: "#b8964a", color: "#fff", textDecoration: "none", fontSize: "12px", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", padding: "10px 20px", borderRadius: "2px", fontFamily: "'Inter', sans-serif", display: "inline-block" }}
             >
               {t("cta")}
-            </button>
+            </a>
           </div>
         </div>
       )}

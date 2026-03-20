@@ -136,7 +136,7 @@ function RenderBlock({ block }: { block: Block }) {
           <p style={{ fontSize: '15px', fontWeight: 300, lineHeight: 1.8, color: '#5c5650', marginBottom: '28px' }}>
             {block.body}
           </p>
-          <a href="#contacto" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', backgroundColor: '#1a2332', color: '#fff', textDecoration: 'none', fontSize: '11px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '14px 28px', transition: 'background-color 0.2s' }} className="cta-btn">
+          <a href="https://cal.com/benavides-asociados/consulta-asesor-fiscal" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', backgroundColor: '#1a2332', color: '#fff', textDecoration: 'none', fontSize: '11px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', padding: '14px 28px', transition: 'background-color 0.2s' }} className="cta-btn">
             {block.button}
             <span style={{ fontSize: '14px' }}>→</span>
           </a>

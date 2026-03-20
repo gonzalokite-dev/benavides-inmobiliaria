@@ -272,7 +272,9 @@ export default function TaxDiagnostic() {
                     </p>
                   </div>
                   <a
-                    href="#contacto"
+                    href="https://cal.com/benavides-asociados/consulta-asesor-fiscal"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     style={{ display: "block", backgroundColor: "#b8964a", color: "#fff", textDecoration: "none", padding: "14px", borderRadius: "2px", fontSize: "13px", fontWeight: 500, letterSpacing: "0.08em", textTransform: "uppercase", textAlign: "center", marginBottom: "10px", transition: "background-color 0.2s" }}
                     onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.backgroundColor = "#d4af6e")}
                     onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.backgroundColor = "#b8964a")}
