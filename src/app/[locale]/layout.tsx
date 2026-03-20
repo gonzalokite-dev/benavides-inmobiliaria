@@ -6,10 +6,10 @@ import { routing } from "@/i18n/routing";
 import "../globals.css";
 
 export const metadata: Metadata = {
-  title: "Inmobiliaria para no residentes en Mallorca | Benavides Real Estate",
+  title: "Inmobiliaria en Mallorca | Benavides Real Estate",
   description:
-    "Vendemos tu propiedad en Mallorca con seguridad jurídica y optimización fiscal. Especialistas en no residentes. Asesoramiento integral inmobiliario, legal y fiscal.",
-  metadataBase: new URL("https://www.benavidesrealestate.com"),
+    "Compra, vende e invierte en Mallorca con plena seguridad jurídica y fiscal. Asesoramiento inmobiliario, legal y fiscal para residentes y no residentes.",
+  metadataBase: new URL("https://www.benavidesrealestate.es"),
 };
 
 export function generateStaticParams() {
