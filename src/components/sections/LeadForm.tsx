@@ -1,12 +1,67 @@
 "use client";
 
 import { useState } from "react";
+import { useLocale } from "next-intl";
 import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function LeadForm() {
+  const locale = useLocale();
   const [submitted, setSubmitted] = useState(false);
 
-  const propertyTypes = ["Villa / Chalet", "Piso / Apartamento", "Finca", "Otro"];
+  const labels = {
+    es: {
+      eyebrow: "Contacto",
+      title: "Solicita tu valoración gratuita",
+      body: "Cuéntanos tu propiedad y tu situación. Te contactaremos en menos de 24 horas con una valoración inicial sin compromiso.",
+      contactItems: [
+        { label: "Email", value: "inmobiliaria@benavidesasociados.com" },
+        { label: "Teléfono", value: "+34 971 000 000" },
+        { label: "Dirección", value: "Palma de Mallorca, España" },
+      ],
+      successTitle: "Consulta recibida",
+      successBody: "Te contactaremos en menos de 24 horas.",
+      fieldName: "Nombre completo *",
+      fieldEmail: "Email *",
+      fieldPhone: "Teléfono",
+      fieldType: "Tipo de propiedad",
+      fieldLocation: "Ubicación en Mallorca",
+      fieldMessage: "Mensaje",
+      placeholderName: "Tu nombre",
+      placeholderPhone: "+34 ...",
+      placeholderType: "Seleccionar tipo",
+      placeholderLocation: "Ej: Puerto Andratx, Palma, Pollensa...",
+      placeholderMessage: "Cuéntanos sobre tu propiedad y tu situación...",
+      propertyTypes: ["Villa / Chalet", "Piso / Apartamento", "Finca", "Otro"],
+      submitBtn: "Solicitar valoración",
+    },
+    en: {
+      eyebrow: "Contact",
+      title: "Request your free valuation",
+      body: "Tell us about your property and situation. We will contact you within 24 hours with an initial no-commitment valuation.",
+      contactItems: [
+        { label: "Email", value: "inmobiliaria@benavidesasociados.com" },
+        { label: "Phone", value: "+34 971 000 000" },
+        { label: "Address", value: "Palma de Mallorca, Spain" },
+      ],
+      successTitle: "Enquiry received",
+      successBody: "We will contact you within 24 hours.",
+      fieldName: "Full name *",
+      fieldEmail: "Email *",
+      fieldPhone: "Phone",
+      fieldType: "Property type",
+      fieldLocation: "Location in Mallorca",
+      fieldMessage: "Message",
+      placeholderName: "Your name",
+      placeholderPhone: "+34 ...",
+      placeholderType: "Select type",
+      placeholderLocation: "E.g.: Puerto Andratx, Palma, Pollensa...",
+      placeholderMessage: "Tell us about your property and situation...",
+      propertyTypes: ["Villa / Chalet", "Apartment / Flat", "Finca", "Other"],
+      submitBtn: "Request valuation",
+    },
+  };
+  const l = labels[locale as "es" | "en"] ?? labels.es;
+  const contactIcons = [Mail, Phone, MapPin];
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -33,7 +88,7 @@ export default function LeadForm() {
               color: "#b8964a",
               marginBottom: "14px",
             }}>
-              Contacto
+              {l.eyebrow}
             </p>
             <h2 style={{
               fontFamily: "'Playfair Display', serif",
@@ -43,7 +98,7 @@ export default function LeadForm() {
               lineHeight: 1.15,
               marginBottom: "20px",
             }}>
-              Solicita tu valoración gratuita
+              {l.title}
             </h2>
             <p style={{
               fontSize: "14px",
@@ -52,25 +107,24 @@ export default function LeadForm() {
               color: "#5c5650",
               marginBottom: "48px",
             }}>
-              Cuéntanos tu propiedad y tu situación. Te contactaremos en menos de 24 horas con una valoración inicial sin compromiso.
+              {l.body}
             </p>
 
             <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-              {[
-                { Icon: Mail, label: "Email", value: "inmobiliaria@benavidesasociados.com" },
-                { Icon: Phone, label: "Teléfono", value: "+34 971 000 000" },
-                { Icon: MapPin, label: "Dirección", value: "Palma de Mallorca, España" },
-              ].map(({ Icon, label, value }) => (
-                <div key={label} style={{ display: "flex", gap: "14px", alignItems: "flex-start" }}>
-                  <Icon size={15} strokeWidth={1.5} style={{ color: "#b8964a", marginTop: "2px", flexShrink: 0 }} />
-                  <div>
-                    <div style={{ fontSize: "10px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#9b9590", marginBottom: "3px" }}>
-                      {label}
+              {l.contactItems.map(({ label, value }, i) => {
+                const Icon = contactIcons[i];
+                return (
+                  <div key={label} style={{ display: "flex", gap: "14px", alignItems: "flex-start" }}>
+                    <Icon size={15} strokeWidth={1.5} style={{ color: "#b8964a", marginTop: "2px", flexShrink: 0 }} />
+                    <div>
+                      <div style={{ fontSize: "10px", letterSpacing: "0.12em", textTransform: "uppercase", color: "#9b9590", marginBottom: "3px" }}>
+                        {label}
+                      </div>
+                      <div style={{ fontSize: "13px", color: "#1a2332", fontWeight: 300 }}>{value}</div>
                     </div>
-                    <div style={{ fontSize: "13px", color: "#1a2332", fontWeight: 300 }}>{value}</div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
 
@@ -91,10 +145,10 @@ export default function LeadForm() {
                 marginBottom: "10px",
                 fontWeight: 300,
               }}>
-                Consulta recibida
+                {l.successTitle}
               </h3>
               <p style={{ color: "#5c5650", fontSize: "14px", fontWeight: 300 }}>
-                Te contactaremos en menos de 24 horas.
+                {l.successBody}
               </p>
             </div>
           ) : (
@@ -108,39 +162,39 @@ export default function LeadForm() {
             }} className="leadform-inner">
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "18px" }} className="lf-row">
                 <label style={labelWrap}>
-                  <span style={labelStyle}>Nombre completo *</span>
-                  <input required style={inputStyle} type="text" placeholder="Tu nombre" />
+                  <span style={labelStyle}>{l.fieldName}</span>
+                  <input required style={inputStyle} type="text" placeholder={l.placeholderName} />
                 </label>
                 <label style={labelWrap}>
-                  <span style={labelStyle}>Email *</span>
+                  <span style={labelStyle}>{l.fieldEmail}</span>
                   <input required style={inputStyle} type="email" placeholder="tu@email.com" />
                 </label>
               </div>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "18px" }} className="lf-row">
                 <label style={labelWrap}>
-                  <span style={labelStyle}>Teléfono</span>
-                  <input style={inputStyle} type="tel" placeholder="+34 ..." />
+                  <span style={labelStyle}>{l.fieldPhone}</span>
+                  <input style={inputStyle} type="tel" placeholder={l.placeholderPhone} />
                 </label>
                 <label style={labelWrap}>
-                  <span style={labelStyle}>Tipo de propiedad</span>
+                  <span style={labelStyle}>{l.fieldType}</span>
                   <select style={{ ...inputStyle, cursor: "pointer" }}>
-                    <option value="">Seleccionar tipo</option>
-                    {propertyTypes.map((t) => (
+                    <option value="">{l.placeholderType}</option>
+                    {l.propertyTypes.map((t) => (
                       <option key={t} value={t}>{t}</option>
                     ))}
                   </select>
                 </label>
               </div>
               <label style={labelWrap}>
-                <span style={labelStyle}>Ubicación en Mallorca</span>
-                <input style={inputStyle} type="text" placeholder="Ej: Puerto Andratx, Palma, Pollensa..." />
+                <span style={labelStyle}>{l.fieldLocation}</span>
+                <input style={inputStyle} type="text" placeholder={l.placeholderLocation} />
               </label>
               <label style={labelWrap}>
-                <span style={labelStyle}>Mensaje</span>
+                <span style={labelStyle}>{l.fieldMessage}</span>
                 <textarea
                   rows={4}
                   style={{ ...inputStyle, resize: "vertical" }}
-                  placeholder="Cuéntanos sobre tu propiedad y tu situación como no residente..."
+                  placeholder={l.placeholderMessage}
                 />
               </label>
               <button
@@ -162,7 +216,7 @@ export default function LeadForm() {
                 onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.backgroundColor = "#d4af6e")}
                 onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.backgroundColor = "#b8964a")}
               >
-                Solicitar valoración
+                {l.submitBtn}
               </button>
             </form>
           )}

@@ -1,23 +1,34 @@
+"use client";
+
+import { useLocale } from "next-intl";
 import { Shield, Calculator, BarChart2 } from "lucide-react";
 
 export default function ValueProposition() {
-  const cards = [
-    {
-      Icon: Shield,
-      title: "Seguridad jurídica",
-      desc: "Supervisamos toda la operación para evitar riesgos legales, desde la revisión documental hasta la firma ante notario.",
+  const locale = useLocale();
+  const labels = {
+    es: {
+      eyebrow: "Benavides Real Estate",
+      title: "Mucho más que una inmobiliaria tradicional",
+      body: "A diferencia de las agencias inmobiliarias convencionales, integramos asesoría fiscal, jurídica y estrategia inmobiliaria en un único servicio, para residentes y no residentes que compran, venden o invierten en Mallorca.",
+      cards: [
+        { title: "Seguridad jurídica", desc: "Supervisamos toda la operación para evitar riesgos legales, desde la revisión documental hasta la firma ante notario." },
+        { title: "Optimización fiscal", desc: "Analizamos tu situación fiscal —residente o no residente— para reducir la carga impositiva y maximizar el resultado neto de la operación." },
+        { title: "Estrategia basada en datos", desc: "Definimos el mejor momento y precio de venta con análisis de mercado real y conocimiento local de Mallorca." },
+      ],
     },
-    {
-      Icon: Calculator,
-      title: "Optimización fiscal",
-      desc: "Analizamos tu situación fiscal —residente o no residente— para reducir la carga impositiva y maximizar el resultado neto de la operación.",
+    en: {
+      eyebrow: "Benavides Real Estate",
+      title: "Much more than a traditional estate agency",
+      body: "Unlike conventional estate agencies, we integrate tax advisory, legal expertise and real estate strategy into a single service — for residents and non-residents buying, selling or investing in Mallorca.",
+      cards: [
+        { title: "Legal security", desc: "We supervise the entire transaction to prevent legal risks, from document review to signing before a notary." },
+        { title: "Tax optimisation", desc: "We analyse your tax situation — resident or non-resident — to reduce the tax burden and maximise the net result of the transaction." },
+        { title: "Data-driven strategy", desc: "We identify the best time and price to sell using real market analysis and local knowledge of Mallorca." },
+      ],
     },
-    {
-      Icon: BarChart2,
-      title: "Estrategia basada en datos",
-      desc: "Definimos el mejor momento y precio de venta con análisis de mercado real y conocimiento local de Mallorca.",
-    },
-  ];
+  };
+  const l = labels[locale as "es" | "en"] ?? labels.es;
+  const icons = [Shield, Calculator, BarChart2];
 
   return (
     <section id="propuesta-valor" style={{ backgroundColor: "#fff", padding: "80px 24px" }}>
@@ -32,7 +43,7 @@ export default function ValueProposition() {
             color: "#b8964a",
             marginBottom: "14px",
           }}>
-            Benavides Real Estate
+            {l.eyebrow}
           </p>
           <h2 style={{
             fontFamily: "'Playfair Display', serif",
@@ -42,7 +53,7 @@ export default function ValueProposition() {
             lineHeight: 1.15,
             marginBottom: "20px",
           }}>
-            Mucho más que una inmobiliaria tradicional
+            {l.title}
           </h2>
           <p style={{
             fontSize: "15px",
@@ -50,7 +61,7 @@ export default function ValueProposition() {
             lineHeight: 1.8,
             color: "#5c5650",
           }}>
-            A diferencia de las agencias inmobiliarias convencionales, integramos asesoría fiscal, jurídica y estrategia inmobiliaria en un único servicio, para residentes y no residentes que compran, venden o invierten en Mallorca.
+            {l.body}
           </p>
         </div>
 
@@ -60,35 +71,38 @@ export default function ValueProposition() {
           gridTemplateColumns: "repeat(3, 1fr)",
           gap: "28px",
         }}>
-          {cards.map(({ Icon, title, desc }) => (
-            <div key={title} className="vp-card" style={{
-              border: "1px solid #e8e4de",
-              padding: "44px 36px",
-              transition: "background-color 0.25s",
-            }}>
-              <div style={{ marginBottom: "24px" }}>
-                <Icon size={28} strokeWidth={1.5} style={{ color: "#b8964a" }} />
+          {l.cards.map(({ title, desc }, i) => {
+            const Icon = icons[i];
+            return (
+              <div key={title} className="vp-card" style={{
+                border: "1px solid #e8e4de",
+                padding: "44px 36px",
+                transition: "background-color 0.25s",
+              }}>
+                <div style={{ marginBottom: "24px" }}>
+                  <Icon size={28} strokeWidth={1.5} style={{ color: "#b8964a" }} />
+                </div>
+                <h3 style={{
+                  fontFamily: "'Playfair Display', serif",
+                  fontSize: "22px",
+                  fontWeight: 400,
+                  color: "#1a2332",
+                  marginBottom: "14px",
+                  lineHeight: 1.2,
+                }}>
+                  {title}
+                </h3>
+                <p style={{
+                  fontSize: "14px",
+                  fontWeight: 300,
+                  lineHeight: 1.8,
+                  color: "#5c5650",
+                }}>
+                  {desc}
+                </p>
               </div>
-              <h3 style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: "22px",
-                fontWeight: 400,
-                color: "#1a2332",
-                marginBottom: "14px",
-                lineHeight: 1.2,
-              }}>
-                {title}
-              </h3>
-              <p style={{
-                fontSize: "14px",
-                fontWeight: 300,
-                lineHeight: 1.8,
-                color: "#5c5650",
-              }}>
-                {desc}
-              </p>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 

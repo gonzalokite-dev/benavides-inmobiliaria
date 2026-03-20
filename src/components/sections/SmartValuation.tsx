@@ -1,35 +1,36 @@
 "use client";
 
 import { useState } from "react";
+import { useLocale } from "next-intl";
 
 type Step = 1 | 2 | 3 | "result";
 
 const zonas = [
-  { value: "son-vida", label: "Son Vida (Palma)", base: 8500 },
-  { value: "puerto-portals", label: "Puerto Portals", base: 7500 },
-  { value: "bendinat", label: "Bendinat / Portals Nous", base: 7000 },
-  { value: "santa-catalina", label: "Santa Catalina, Palma", base: 5200 },
-  { value: "palma-centro", label: "Centro histórico, Palma", base: 4500 },
-  { value: "palma-otros", label: "Otras zonas de Palma", base: 3800 },
-  { value: "pollensa", label: "Pollensa / Puerto Pollensa", base: 4800 },
-  { value: "soller", label: "Sóller / Puerto Sóller", base: 5500 },
-  { value: "alcudia", label: "Alcudia / Can Picafort", base: 3800 },
-  { value: "otros", label: "Otra zona de Mallorca", base: 3200 },
+  { value: "son-vida", labelEs: "Son Vida (Palma)", labelEn: "Son Vida (Palma)", base: 8500 },
+  { value: "puerto-portals", labelEs: "Puerto Portals", labelEn: "Puerto Portals", base: 7500 },
+  { value: "bendinat", labelEs: "Bendinat / Portals Nous", labelEn: "Bendinat / Portals Nous", base: 7000 },
+  { value: "santa-catalina", labelEs: "Santa Catalina, Palma", labelEn: "Santa Catalina, Palma", base: 5200 },
+  { value: "palma-centro", labelEs: "Centro histórico, Palma", labelEn: "Palma Old Town", base: 4500 },
+  { value: "palma-otros", labelEs: "Otras zonas de Palma", labelEn: "Other areas of Palma", base: 3800 },
+  { value: "pollensa", labelEs: "Pollensa / Puerto Pollensa", labelEn: "Pollensa / Puerto Pollensa", base: 4800 },
+  { value: "soller", labelEs: "Sóller / Puerto Sóller", labelEn: "Sóller / Puerto Sóller", base: 5500 },
+  { value: "alcudia", labelEs: "Alcudia / Can Picafort", labelEn: "Alcudia / Can Picafort", base: 3800 },
+  { value: "otros", labelEs: "Otra zona de Mallorca", labelEn: "Other area of Mallorca", base: 3200 },
 ];
 
 const tipos = [
-  { value: "villa", label: "Villa / Chalet", mult: 1.05 },
-  { value: "finca", label: "Finca rústica", mult: 1.10 },
-  { value: "atico", label: "Ático", mult: 1.15 },
-  { value: "piso", label: "Piso / Apartamento", mult: 0.90 },
-  { value: "local", label: "Local / Oficina", mult: 0.82 },
+  { value: "villa", labelEs: "Villa / Chalet", labelEn: "Villa / Chalet", mult: 1.05 },
+  { value: "finca", labelEs: "Finca rústica", labelEn: "Rustic finca", mult: 1.10 },
+  { value: "atico", labelEs: "Ático", labelEn: "Penthouse", mult: 1.15 },
+  { value: "piso", labelEs: "Piso / Apartamento", labelEn: "Apartment / Flat", mult: 0.90 },
+  { value: "local", labelEs: "Local / Oficina", labelEn: "Commercial / Office", mult: 0.82 },
 ];
 
 const estados = [
-  { value: "excelente", label: "Excelente · Llave en mano", mult: 1.10 },
-  { value: "bueno", label: "Bueno · Bien conservado", mult: 1.00 },
-  { value: "normal", label: "Normal · Necesita actualización", mult: 0.88 },
-  { value: "reformar", label: "A reformar", mult: 0.74 },
+  { value: "excelente", labelEs: "Excelente · Llave en mano", labelEn: "Excellent · Move-in ready", mult: 1.10 },
+  { value: "bueno", labelEs: "Bueno · Bien conservado", labelEn: "Good · Well maintained", mult: 1.00 },
+  { value: "normal", labelEs: "Normal · Necesita actualización", labelEn: "Average · Needs updating", mult: 0.88 },
+  { value: "reformar", labelEs: "A reformar", labelEn: "For renovation", mult: 0.74 },
 ];
 
 function fmt(n: number): string {
@@ -41,6 +42,9 @@ function fmt(n: number): string {
 }
 
 export default function SmartValuation() {
+  const locale = useLocale();
+  const isEn = locale === "en";
+
   const [step, setStep] = useState<Step>(1);
   const [zona, setZona] = useState("");
   const [tipo, setTipo] = useState("");
@@ -50,6 +54,90 @@ export default function SmartValuation() {
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [telefono, setTelefono] = useState("");
+
+  const labels = {
+    es: {
+      eyebrow: "Valoración inteligente",
+      title: "¿Cuánto vale tu propiedad en Mallorca?",
+      subtitle: "Obtén una estimación de mercado en menos de 2 minutos. Sin compromiso y sin necesidad de registrarse.",
+      stepLabels: ["Zona y tipo", "Detalles", "Contacto"],
+      step1Title: "Ubicación y tipo de propiedad",
+      zonaLabel: "Zona de Mallorca",
+      zonaPlaceholder: "Selecciona la zona",
+      tipoLabel: "Tipo de propiedad",
+      tipoPlaceholder: "Selecciona el tipo",
+      step2Title: "Características del inmueble",
+      metrosLabel: "Metros cuadrados construidos",
+      metrosPlaceholder: "Ej: 180",
+      estadoLabel: "Estado de la propiedad",
+      estadoPlaceholder: "Selecciona el estado",
+      urgenciaLabel: "Urgencia de venta",
+      urgenciaPlaceholder: "Selecciona la urgencia",
+      urgencias: [
+        { value: "alta", label: "Alta — menos de 3 meses" },
+        { value: "media", label: "Media — 3 a 6 meses" },
+        { value: "baja", label: "Sin urgencia — más de 6 meses" },
+      ],
+      backBtn: "← Volver",
+      continueBtn: "Continuar →",
+      step3Title: "¿A quién enviamos la valoración?",
+      step3Sub: "Te enviaremos el detalle completo por email.",
+      nombreLabel: "Nombre *",
+      nombrePlaceholder: "Tu nombre",
+      emailLabel: "Email *",
+      telefonoLabel: "Teléfono (opcional)",
+      telefonoPlaceholder: "+34 600 000 000",
+      seeValuationBtn: "Ver mi valoración →",
+      resultEyebrow: "Valoración estimada · Mallorca 2025",
+      midPriceLabel: (mid: string) => `Precio medio estimado: ${mid}`,
+      resultGreetingPre: "basándonos en los datos introducidos, tu",
+      resultGreetingMid: "en",
+      resultGreetingPost: "tiene un valor orientativo de mercado en el rango indicado. Para una valoración precisa con visita al inmueble y análisis fiscal incluido, nuestro equipo te contactará en menos de 24 horas.",
+      resultCta: "Solicitar valoración detallada gratuita",
+      resetBtn: "Hacer otra valoración",
+    },
+    en: {
+      eyebrow: "Smart valuation",
+      title: "How much is your property worth in Mallorca?",
+      subtitle: "Get a market estimate in under 2 minutes. No commitment, no registration required.",
+      stepLabels: ["Location & type", "Details", "Contact"],
+      step1Title: "Location and property type",
+      zonaLabel: "Area of Mallorca",
+      zonaPlaceholder: "Select area",
+      tipoLabel: "Property type",
+      tipoPlaceholder: "Select type",
+      step2Title: "Property details",
+      metrosLabel: "Built square metres",
+      metrosPlaceholder: "E.g.: 180",
+      estadoLabel: "Property condition",
+      estadoPlaceholder: "Select condition",
+      urgenciaLabel: "Sale urgency",
+      urgenciaPlaceholder: "Select urgency",
+      urgencias: [
+        { value: "alta", label: "High — under 3 months" },
+        { value: "media", label: "Medium — 3 to 6 months" },
+        { value: "baja", label: "No urgency — over 6 months" },
+      ],
+      backBtn: "← Back",
+      continueBtn: "Continue →",
+      step3Title: "Where shall we send the valuation?",
+      step3Sub: "We will send you the full details by email.",
+      nombreLabel: "Name *",
+      nombrePlaceholder: "Your name",
+      emailLabel: "Email *",
+      telefonoLabel: "Phone (optional)",
+      telefonoPlaceholder: "+34 600 000 000",
+      seeValuationBtn: "See my valuation →",
+      resultEyebrow: "Estimated valuation · Mallorca 2025",
+      midPriceLabel: (mid: string) => `Estimated mid price: ${mid}`,
+      resultGreetingPre: "based on the data you entered, your",
+      resultGreetingMid: "in",
+      resultGreetingPost: "has an indicative market value in the range shown. For a precise valuation with a property visit and tax analysis included, our team will contact you within 24 hours.",
+      resultCta: "Request free detailed valuation",
+      resetBtn: "Do another valuation",
+    },
+  };
+  const l = labels[locale as "es" | "en"] ?? labels.es;
 
   function calcResult() {
     const zonaData = zonas.find((z) => z.value === zona);
@@ -116,8 +204,16 @@ export default function SmartValuation() {
   };
 
   const stepNum = step === "result" ? 4 : step;
+  const stepLabel = l.stepLabels;
 
-  const stepLabel = ["Zona y tipo", "Detalles", "Contacto"];
+  const getZonaLabel = (v: string) => {
+    const z = zonas.find((x) => x.value === v);
+    return z ? (isEn ? z.labelEn : z.labelEs) : v;
+  };
+  const getTipoLabel = (v: string) => {
+    const t = tipos.find((x) => x.value === v);
+    return t ? (isEn ? t.labelEn : t.labelEs) : v;
+  };
 
   return (
     <section id="valoracion" style={{ backgroundColor: "#faf8f5", padding: "60px 24px" }}>
@@ -126,13 +222,13 @@ export default function SmartValuation() {
         {/* Header */}
         <div style={{ textAlign: "center", maxWidth: "640px", margin: "0 auto 40px" }}>
           <p style={{ fontSize: "11px", fontWeight: 400, letterSpacing: "0.2em", textTransform: "uppercase", color: "#b8964a", marginBottom: "14px" }}>
-            Valoración inteligente
+            {l.eyebrow}
           </p>
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(30px, 4vw, 46px)", fontWeight: 300, color: "#1a2332", lineHeight: 1.1, marginBottom: "16px" }}>
-            ¿Cuánto vale tu propiedad en Mallorca?
+            {l.title}
           </h2>
           <p style={{ fontSize: "15px", fontWeight: 300, lineHeight: 1.8, color: "#5c5650" }}>
-            Obtén una estimación de mercado en menos de 2 minutos. Sin compromiso y sin necesidad de registrarse.
+            {l.subtitle}
           </p>
         </div>
 
@@ -173,24 +269,24 @@ export default function SmartValuation() {
             {step === 1 && (
               <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
                 <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "22px", fontWeight: 400, color: "#1a2332" }}>
-                  Ubicación y tipo de propiedad
+                  {l.step1Title}
                 </h3>
                 <div>
-                  <label style={labelStyle}>Zona de Mallorca</label>
+                  <label style={labelStyle}>{l.zonaLabel}</label>
                   <select value={zona} onChange={(e) => setZona(e.target.value)} style={{ ...inputStyle, cursor: "pointer" }}>
-                    <option value="">Selecciona la zona</option>
-                    {zonas.map((z) => <option key={z.value} value={z.value}>{z.label}</option>)}
+                    <option value="">{l.zonaPlaceholder}</option>
+                    {zonas.map((z) => <option key={z.value} value={z.value}>{isEn ? z.labelEn : z.labelEs}</option>)}
                   </select>
                 </div>
                 <div>
-                  <label style={labelStyle}>Tipo de propiedad</label>
+                  <label style={labelStyle}>{l.tipoLabel}</label>
                   <select value={tipo} onChange={(e) => setTipo(e.target.value)} style={{ ...inputStyle, cursor: "pointer" }}>
-                    <option value="">Selecciona el tipo</option>
-                    {tipos.map((t) => <option key={t.value} value={t.value}>{t.label}</option>)}
+                    <option value="">{l.tipoPlaceholder}</option>
+                    {tipos.map((t) => <option key={t.value} value={t.value}>{isEn ? t.labelEn : t.labelEs}</option>)}
                   </select>
                 </div>
                 <button onClick={() => { if (zona && tipo) setStep(2); }} disabled={!zona || !tipo} style={btnPrimary(!!(zona && tipo))}>
-                  Continuar →
+                  {l.continueBtn}
                 </button>
               </div>
             )}
@@ -199,35 +295,33 @@ export default function SmartValuation() {
             {step === 2 && (
               <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
                 <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "22px", fontWeight: 400, color: "#1a2332" }}>
-                  Características del inmueble
+                  {l.step2Title}
                 </h3>
                 <div>
-                  <label style={labelStyle}>Metros cuadrados construidos</label>
-                  <input type="number" placeholder="Ej: 180" value={metros} onChange={(e) => setMetros(e.target.value)} style={inputStyle}
+                  <label style={labelStyle}>{l.metrosLabel}</label>
+                  <input type="number" placeholder={l.metrosPlaceholder} value={metros} onChange={(e) => setMetros(e.target.value)} style={inputStyle}
                     onFocus={(e) => ((e.target as HTMLInputElement).style.borderColor = "rgba(184,150,74,0.6)")}
                     onBlur={(e) => ((e.target as HTMLInputElement).style.borderColor = "#e8e4de")}
                   />
                 </div>
                 <div>
-                  <label style={labelStyle}>Estado de la propiedad</label>
+                  <label style={labelStyle}>{l.estadoLabel}</label>
                   <select value={estado} onChange={(e) => setEstado(e.target.value)} style={{ ...inputStyle, cursor: "pointer" }}>
-                    <option value="">Selecciona el estado</option>
-                    {estados.map((e) => <option key={e.value} value={e.value}>{e.label}</option>)}
+                    <option value="">{l.estadoPlaceholder}</option>
+                    {estados.map((e) => <option key={e.value} value={e.value}>{isEn ? e.labelEn : e.labelEs}</option>)}
                   </select>
                 </div>
                 <div>
-                  <label style={labelStyle}>Urgencia de venta</label>
+                  <label style={labelStyle}>{l.urgenciaLabel}</label>
                   <select value={urgencia} onChange={(e) => setUrgencia(e.target.value)} style={{ ...inputStyle, cursor: "pointer" }}>
-                    <option value="">Selecciona la urgencia</option>
-                    <option value="alta">Alta — menos de 3 meses</option>
-                    <option value="media">Media — 3 a 6 meses</option>
-                    <option value="baja">Sin urgencia — más de 6 meses</option>
+                    <option value="">{l.urgenciaPlaceholder}</option>
+                    {l.urgencias.map((u) => <option key={u.value} value={u.value}>{u.label}</option>)}
                   </select>
                 </div>
                 <div style={{ display: "flex", gap: "12px" }}>
-                  <button onClick={() => setStep(1)} style={btnBack}>← Volver</button>
+                  <button onClick={() => setStep(1)} style={btnBack}>{l.backBtn}</button>
                   <button onClick={() => { if (metros && estado) setStep(3); }} disabled={!metros || !estado} style={{ ...btnPrimary(!!(metros && estado)), flex: 2, width: "auto" }}>
-                    Continuar →
+                    {l.continueBtn}
                   </button>
                 </div>
               </div>
@@ -238,35 +332,35 @@ export default function SmartValuation() {
               <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
                 <div>
                   <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: "22px", fontWeight: 400, color: "#1a2332", marginBottom: "6px" }}>
-                    ¿A quién enviamos la valoración?
+                    {l.step3Title}
                   </h3>
                   <p style={{ fontSize: "13px", color: "#9b9590", fontWeight: 300 }}>
-                    Te enviaremos el detalle completo por email.
+                    {l.step3Sub}
                   </p>
                 </div>
                 <div>
-                  <label style={labelStyle}>Nombre *</label>
-                  <input type="text" placeholder="Tu nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} style={inputStyle}
+                  <label style={labelStyle}>{l.nombreLabel}</label>
+                  <input type="text" placeholder={l.nombrePlaceholder} value={nombre} onChange={(e) => setNombre(e.target.value)} style={inputStyle}
                     onFocus={(e) => ((e.target as HTMLInputElement).style.borderColor = "rgba(184,150,74,0.6)")}
                     onBlur={(e) => ((e.target as HTMLInputElement).style.borderColor = "#e8e4de")}
                   />
                 </div>
                 <div>
-                  <label style={labelStyle}>Email *</label>
-                  <input type="email" placeholder="tu@email.com" value={email} onChange={(e) => setEmail(e.target.value)} style={inputStyle}
+                  <label style={labelStyle}>{l.emailLabel}</label>
+                  <input type="email" placeholder="email@example.com" value={email} onChange={(e) => setEmail(e.target.value)} style={inputStyle}
                     onFocus={(e) => ((e.target as HTMLInputElement).style.borderColor = "rgba(184,150,74,0.6)")}
                     onBlur={(e) => ((e.target as HTMLInputElement).style.borderColor = "#e8e4de")}
                   />
                 </div>
                 <div>
-                  <label style={labelStyle}>Teléfono (opcional)</label>
-                  <input type="tel" placeholder="+34 600 000 000" value={telefono} onChange={(e) => setTelefono(e.target.value)} style={inputStyle}
+                  <label style={labelStyle}>{l.telefonoLabel}</label>
+                  <input type="tel" placeholder={l.telefonoPlaceholder} value={telefono} onChange={(e) => setTelefono(e.target.value)} style={inputStyle}
                     onFocus={(e) => ((e.target as HTMLInputElement).style.borderColor = "rgba(184,150,74,0.6)")}
                     onBlur={(e) => ((e.target as HTMLInputElement).style.borderColor = "#e8e4de")}
                   />
                 </div>
                 <div style={{ display: "flex", gap: "12px" }}>
-                  <button onClick={() => setStep(2)} style={btnBack}>← Volver</button>
+                  <button onClick={() => setStep(2)} style={btnBack}>{l.backBtn}</button>
                   <button
                     onClick={() => { if (nombre && email) setStep("result"); }}
                     disabled={!nombre || !email}
@@ -285,7 +379,7 @@ export default function SmartValuation() {
                       fontFamily: "'Inter', sans-serif",
                     }}
                   >
-                    Ver mi valoración →
+                    {l.seeValuationBtn}
                   </button>
                 </div>
               </div>
@@ -296,22 +390,24 @@ export default function SmartValuation() {
               <div>
                 <div style={{ textAlign: "center", marginBottom: "32px" }}>
                   <p style={{ fontSize: "11px", letterSpacing: "0.15em", textTransform: "uppercase", color: "#b8964a", marginBottom: "16px" }}>
-                    Valoración estimada · Mallorca 2025
+                    {l.resultEyebrow}
                   </p>
                   <div style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(28px, 5vw, 52px)", fontWeight: 300, color: "#1a2332", lineHeight: 1 }}>
                     {fmt(result.min)} — {fmt(result.max)}
                   </div>
                   <p style={{ fontSize: "12px", color: "#9b9590", marginTop: "10px" }}>
-                    Precio medio estimado: {fmt(result.mid)}
+                    {l.midPriceLabel(fmt(result.mid))}
                   </p>
                 </div>
 
                 <div style={{ backgroundColor: "#faf8f5", borderRadius: "3px", padding: "24px", marginBottom: "28px" }}>
                   <p style={{ fontSize: "14px", color: "#5c5650", lineHeight: 1.85, fontWeight: 300 }}>
-                    <strong style={{ color: "#1a2332", fontWeight: 500 }}>Hola {nombre},</strong> basándonos en los datos introducidos,
-                    tu {tipos.find((t) => t.value === tipo)?.label.toLowerCase()} en{" "}
-                    <strong style={{ color: "#1a2332" }}>{zonas.find((z) => z.value === zona)?.label}</strong>{" "}
-                    tiene un valor orientativo de mercado en el rango indicado. Para una valoración precisa con visita al inmueble y análisis fiscal incluido, nuestro equipo te contactará en menos de 24 horas.
+                    <strong style={{ color: "#1a2332", fontWeight: 500 }}>{nombre},</strong>{" "}
+                    {l.resultGreetingPre}{" "}
+                    <strong style={{ color: "#1a2332" }}>{getTipoLabel(tipo).toLowerCase()}</strong>{" "}
+                    {l.resultGreetingMid}{" "}
+                    <strong style={{ color: "#1a2332" }}>{getZonaLabel(zona)}</strong>{" "}
+                    {l.resultGreetingPost}
                   </p>
                 </div>
 
@@ -335,13 +431,13 @@ export default function SmartValuation() {
                   onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.backgroundColor = "#d4af6e")}
                   onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.backgroundColor = "#b8964a")}
                 >
-                  Solicitar valoración detallada gratuita
+                  {l.resultCta}
                 </a>
                 <button
                   onClick={() => { setStep(1); setZona(""); setTipo(""); setMetros(""); setEstado(""); setUrgencia(""); setNombre(""); setEmail(""); setTelefono(""); }}
                   style={{ width: "100%", background: "none", border: "none", fontSize: "12px", color: "#9b9590", cursor: "pointer", padding: "8px", fontFamily: "'Inter', sans-serif" }}
                 >
-                  Hacer otra valoración
+                  {l.resetBtn}
                 </button>
               </div>
             )}

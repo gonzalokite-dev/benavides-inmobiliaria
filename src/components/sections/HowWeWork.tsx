@@ -1,26 +1,32 @@
+"use client";
+
+import { useLocale } from "next-intl";
+
 export default function HowWeWork() {
-  const steps = [
-    {
-      number: "01",
-      title: "Análisis",
-      desc: "Estudiamos tu propiedad, tu situación fiscal y definimos el potencial de la operación.",
+  const locale = useLocale();
+  const labels = {
+    es: {
+      eyebrow: "Cómo trabajamos",
+      title: "Tu venta, paso a paso",
+      steps: [
+        { number: "01", title: "Análisis", desc: "Estudiamos tu propiedad, tu situación fiscal y definimos el potencial de la operación." },
+        { number: "02", title: "Estrategia", desc: "Definimos el precio óptimo, el timing de venta y la estructura fiscal más eficiente para tu caso." },
+        { number: "03", title: "Comercialización", desc: "Promocionamos tu propiedad en los canales adecuados y gestionamos el contacto con potenciales compradores." },
+        { number: "04", title: "Cierre", desc: "Coordinamos toda la operación, optimizamos la fiscalidad y cerramos maximizando tu resultado neto." },
+      ],
     },
-    {
-      number: "02",
-      title: "Estrategia",
-      desc: "Definimos el precio óptimo, el timing de venta y la estructura fiscal más eficiente para tu caso.",
+    en: {
+      eyebrow: "How we work",
+      title: "Your sale, step by step",
+      steps: [
+        { number: "01", title: "Analysis", desc: "We study your property, your tax situation and define the potential of the transaction." },
+        { number: "02", title: "Strategy", desc: "We set the optimal price, the right timing and the most efficient tax structure for your case." },
+        { number: "03", title: "Marketing", desc: "We promote your property through the right channels and manage contact with potential buyers." },
+        { number: "04", title: "Closing", desc: "We coordinate the entire transaction, optimise the tax impact and close maximising your net result." },
+      ],
     },
-    {
-      number: "03",
-      title: "Comercialización",
-      desc: "Promocionamos tu propiedad en los canales adecuados y gestionamos el contacto con potenciales compradores.",
-    },
-    {
-      number: "04",
-      title: "Cierre",
-      desc: "Coordinamos toda la operación, optimizamos la fiscalidad y cerramos maximizando tu resultado neto.",
-    },
-  ];
+  };
+  const l = labels[locale as "es" | "en"] ?? labels.es;
 
   return (
     <section id="proceso" style={{ backgroundColor: "#faf8f5", padding: "80px 24px" }}>
@@ -35,7 +41,7 @@ export default function HowWeWork() {
             color: "#b8964a",
             marginBottom: "14px",
           }}>
-            Cómo trabajamos
+            {l.eyebrow}
           </p>
           <h2 style={{
             fontFamily: "'Playfair Display', serif",
@@ -44,7 +50,7 @@ export default function HowWeWork() {
             color: "#1a2332",
             lineHeight: 1.15,
           }}>
-            Tu venta, paso a paso
+            {l.title}
           </h2>
         </div>
 
@@ -66,7 +72,7 @@ export default function HowWeWork() {
             zIndex: 0,
           }} />
 
-          {steps.map(({ number, title, desc }) => (
+          {l.steps.map(({ number, title, desc }) => (
             <div key={number} style={{
               padding: "0 28px",
               position: "relative",

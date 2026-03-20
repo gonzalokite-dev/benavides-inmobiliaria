@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useMemo } from "react";
+import { useLocale } from "next-intl";
 
 function calcTax(gain: number, resident: boolean): number {
   if (gain <= 0) return 0;
@@ -31,9 +32,50 @@ function fmt(n: number): string {
 }
 
 export default function NetBenefitCalculator() {
+  const locale = useLocale();
   const [precioCompra, setPrecioCompra] = useState("");
   const [precioVenta, setPrecioVenta] = useState("");
   const [tipoCliente, setTipoCliente] = useState<"residente" | "no-residente">("residente");
+
+  const labels = {
+    es: {
+      eyebrow: "Herramienta gratuita",
+      title: "Calcula tu resultado neto estimado",
+      body: "Introduce el precio de compra y el precio estimado de venta. Obtendrás una estimación del resultado neto tras impuestos.",
+      clientTypeLabel: "Tipo de cliente",
+      clientTypes: [["residente", "Residente fiscal en España"], ["no-residente", "No residente (UE/EEE)"]] as const,
+      purchasePriceLabel: "Precio de compra (€)",
+      salePriceLabel: "Precio estimado de venta (€)",
+      disclaimer: "* Estimación orientativa. Los cálculos incluyen gastos de venta (~2%), plusvalía municipal (~0,5%) y gastos de adquisición originales (~3%). No constituye asesoramiento fiscal. Los impuestos reales dependen de cada situación.",
+      emptyState: "Introduce los datos para ver el resultado estimado",
+      breakdownLabel: "Desglose estimado",
+      rows: ["Precio de venta", "Gastos de venta (~2%)", "Plusvalía municipal (aprox.)", "Precio compra + gastos orig. (~3%)"],
+      taxResident: "IRPF sobre ganancia patrimonial",
+      taxNonResident: "IRNR 19% (residentes UE)",
+      totalLabel: "Resultado neto estimado",
+      gainLabel: (gain: string, rate: string) => `Ganancia: ${gain} · Tipo efectivo: ${rate}%`,
+      ctaBtn: "Solicitar análisis personalizado",
+    },
+    en: {
+      eyebrow: "Free tool",
+      title: "Calculate your estimated net result",
+      body: "Enter the purchase price and estimated sale price. You will get an estimate of the net result after taxes.",
+      clientTypeLabel: "Client type",
+      clientTypes: [["residente", "Tax resident in Spain"], ["no-residente", "Non-resident (EU/EEA)"]] as const,
+      purchasePriceLabel: "Purchase price (€)",
+      salePriceLabel: "Estimated sale price (€)",
+      disclaimer: "* Indicative estimate. Calculations include sale costs (~2%), municipal capital gains tax (~0.5%) and original acquisition costs (~3%). This does not constitute tax advice. Actual taxes depend on each situation.",
+      emptyState: "Enter the figures to see the estimated result",
+      breakdownLabel: "Estimated breakdown",
+      rows: ["Sale price", "Sale costs (~2%)", "Municipal capital gains (approx.)", "Purchase price + orig. costs (~3%)"],
+      taxResident: "IRPF on capital gain",
+      taxNonResident: "IRNR 19% (EU residents)",
+      totalLabel: "Estimated net result",
+      gainLabel: (gain: string, rate: string) => `Gain: ${gain} · Effective rate: ${rate}%`,
+      ctaBtn: "Request personalised analysis",
+    },
+  };
+  const l = labels[locale as "es" | "en"] ?? labels.es;
 
   const result = useMemo(() => {
     const compra = parseFloat(precioCompra) || 0;
@@ -84,6 +126,13 @@ export default function NetBenefitCalculator() {
     marginBottom: "8px",
   };
 
+  const resultRows = result ? [
+    { label: l.rows[0], value: result.precioVenta, color: "#fff" as const, prefix: "" },
+    { label: l.rows[1], value: result.gastosVenta, color: "rgba(255,255,255,0.45)" as const, prefix: "−" },
+    { label: l.rows[2], value: result.plusvalia, color: "rgba(255,255,255,0.45)" as const, prefix: "−" },
+    { label: l.rows[3], value: result.costoBase, color: "rgba(255,255,255,0.45)" as const, prefix: "−" },
+  ] : [];
+
   return (
     <section id="simulador" style={{ backgroundColor: "#0f1623", padding: "60px 24px" }}>
       <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
@@ -91,13 +140,13 @@ export default function NetBenefitCalculator() {
         {/* Header */}
         <div style={{ maxWidth: "600px", marginBottom: "40px" }}>
           <p style={{ fontSize: "11px", fontWeight: 400, letterSpacing: "0.2em", textTransform: "uppercase", color: "#b8964a", marginBottom: "14px" }}>
-            Herramienta gratuita
+            {l.eyebrow}
           </p>
           <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(30px, 4vw, 48px)", fontWeight: 300, color: "#fff", lineHeight: 1.1, marginBottom: "20px" }}>
-            Calcula tu resultado neto estimado
+            {l.title}
           </h2>
           <p style={{ fontSize: "15px", fontWeight: 300, lineHeight: 1.8, color: "rgba(255,255,255,0.5)" }}>
-            Introduce el precio de compra y el precio estimado de venta. Obtendrás una estimación del resultado neto tras impuestos.
+            {l.body}
           </p>
         </div>
 
@@ -107,9 +156,9 @@ export default function NetBenefitCalculator() {
           <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
 
             <div>
-              <span style={labelStyle}>Tipo de cliente</span>
+              <span style={labelStyle}>{l.clientTypeLabel}</span>
               <div style={{ display: "flex", gap: "8px" }}>
-                {([["residente", "Residente fiscal en España"], ["no-residente", "No residente (UE/EEE)"]] as const).map(([val, label]) => (
+                {l.clientTypes.map(([val, label]) => (
                   <button
                     key={val}
                     onClick={() => setTipoCliente(val)}
@@ -134,10 +183,10 @@ export default function NetBenefitCalculator() {
             </div>
 
             <div>
-              <label style={labelStyle}>Precio de compra (€)</label>
+              <label style={labelStyle}>{l.purchasePriceLabel}</label>
               <input
                 type="number"
-                placeholder="Ej: 350000"
+                placeholder="350000"
                 value={precioCompra}
                 onChange={(e) => setPrecioCompra(e.target.value)}
                 style={inputBase}
@@ -147,10 +196,10 @@ export default function NetBenefitCalculator() {
             </div>
 
             <div>
-              <label style={labelStyle}>Precio estimado de venta (€)</label>
+              <label style={labelStyle}>{l.salePriceLabel}</label>
               <input
                 type="number"
-                placeholder="Ej: 550000"
+                placeholder="550000"
                 value={precioVenta}
                 onChange={(e) => setPrecioVenta(e.target.value)}
                 style={inputBase}
@@ -160,7 +209,7 @@ export default function NetBenefitCalculator() {
             </div>
 
             <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.22)", lineHeight: 1.7 }}>
-              * Estimación orientativa. Los cálculos incluyen gastos de venta (~2%), plusvalía municipal (~0,5%) y gastos de adquisición originales (~3%). No constituye asesoramiento fiscal. Los impuestos reales dependen de cada situación.
+              {l.disclaimer}
             </p>
           </div>
 
@@ -180,21 +229,16 @@ export default function NetBenefitCalculator() {
                   <span style={{ color: "#b8964a", fontSize: "26px", fontFamily: "'Playfair Display', serif" }}>€</span>
                 </div>
                 <p style={{ color: "rgba(255,255,255,0.3)", fontSize: "14px", fontWeight: 300 }}>
-                  Introduce los datos para ver el resultado estimado
+                  {l.emptyState}
                 </p>
               </div>
             ) : (
               <div style={{ flex: 1, display: "flex", flexDirection: "column" }}>
                 <p style={{ fontSize: "10px", letterSpacing: "0.15em", textTransform: "uppercase", color: "rgba(255,255,255,0.3)", marginBottom: "28px" }}>
-                  Desglose estimado
+                  {l.breakdownLabel}
                 </p>
 
-                {[
-                  { label: "Precio de venta", value: result.precioVenta, color: "#fff" as const, prefix: "" },
-                  { label: "Gastos de venta (~2%)", value: result.gastosVenta, color: "rgba(255,255,255,0.45)" as const, prefix: "−" },
-                  { label: "Plusvalía municipal (aprox.)", value: result.plusvalia, color: "rgba(255,255,255,0.45)" as const, prefix: "−" },
-                  { label: "Precio compra + gastos orig. (~3%)", value: result.costoBase, color: "rgba(255,255,255,0.45)" as const, prefix: "−" },
-                ].map(({ label, value, color, prefix }) => (
+                {resultRows.map(({ label, value, color, prefix }) => (
                   <div key={label} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingBottom: "12px", marginBottom: "12px", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
                     <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.4)", fontWeight: 300 }}>{label}</span>
                     <span style={{ fontSize: "14px", color, fontWeight: 400 }}>{prefix} {fmt(value)}</span>
@@ -203,7 +247,7 @@ export default function NetBenefitCalculator() {
 
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingBottom: "12px", marginBottom: "12px", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
                   <span style={{ fontSize: "12px", color: "rgba(255,255,255,0.4)", fontWeight: 300 }}>
-                    {tipoCliente === "residente" ? "IRPF sobre ganancia patrimonial" : "IRNR 19% (residentes UE)"}
+                    {tipoCliente === "residente" ? l.taxResident : l.taxNonResident}
                   </span>
                   <span style={{ fontSize: "14px", color: "#e88585", fontWeight: 400 }}>− {fmt(result.impuesto)}</span>
                 </div>
@@ -211,10 +255,10 @@ export default function NetBenefitCalculator() {
                 {/* Total */}
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", paddingTop: "16px", marginTop: "auto" }}>
                   <div>
-                    <span style={{ fontSize: "13px", color: "#fff", fontWeight: 500 }}>Resultado neto estimado</span>
+                    <span style={{ fontSize: "13px", color: "#fff", fontWeight: 500 }}>{l.totalLabel}</span>
                     {result.ganancia > 0 && (
                       <p style={{ fontSize: "11px", color: "rgba(255,255,255,0.22)", marginTop: "4px" }}>
-                        Ganancia: {fmt(result.ganancia)} · Tipo efectivo: {result.tasaEfectiva.toFixed(1)}%
+                        {l.gainLabel(fmt(result.ganancia), result.tasaEfectiva.toFixed(1))}
                       </p>
                     )}
                   </div>
@@ -249,7 +293,7 @@ export default function NetBenefitCalculator() {
                   onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.backgroundColor = "#d4af6e")}
                   onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.backgroundColor = "#b8964a")}
                 >
-                  Solicitar análisis personalizado
+                  {l.ctaBtn}
                 </a>
               </div>
             )}

@@ -1,27 +1,66 @@
-export default function InternationalClients() {
-  const countries = [
-    { flag: "🇩🇪", name: "Alemania" },
-    { flag: "🇬🇧", name: "Reino Unido" },
-    { flag: "🇸🇪", name: "Suecia" },
-    { flag: "🇺🇸", name: "Estados Unidos" },
-    { flag: "🇨🇭", name: "Suiza" },
-    { flag: "🇫🇷", name: "Francia" },
-  ];
+"use client";
 
-  const pillars = [
-    {
-      title: "Gestión completamente remota",
-      body: "Gestionamos toda la operación sin que tenga que desplazarse a España. Notaría, registro, fiscalidad y entrega de llaves, coordinados desde el primer al último día.",
+import { useLocale } from "next-intl";
+
+export default function InternationalClients() {
+  const locale = useLocale();
+  const labels = {
+    es: {
+      eyebrow: "Especialistas en clientes internacionales",
+      title: "Trabajamos con propietarios no residentes de todo el mundo",
+      body: "Tanto si resides en Europa, América o cualquier otra parte del mundo, nuestra experiencia con clientes internacionales nos permite gestionar tu venta de forma remota, segura y fiscalmente eficiente.",
+      countries: [
+        { flag: "🇩🇪", name: "Alemania" },
+        { flag: "🇬🇧", name: "Reino Unido" },
+        { flag: "🇸🇪", name: "Suecia" },
+        { flag: "🇺🇸", name: "Estados Unidos" },
+        { flag: "🇨🇭", name: "Suiza" },
+        { flag: "🇫🇷", name: "Francia" },
+      ],
+      pillars: [
+        {
+          title: "Gestión completamente remota",
+          body: "Gestionamos toda la operación sin que tenga que desplazarse a España. Notaría, registro, fiscalidad y entrega de llaves, coordinados desde el primer al último día.",
+        },
+        {
+          title: "Fiscalidad del no residente resuelta",
+          body: "IRNR, plusvalías, retención del 3%, certificado de no residencia fiscal. Conocemos cada obligación y la gestionamos antes de que sea un problema.",
+        },
+        {
+          title: "Atención en su idioma",
+          body: "Trabajamos en español, inglés y alemán. Cada documento, cada conversación y cada decisión, en el idioma con el que usted se siente seguro.",
+        },
+      ],
     },
-    {
-      title: "Fiscalidad del no residente resuelta",
-      body: "IRNR, plusvalías, retención del 3%, certificado de no residencia fiscal. Conocemos cada obligación y la gestionamos antes de que sea un problema.",
+    en: {
+      eyebrow: "Specialists in international clients",
+      title: "We work with non-resident owners from around the world",
+      body: "Whether you live in Europe, the Americas or anywhere else in the world, our experience with international clients allows us to manage your sale remotely, securely and in a tax-efficient manner.",
+      countries: [
+        { flag: "🇩🇪", name: "Germany" },
+        { flag: "🇬🇧", name: "United Kingdom" },
+        { flag: "🇸🇪", name: "Sweden" },
+        { flag: "🇺🇸", name: "United States" },
+        { flag: "🇨🇭", name: "Switzerland" },
+        { flag: "🇫🇷", name: "France" },
+      ],
+      pillars: [
+        {
+          title: "Fully remote management",
+          body: "We handle the entire transaction without you needing to travel to Spain. Notary, registry, tax and key handover — coordinated from start to finish.",
+        },
+        {
+          title: "Non-resident taxation handled",
+          body: "IRNR, capital gains, 3% retention, non-resident tax certificate. We know every obligation and manage it before it becomes a problem.",
+        },
+        {
+          title: "Service in your language",
+          body: "We work in Spanish, English and German. Every document, every conversation and every decision, in the language you feel comfortable with.",
+        },
+      ],
     },
-    {
-      title: "Atención en su idioma",
-      body: "Trabajamos en español, inglés y alemán. Cada documento, cada conversación y cada decisión, en el idioma con el que usted se siente seguro.",
-    },
-  ];
+  };
+  const l = labels[locale as "es" | "en"] ?? labels.es;
 
   return (
     <section id="clientes-internacionales" style={{ backgroundColor: "#1a2332", padding: "100px 24px" }}>
@@ -36,7 +75,7 @@ export default function InternationalClients() {
             color: "#b8964a",
             marginBottom: "14px",
           }}>
-            Especialistas en clientes internacionales
+            {l.eyebrow}
           </p>
           <h2 style={{
             fontFamily: "'Playfair Display', serif",
@@ -46,7 +85,7 @@ export default function InternationalClients() {
             lineHeight: 1.15,
             marginBottom: "20px",
           }}>
-            Trabajamos con propietarios no residentes de todo el mundo
+            {l.title}
           </h2>
           <p style={{
             fontSize: "15px",
@@ -56,7 +95,7 @@ export default function InternationalClients() {
             maxWidth: "620px",
             margin: "0 auto",
           }}>
-            Tanto si resides en Europa, América o cualquier otra parte del mundo, nuestra experiencia con clientes internacionales nos permite gestionar tu venta de forma remota, segura y fiscalmente eficiente.
+            {l.body}
           </p>
         </div>
 
@@ -68,7 +107,7 @@ export default function InternationalClients() {
           justifyContent: "center",
           marginBottom: "72px",
         }}>
-          {countries.map(({ flag, name }) => (
+          {l.countries.map(({ flag, name }) => (
             <span key={name} style={{
               backgroundColor: "#fff",
               color: "#1a2332",
@@ -94,7 +133,7 @@ export default function InternationalClients() {
           backgroundColor: "rgba(255,255,255,0.08)",
           borderTop: "1px solid rgba(255,255,255,0.08)",
         }}>
-          {pillars.map(({ title, body }) => (
+          {l.pillars.map(({ title, body }) => (
             <div key={title} style={{
               padding: "48px 36px",
               backgroundColor: "#1a2332",

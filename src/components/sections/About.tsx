@@ -1,11 +1,35 @@
-const stats = [
-  { value: "40+", label: "Años de experiencia" },
-  { value: "198", label: "Operaciones asesoradas" },
-  { value: "7", label: "Líneas de servicio" },
-  { value: "15", label: "Nacionalidades de clientes" },
-];
+"use client";
+
+import { useLocale } from "next-intl";
 
 export default function About() {
+  const locale = useLocale();
+  const labels = {
+    es: {
+      eyebrow: "Quiénes somos",
+      title: "La diferencia entre cerrar una operación y hacerla bien.",
+      body: "Benavides Real Estate es la división inmobiliaria de un despacho multidisciplinar con más de cuarenta años de trayectoria en derecho patrimonial, fiscal y societario. Cuando nos contrata, tiene a su lado a abogados y asesores fiscales especializados desde el primer día — no a un agente con incentivos para cerrar. Cubrimos cada aspecto de la operación: jurídico, fiscal, registral y de mercado, sin que usted tenga que coordinar a varios profesionales distintos.",
+      stats: [
+        { value: "40+", label: "Años de experiencia" },
+        { value: "198", label: "Operaciones asesoradas" },
+        { value: "7", label: "Líneas de servicio" },
+        { value: "15", label: "Nacionalidades de clientes" },
+      ],
+    },
+    en: {
+      eyebrow: "Who we are",
+      title: "The difference between closing a deal and doing it right.",
+      body: "Benavides Real Estate is the property division of a multidisciplinary firm with over forty years of expertise in wealth, tax and corporate law. When you hire us, you have specialist lawyers and tax advisors by your side from day one — not an agent incentivised to close. We cover every aspect of the transaction: legal, tax, registry and market, without you having to coordinate multiple professionals.",
+      stats: [
+        { value: "40+", label: "Years of experience" },
+        { value: "198", label: "Transactions advised" },
+        { value: "7", label: "Service areas" },
+        { value: "15", label: "Client nationalities" },
+      ],
+    },
+  };
+  const l = labels[locale as "es" | "en"] ?? labels.es;
+
   return (
     <section id="nosotros" style={{ backgroundColor: "#fff", padding: "80px 24px" }}>
       <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
@@ -26,7 +50,7 @@ export default function About() {
               color: "#b8964a",
               marginBottom: "14px",
             }}>
-              Quiénes somos
+              {l.eyebrow}
             </p>
             <h2 style={{
               fontFamily: "'Playfair Display', serif",
@@ -36,7 +60,7 @@ export default function About() {
               lineHeight: 1.18,
               marginBottom: "28px",
             }}>
-              La diferencia entre cerrar una operación y hacerla bien.
+              {l.title}
             </h2>
             <div style={{ width: "32px", height: "1px", backgroundColor: "#b8964a", marginBottom: "28px" }} />
             <p style={{
@@ -45,7 +69,7 @@ export default function About() {
               lineHeight: 1.9,
               color: "#5c5650",
             }}>
-              Benavides Real Estate es la división inmobiliaria de un despacho multidisciplinar con más de cuarenta años de trayectoria en derecho patrimonial, fiscal y societario. Cuando nos contrata, tiene a su lado a abogados y asesores fiscales especializados desde el primer día — no a un agente con incentivos para cerrar. Cubrimos cada aspecto de la operación: jurídico, fiscal, registral y de mercado, sin que usted tenga que coordinar a varios profesionales distintos.
+              {l.body}
             </p>
           </div>
 
@@ -56,7 +80,7 @@ export default function About() {
             gap: "1px",
             backgroundColor: "#e8e4de",
           }}>
-            {stats.map((stat) => (
+            {l.stats.map((stat) => (
               <div key={stat.label} className="about-stat" style={{
                 backgroundColor: "#faf8f5",
                 padding: "48px 36px",

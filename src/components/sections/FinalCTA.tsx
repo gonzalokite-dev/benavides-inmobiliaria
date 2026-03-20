@@ -1,5 +1,26 @@
+"use client";
+
+import { useLocale } from "next-intl";
+
 export default function FinalCTA() {
-  const badges = ["Sin compromiso", "Respuesta en 24h", "Residentes y no residentes"];
+  const locale = useLocale();
+  const labels = {
+    es: {
+      title: "Opera en el mercado inmobiliario de Mallorca con total seguridad",
+      body: "Ya seas residente o no residente, te ayudamos a comprar, vender o invertir en Mallorca maximizando el resultado neto y con plena seguridad jurídica y fiscal. Primera consulta sin coste.",
+      ctaPrimary: "Solicitar valoración gratuita",
+      ctaSecondary: "Contactar ahora",
+      badges: ["Sin compromiso", "Respuesta en 24h", "Residentes y no residentes"],
+    },
+    en: {
+      title: "Operate in the Mallorca property market with complete confidence",
+      body: "Whether you are a resident or non-resident, we help you buy, sell or invest in Mallorca maximising your net result with full legal and tax security. First consultation at no cost.",
+      ctaPrimary: "Request free valuation",
+      ctaSecondary: "Contact us now",
+      badges: ["No commitment", "Response within 24h", "Residents and non-residents"],
+    },
+  };
+  const l = labels[locale as "es" | "en"] ?? labels.es;
 
   return (
     <section
@@ -19,7 +40,7 @@ export default function FinalCTA() {
           lineHeight: 1.12,
           marginBottom: "20px",
         }}>
-          Opera en el mercado inmobiliario de Mallorca con total seguridad
+          {l.title}
         </h2>
         <p style={{
           fontSize: "15px",
@@ -28,7 +49,7 @@ export default function FinalCTA() {
           color: "rgba(255,255,255,0.6)",
           marginBottom: "44px",
         }}>
-          Ya seas residente o no residente, te ayudamos a comprar, vender o invertir en Mallorca maximizando el resultado neto y con plena seguridad jurídica y fiscal. Primera consulta sin coste.
+          {l.body}
         </p>
 
         {/* CTAs */}
@@ -56,7 +77,7 @@ export default function FinalCTA() {
               transition: "background-color 0.2s",
             }}
           >
-            Solicitar valoración gratuita
+            {l.ctaPrimary}
           </a>
           <a
             href="#contacto"
@@ -76,7 +97,7 @@ export default function FinalCTA() {
               transition: "border-color 0.2s",
             }}
           >
-            Contactar ahora
+            {l.ctaSecondary}
           </a>
         </div>
 
@@ -87,7 +108,7 @@ export default function FinalCTA() {
           justifyContent: "center",
           flexWrap: "wrap",
         }}>
-          {badges.map((badge) => (
+          {l.badges.map((badge) => (
             <span key={badge} style={{
               fontSize: "11px",
               fontWeight: 400,
