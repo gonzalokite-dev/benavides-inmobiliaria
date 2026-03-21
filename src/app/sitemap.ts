@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { posts } from '@/data/blog';
+import { servicios } from '@/data/servicios';
 
 const BASE_URL = 'https://www.benavidesrealestate.es';
 const locales = ['es', 'en'] as const;
@@ -24,6 +25,22 @@ export default function sitemap(): MetadataRoute.Sitemap {
         languages: {
           es: `${BASE_URL}/es${route}`,
           en: `${BASE_URL}/en${route}`,
+        },
+      },
+    });
+  }
+
+  // Service pages
+  for (const servicio of servicios) {
+    entries.push({
+      url: `${BASE_URL}/es/servicios/${servicio.slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+      alternates: {
+        languages: {
+          es: `${BASE_URL}/es/servicios/${servicio.slug}`,
+          en: `${BASE_URL}/en/servicios/${servicio.slug}`,
         },
       },
     });

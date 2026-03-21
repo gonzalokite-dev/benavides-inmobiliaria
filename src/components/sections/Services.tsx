@@ -1,12 +1,24 @@
 "use client";
 
-import { useTranslations } from "next-intl";
-import { FileSearch, Layers, Scale, Home, Building2, Globe, TrendingUp } from "lucide-react";
+import { useTranslations, useLocale } from "next-intl";
+import { FileSearch, Layers, Scale, Home, Building2, Globe, TrendingUp, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 const icons = [FileSearch, Layers, Scale, Home, Building2, Globe, TrendingUp];
 
+const slugs = [
+  "asesor-inmobiliario-mallorca",
+  "vender-piso-mallorca",
+  "asesoria-fiscal-inmobiliaria-mallorca",
+  "gestion-alquiler-mallorca",
+  "planificacion-patrimonial-inmobiliaria",
+  "comprar-propiedad-mallorca-extranjeros",
+  "inversion-inmobiliaria-mallorca",
+];
+
 export default function Services() {
   const t = useTranslations("services");
+  const locale = useLocale();
   const items = t.raw("items") as Array<{ title: string; description: string }>;
 
   return (
@@ -54,6 +66,7 @@ export default function Services() {
         }} className="svc-grid">
           {items.map((item, i) => {
             const Icon = icons[i];
+            const slug = slugs[i];
             return (
               <div
                 key={i}
@@ -61,6 +74,8 @@ export default function Services() {
                   backgroundColor: "#faf8f5",
                   padding: "44px 36px",
                   transition: "background-color 0.25s",
+                  display: "flex",
+                  flexDirection: "column",
                 }}
                 onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.backgroundColor = "#fff")}
                 onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.backgroundColor = "#faf8f5")}
@@ -93,9 +108,30 @@ export default function Services() {
                   fontWeight: 300,
                   lineHeight: 1.85,
                   color: "#5c5650",
+                  flex: 1,
                 }}>
                   {item.description}
                 </p>
+                {slug && (
+                  <Link
+                    href={`/${locale}/servicios/${slug}`}
+                    style={{
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "6px",
+                      marginTop: "20px",
+                      fontSize: "12px",
+                      fontWeight: 500,
+                      letterSpacing: "0.05em",
+                      color: "#b8964a",
+                      textDecoration: "none",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    {locale === "es" ? "Ver servicio" : "View service"}
+                    <ArrowRight size={12} />
+                  </Link>
+                )}
               </div>
             );
           })}
