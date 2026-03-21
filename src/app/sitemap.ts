@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { posts } from '@/data/blog';
 
-const BASE_URL = 'https://www.benavidesrealestate.com';
+const BASE_URL = 'https://www.benavidesrealestate.es';
 const locales = ['es', 'en'] as const;
 
 // Static routes per locale
