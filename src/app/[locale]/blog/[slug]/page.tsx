@@ -143,6 +143,25 @@ function RenderBlock({ block }: { block: Block }) {
         </div>
       );
 
+    case 'links':
+      return (
+        <div style={{ margin: '48px 0', borderTop: '1px solid #e8e4de', paddingTop: '40px' }}>
+          <p style={{ fontSize: '10px', fontWeight: 500, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#b8964a', marginBottom: '6px' }}>
+            {block.title}
+          </p>
+          <div style={{ width: '28px', height: '1px', backgroundColor: '#b8964a', marginBottom: '24px' }} />
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '12px' }}>
+            {block.items.map((item, i) => (
+              <a key={i} href={item.href} style={{ display: 'block', backgroundColor: '#faf8f5', border: '1px solid #e8e4de', padding: '18px 20px', textDecoration: 'none', transition: 'border-color 0.2s' }}>
+                <p style={{ fontSize: '13px', fontWeight: 500, color: '#1a2332', marginBottom: '4px' }}>{item.label}</p>
+                <p style={{ fontSize: '12px', fontWeight: 300, color: '#9b9590', lineHeight: 1.5 }}>{item.desc}</p>
+                <span style={{ fontSize: '11px', color: '#b8964a', fontWeight: 500 }}>Leer más →</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      );
+
     default:
       return null;
   }

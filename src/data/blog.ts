@@ -5,6 +5,7 @@ export type Block =
   | { type: 'ul'; items: string[] }
   | { type: 'table'; headers: string[]; rows: string[][] }
   | { type: 'cta'; title: string; body: string; button: string }
+  | { type: 'links'; title: string; items: { label: string; href: string; desc: string }[] }
 
 export interface PostTranslation {
   seoTitle: string;
@@ -1083,6 +1084,842 @@ export const posts: BlogPost[] = [
         {
           type: 'p',
           text: 'The nota simple is a document issued by the Land Registry (Registro de la Propiedad) that contains essential information about a property: its registered owner, its physical description (floor area, location, registry reference) and all encumbrances and charges registered against it (mortgages, attachments, easements, preventive annotations). The nota simple is the first document that any lawyer or adviser requests before making any offer or entering into negotiations, because it allows you to understand the true legal status of the property and identify any potential issues before committing any money. It can be requested online through the portal of the Spanish College of Registrars for a small fee and is usually available within hours.',
+        },
+      ],
+    },
+  },
+
+  // ─── POST A: Plusvalía municipal Mallorca 2026 ──────────────────────────────
+  {
+    slug: 'plusvalia-municipal-mallorca-como-se-calcula-2026',
+    date: '2026-03-21',
+    readingTime: 8,
+    authorKey: 'gonzalo',
+    es: {
+      seoTitle: 'Plusvalía municipal en Mallorca: cómo se calcula y cuándo no se paga (2026)',
+      metaDescription: 'Guía completa sobre la plusvalía municipal al vender un piso en Mallorca en 2026: método objetivo vs. real, cálculo con ejemplos y cuándo puede ser cero.',
+      h1: 'Plusvalía municipal en Mallorca: cómo se calcula y cuándo puedes no pagarla (2026)',
+      category: 'Fiscalidad Inmobiliaria',
+      tags: ['plusvalía municipal', 'IIVTNU', 'venta piso Mallorca', 'impuestos venta', 'Palma de Mallorca'],
+      excerpt: 'La plusvalía municipal es uno de los impuestos más desconocidos —y más discutidos— en la venta de un inmueble. En 2026, los vendedores en Mallorca pueden elegir entre dos métodos de cálculo. Le explicamos cuál le conviene y cuándo puede ser cero.',
+      blocks: [
+        {
+          type: 'p',
+          text: 'La plusvalía municipal —denominada técnicamente Impuesto sobre el Incremento del Valor de los Terrenos de Naturaleza Urbana (IIVTNU)— es un tributo local que grava el incremento de valor experimentado por el suelo urbano durante el tiempo que un inmueble ha permanecido en manos de su propietario. Se devengará con cualquier transmisión: compraventa, herencia o donación. Su gestión corresponde a cada ayuntamiento, lo que significa que el tipo impositivo y los coeficientes aplicables pueden variar ligeramente de un municipio a otro dentro de Mallorca. Es uno de los impuestos que más sorpresas genera a los vendedores, precisamente porque muchos lo desconocen o lo subestiman hasta el momento de firmar ante notario.',
+        },
+        {
+          type: 'h2',
+          text: '¿Quién paga la plusvalía municipal en Mallorca?',
+        },
+        {
+          type: 'p',
+          text: 'Con carácter general, la plusvalía municipal la abona el vendedor. En las compraventas entre particulares, es el transmitente quien debe liquidar el impuesto ante el ayuntamiento correspondiente en el plazo de 30 días hábiles desde la firma de la escritura. Sin embargo, la ley permite que las partes acuerden contractualmente que el pago recaiga sobre el comprador, aunque este pacto no tiene efectos frente a la administración: si el impuesto no se paga, el ayuntamiento puede reclamárselo al vendedor. En las transmisiones mortis causa (herencias), el obligado al pago es el heredero o legatario, con un plazo de seis meses desde el fallecimiento del causante, prorrogable a un año previa solicitud motivada. En las donaciones, el sujeto pasivo es el donatario (quien recibe el inmueble).',
+        },
+        {
+          type: 'h2',
+          text: 'Los dos métodos de cálculo en 2026',
+        },
+        {
+          type: 'p',
+          text: 'Desde noviembre de 2021, tras la aprobación del Real Decreto-ley 26/2021 que adaptó la normativa del IIVTNU a la doctrina del Tribunal Constitucional, existen dos métodos alternativos para calcular la base imponible del impuesto. El contribuyente puede elegir libremente el que resulte más favorable, y el ayuntamiento no puede rechazar la opción escogida siempre que se acredite correctamente. Esto supuso un cambio fundamental: antes de 2021, el método objetivo se aplicaba siempre, incluso cuando el inmueble se había vendido con pérdida respecto al precio de compra, generando situaciones injustas que el Tribunal Constitucional declaró inconstitucionales.',
+        },
+        {
+          type: 'h3',
+          text: 'Método objetivo (basado en coeficientes)',
+        },
+        {
+          type: 'p',
+          text: 'En el método objetivo, la base imponible se calcula multiplicando el valor catastral del suelo en el momento de la transmisión por un coeficiente establecido en función del número de años completos de tenencia del inmueble. Estos coeficientes son aprobados anualmente por Orden Ministerial con carácter máximo, y cada ayuntamiento puede aplicar los suyos propios siempre que no los superen. La fórmula es: Base imponible = Valor catastral del suelo × Coeficiente según años de tenencia. Ejemplo práctico: un inmueble con un valor catastral del suelo de 80.000 €, mantenido durante 12 años, al que le corresponde un coeficiente de 0,45, genera una base imponible de 36.000 €. Aplicando el tipo máximo del Ayuntamiento de Palma (30%), la cuota sería de 10.800 €.',
+        },
+        {
+          type: 'h3',
+          text: 'Método real (basado en la ganancia efectiva)',
+        },
+        {
+          type: 'p',
+          text: 'El método real calcula la base imponible a partir del incremento real de valor experimentado por el terreno. La fórmula es: Base imponible = (Precio de venta − Precio de compra) × (Valor catastral del suelo ÷ Valor catastral total del inmueble). Este cociente catastral permite aislar la parte de la ganancia total atribuible exclusivamente al suelo, que es lo que grava el IIVTNU (no el valor de la construcción). Ejemplo: un inmueble comprado por 200.000 € y vendido por 350.000 €, con una ganancia de 150.000 €. Si el valor catastral del suelo representa el 60% del valor catastral total, la base imponible sería 90.000 €. Aplicando el tipo del 30%, la cuota sería 27.000 €, superior a la del método objetivo en este caso.',
+        },
+        {
+          type: 'h3',
+          text: '¿Cómo elegir el método más favorable?',
+        },
+        {
+          type: 'p',
+          text: 'La recomendación profesional es siempre calcular ambos métodos antes de presentar la autoliquidación o la declaración al ayuntamiento, y optar por el que genere una cuota menor. El ayuntamiento no puede impedir esta elección si está debidamente documentada. En la práctica, el método objetivo tiende a ser más favorable en inmuebles adquiridos hace pocos años o en zonas donde el valor catastral es bajo en relación al precio de mercado; el método real suele convenir más en inmuebles adquiridos hace mucho tiempo con escasa revalorización real, o en ventas con pérdida. El plazo para presentar la autoliquidación (modelo municipal correspondiente) es de 30 días hábiles desde la escritura en caso de compraventa.',
+        },
+        {
+          type: 'table',
+          headers: ['Supuesto', 'Método objetivo', 'Método real', 'Recomendación'],
+          rows: [
+            ['Inmueble adquirido hace pocos años con alta revalorización', 'Favorable', 'Desfavorable', 'Método objetivo'],
+            ['Inmueble adquirido hace muchos años con poca revalorización', 'Desfavorable', 'Favorable', 'Método real'],
+            ['Venta con pérdida respecto al precio de compra', 'Pagar impuesto', 'Cuota cero', 'Método real o exención'],
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'Cuándo la plusvalía municipal puede ser cero',
+        },
+        {
+          type: 'p',
+          text: 'Existen dos escenarios principales en los que la cuota de la plusvalía municipal puede ser cero o muy reducida. El primero —y el más relevante— es la venta con pérdida o sin incremento real de valor del suelo: si el inmueble se vende por un precio inferior o igual al precio de compra, aplicando el método real la base imponible es cero y, por tanto, no hay cuota. Esta posibilidad fue reconocida por el Tribunal Constitucional en su Sentencia 182/2021 y consolidada con el RDL 26/2021. Para acreditar la pérdida, basta con aportar las escrituras de compra y venta. El segundo escenario afecta al suelo rústico: el IIVTNU grava exclusivamente los terrenos de naturaleza urbana, por lo que las fincas rústicas de Mallorca —un activo muy demandado— están exentas de este impuesto, independientemente del precio de venta.',
+        },
+        {
+          type: 'h2',
+          text: 'Plusvalía municipal en herencias en Mallorca',
+        },
+        {
+          type: 'p',
+          text: 'Cuando se hereda un inmueble y posteriormente se vende, pueden surgir dos momentos de tributación por plusvalía municipal. En primer lugar, en el momento de la herencia: el heredero debe liquidar la plusvalía en un plazo de seis meses desde el fallecimiento del causante (prorrogable a un año), tomando como base el valor catastral del suelo en esa fecha. En segundo lugar, si el heredero vende posteriormente el inmueble, deberá calcular la plusvalía correspondiente al período que va desde la fecha de adquisición por herencia hasta la fecha de la nueva venta. El contador de años se reinicia desde la herencia, no desde la compra original del causante. Esta circunstancia tiene implicaciones importantes para las familias que poseen inmuebles heredados en Mallorca y están planificando su venta: en muchos casos, esperar un cierto número de años tras la herencia puede resultar fiscalmente ventajoso dependiendo del método de cálculo aplicable.',
+        },
+        {
+          type: 'cta',
+          title: '¿Va a vender un inmueble en Mallorca?',
+          body: 'Calculamos ambos métodos de plusvalía municipal y le asesoramos sobre la opción más ventajosa. Primera consulta sin coste.',
+          button: 'Solicitar análisis fiscal',
+        },
+        {
+          type: 'links',
+          title: 'Servicios y recursos relacionados',
+          items: [
+            { label: 'Compraventa de Inmuebles en Mallorca', href: '/es/servicios/vender-piso-mallorca', desc: 'Gestión completa de la venta: precio, contratos, notaría e impuestos.' },
+            { label: 'Asesoría Fiscal Inmobiliaria', href: '/es/servicios/asesoria-fiscal-inmobiliaria-mallorca', desc: 'Planificación fiscal y liquidación de todos los impuestos de su operación.' },
+            { label: 'Impuestos al comprar en Mallorca (no residentes)', href: '/es/blog/impuestos-comprar-vivienda-mallorca-no-residentes', desc: 'Guía completa: ITP, IVA, AJD, IRNR y gastos totales.' },
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'Preguntas frecuentes sobre la plusvalía municipal en Mallorca',
+        },
+        {
+          type: 'h3',
+          text: '¿Puedo aplazar el pago de la plusvalía municipal?',
+        },
+        {
+          type: 'p',
+          text: 'Con carácter general, no existe un aplazamiento automático del pago de la plusvalía municipal. Algunos ayuntamientos permiten el fraccionamiento en plazos previo requerimiento justificado por dificultades económicas acreditadas, pero no es una opción universal ni automática. En Palma, la gestión corresponde a la Agència Tributària de Palma, a quien debe dirigirse la solicitud de aplazamiento antes de que venza el plazo de 30 días. Es fundamental no incumplir el plazo de presentación: una declaración extemporánea —presentada fuera de plazo sin requerimiento previo de la administración— genera recargos del 5% si se presenta dentro de los tres meses siguientes, del 10% hasta los seis meses, del 15% hasta el año, y del 20% a partir del año, además de los intereses de demora correspondientes.',
+        },
+        {
+          type: 'h3',
+          text: '¿La plusvalía la paga el comprador o el vendedor?',
+        },
+        {
+          type: 'p',
+          text: 'Por imperativo legal, la plusvalía municipal la paga siempre el vendedor (o el heredero/donatario en las transmisiones no onerosas). No obstante, las partes pueden acordar en el contrato privado que sea el comprador quien asuma este coste —es una cláusula que a veces se negocia en el contexto de la compraventa—. Este pacto, sin embargo, no tiene efectos frente a la administración tributaria: si el comprador no cumple, el ayuntamiento reclamará el impuesto al vendedor, que es el sujeto pasivo legal. Nunca debe cederse esta obligación sin el respaldo de una garantía contractual clara y el asesoramiento de un abogado, pues el vendedor sigue siendo el responsable ante Hacienda independientemente de lo pactado entre las partes.',
+        },
+        {
+          type: 'h3',
+          text: '¿Qué pasa si vendo con pérdidas respecto al precio de compra?',
+        },
+        {
+          type: 'p',
+          text: 'Si vende su inmueble por un precio inferior o igual al que pagó en su día, utilizando el método real la base imponible de la plusvalía municipal será cero, y por tanto no habrá cuota a ingresar. Para acreditarlo, deberá presentar ante el ayuntamiento las escrituras de compra y de venta, que demuestran que no ha existido incremento real de valor del suelo. Es importante subrayar que la obligación de presentar la autoliquidación o la declaración existe aunque la cuota sea cero: no presentar nada puede dar lugar a procedimientos sancionadores por parte del ayuntamiento. Conserve siempre las escrituras originales de compra —incluyendo los gastos de adquisición debidamente documentados— como prueba ante la administración.',
+        },
+      ],
+    },
+    en: {
+      seoTitle: 'Municipal Capital Gains Tax in Mallorca: how it is calculated and when you don\'t pay it (2026)',
+      metaDescription: 'Complete guide to municipal capital gains tax (plusvalía) when selling a property in Mallorca in 2026: objective vs. real method, calculation examples and when it can be zero.',
+      h1: 'Municipal Capital Gains Tax in Mallorca: how it is calculated and when you don\'t pay it (2026)',
+      category: 'Property Taxation',
+      tags: ['municipal capital gains tax', 'plusvalía municipal', 'selling property Mallorca', 'property taxes Spain', 'Palma de Mallorca'],
+      excerpt: 'The municipal capital gains tax (plusvalía) is one of the least understood — and most debated — taxes when selling a property. In 2026, sellers in Mallorca can choose between two calculation methods. We explain which one suits you and when it can be zero.',
+      blocks: [
+        {
+          type: 'p',
+          text: 'The municipal capital gains tax — technically known as the Tax on the Increase in Value of Urban Land (IIVTNU, or plusvalía municipal) — is a local tax levied on the increase in value experienced by urban land during the period a property has been held by its owner. It applies to any transfer: sale, inheritance or donation. Each local authority (ayuntamiento) manages the tax, which means that the applicable rate and coefficients may vary slightly between municipalities within Mallorca. It is one of the taxes that most surprises sellers, precisely because many are unaware of it or underestimate it until they are about to sign at the notary.',
+        },
+        {
+          type: 'h2',
+          text: 'Who pays the municipal capital gains tax in Mallorca?',
+        },
+        {
+          type: 'p',
+          text: 'As a general rule, the municipal capital gains tax is paid by the seller. In private sales, the transferor must settle the tax with the relevant local authority within 30 business days of signing the title deed. However, the law allows the parties to agree contractually that the buyer assumes the cost — though this arrangement has no effect on the tax authority: if the tax is not paid, the local authority can demand it from the seller. In inheritances, the heir or legatee is liable, with a six-month deadline from the date of death (extendable to one year upon reasoned request). In donations, the donee (recipient) is the taxable person.',
+        },
+        {
+          type: 'h2',
+          text: 'The two calculation methods in 2026',
+        },
+        {
+          type: 'p',
+          text: 'Since November 2021, following the approval of Royal Decree-Law 26/2021 — which adapted the IIVTNU rules to the doctrine of the Constitutional Court — there are two alternative methods for calculating the taxable base. The taxpayer can freely choose whichever is most favourable, and the local authority cannot reject the chosen option provided it is properly documented. This was a fundamental change: before 2021, the objective method was always applied, even when a property had been sold at a loss relative to its purchase price, creating situations the Constitutional Court declared unconstitutional.',
+        },
+        {
+          type: 'h3',
+          text: 'Objective method (based on coefficients)',
+        },
+        {
+          type: 'p',
+          text: 'Under the objective method, the taxable base is calculated by multiplying the cadastral value of the land at the time of transfer by a coefficient set according to the number of full years of ownership. These coefficients are approved annually by Ministerial Order as maximum values; each local authority may apply its own as long as they do not exceed these caps. The formula is: Taxable base = Cadastral land value × Coefficient for years of ownership. Practical example: a property with a cadastral land value of €80,000, held for 12 years, with an applicable coefficient of 0.45, generates a taxable base of €36,000. Applying the maximum rate of the Palma City Council (30%), the tax due would be €10,800.',
+        },
+        {
+          type: 'h3',
+          text: 'Real method (based on actual gain)',
+        },
+        {
+          type: 'p',
+          text: 'The real method calculates the taxable base from the actual increase in land value. The formula is: Taxable base = (Sale price − Purchase price) × (Cadastral land value ÷ Total cadastral value). This cadastral ratio isolates the portion of the total gain attributable solely to the land, which is what the IIVTNU taxes (not the building value). Example: a property bought for €200,000 and sold for €350,000, yielding a gain of €150,000. If the cadastral land value represents 60% of the total cadastral value, the taxable base would be €90,000. Applying a 30% rate, the tax would be €27,000 — higher than under the objective method in this case.',
+        },
+        {
+          type: 'h3',
+          text: 'How to choose the most favourable method',
+        },
+        {
+          type: 'p',
+          text: 'The professional recommendation is always to calculate both methods before filing the self-assessment or declaration with the local authority, and to choose whichever generates the lower tax. The local authority cannot prevent this choice if it is properly documented. In practice, the objective method tends to be more favourable for properties acquired recently or in areas where the cadastral value is low relative to the market price; the real method generally suits properties held for many years with modest actual appreciation, or in cases where the sale is at a loss. The deadline for filing the self-assessment is 30 business days from the deed signing in the case of a sale.',
+        },
+        {
+          type: 'table',
+          headers: ['Scenario', 'Objective method', 'Real method', 'Recommendation'],
+          rows: [
+            ['Property acquired recently with high appreciation', 'Favourable', 'Unfavourable', 'Objective method'],
+            ['Property held for many years with modest appreciation', 'Unfavourable', 'Favourable', 'Real method'],
+            ['Sale at a loss vs. purchase price', 'Tax still owed', 'Zero liability', 'Real method or exemption'],
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'When the municipal capital gains tax can be zero',
+        },
+        {
+          type: 'p',
+          text: 'There are two main scenarios in which the municipal capital gains tax liability can be zero or minimal. The first — and most relevant — is a sale at a loss or with no real increase in land value: if the property is sold for a price equal to or below the original purchase price, applying the real method yields a taxable base of zero and therefore no tax. This was recognised by the Constitutional Court in Ruling 182/2021 and consolidated by Royal Decree-Law 26/2021. To prove the loss, it is sufficient to provide the purchase and sale deeds. The second scenario concerns rural land: the IIVTNU only taxes urban land, so rural estates (fincas rústicas) in Mallorca — a highly sought-after asset — are entirely exempt from this tax, regardless of the sale price.',
+        },
+        {
+          type: 'h2',
+          text: 'Municipal capital gains tax on inheritances in Mallorca',
+        },
+        {
+          type: 'p',
+          text: 'When a property is inherited and subsequently sold, two separate capital gains tax events may arise. First, at the time of inheritance: the heir must settle the tax within six months of the date of death (extendable to one year), using the cadastral land value at that date as the taxable base. Second, if the heir later sells the property, a new municipal capital gains tax calculation applies for the period from the date of inheritance to the date of sale. The clock resets from the date of inheritance, not from the original purchase by the deceased. This has significant implications for families with inherited properties in Mallorca who are planning a sale: in many cases, waiting a certain number of years after inheritance may be tax-efficient depending on the applicable calculation method.',
+        },
+        {
+          type: 'cta',
+          title: 'Are you selling a property in Mallorca?',
+          body: 'We calculate both methods of municipal capital gains tax and advise you on the most advantageous option. First consultation at no charge.',
+          button: 'Request tax analysis',
+        },
+        {
+          type: 'links',
+          title: 'Related services and resources',
+          items: [
+            { label: 'Property Sales in Mallorca', href: '/en/servicios/vender-piso-mallorca', desc: 'Full sale management: pricing, contracts, notary and taxes.' },
+            { label: 'Real Estate Tax Advisory', href: '/en/servicios/asesoria-fiscal-inmobiliaria-mallorca', desc: 'Tax planning and settlement of all taxes on your transaction.' },
+            { label: 'Taxes when buying in Mallorca (non-residents)', href: '/en/blog/impuestos-comprar-vivienda-mallorca-no-residentes', desc: 'Complete guide: ITP, VAT, stamp duty, IRNR and total costs.' },
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'Frequently asked questions about municipal capital gains tax in Mallorca',
+        },
+        {
+          type: 'h3',
+          text: 'Can I defer payment of the municipal capital gains tax?',
+        },
+        {
+          type: 'p',
+          text: 'There is generally no automatic deferral of the municipal capital gains tax. Some local authorities allow instalment payments upon a prior reasoned request evidencing financial hardship, but this is not a universal or automatic option. In Palma, management falls to the Agència Tributària de Palma, to whom a deferral request must be addressed before the 30-day deadline expires. It is essential not to miss the filing deadline: a late self-assessment — submitted without a prior demand from the administration — incurs surcharges of 5% if filed within three months, 10% up to six months, 15% up to one year, and 20% beyond one year, plus applicable late-payment interest.',
+        },
+        {
+          type: 'h3',
+          text: 'Does the buyer or the seller pay the municipal capital gains tax?',
+        },
+        {
+          type: 'p',
+          text: 'As a matter of law, the municipal capital gains tax is always paid by the seller (or the heir/donee in non-sale transfers). However, the parties may agree in the private contract that the buyer assumes this cost — a clause sometimes negotiated in the context of a sale. This agreement, however, has no effect on the tax authority: if the buyer does not pay, the local authority will claim the tax from the seller, who is the legal taxable person. This obligation should never be transferred without a clear contractual guarantee and proper legal advice, as the seller remains responsible to the tax authority regardless of what has been agreed between the parties.',
+        },
+        {
+          type: 'h3',
+          text: 'What happens if I sell at a loss compared to the purchase price?',
+        },
+        {
+          type: 'p',
+          text: 'If you sell your property for a price equal to or below what you originally paid, using the real method the taxable base of the municipal capital gains tax will be zero and therefore no tax will be due. To prove this, you will need to present the purchase and sale deeds to the local authority, demonstrating that there has been no real increase in land value. It is important to note that the obligation to file the self-assessment or declaration still exists even when the liability is zero: failing to file anything can lead to penalty proceedings by the local authority. Always retain the original purchase deeds — including properly documented acquisition costs — as evidence before the administration.',
+        },
+      ],
+    },
+  },
+
+  // ─── POST B: Sociedad Patrimonial Mallorca 2026 ─────────────────────────────
+  {
+    slug: 'sociedad-patrimonial-comprar-inmueble-mallorca-2026',
+    date: '2026-03-21',
+    readingTime: 10,
+    authorKey: 'alfonso',
+    es: {
+      seoTitle: 'Sociedad patrimonial para comprar un inmueble en Mallorca: ventajas e inconvenientes (2026)',
+      metaDescription: '¿Conviene comprar un inmueble en Mallorca a través de una sociedad patrimonial? Análisis de ventajas fiscales, inconvenientes y cuándo tiene sentido en 2026.',
+      h1: '¿Conviene comprar un inmueble en Mallorca a través de una sociedad? Ventajas, inconvenientes y cuándo tiene sentido (2026)',
+      category: 'Planificación Patrimonial',
+      tags: ['sociedad patrimonial', 'holding inmobiliario', 'SL inmueble', 'fiscalidad Mallorca', 'IS vs IRPF'],
+      excerpt: 'Muchos inversores en Mallorca se preguntan si es más eficiente comprar a través de una sociedad limitada. La respuesta depende de varios factores: el uso del inmueble, el patrimonio total y el horizonte temporal. Le explicamos cuándo tiene sentido —y cuándo no.',
+      blocks: [
+        {
+          type: 'p',
+          text: 'Esta es la pregunta que con mayor frecuencia plantean los inversores con un inmueble de alto valor o con varios activos en cartera. La respuesta no es universal: depende de la situación concreta de cada persona —su nivel de renta, su patrimonio total, el uso previsto del inmueble, el horizonte temporal y sus objetivos de transmisión—. Este artículo analiza los factores fiscales y jurídicos que determinan si la adquisición a través de una Sociedad Limitada (SL) española tiene sentido para un inmueble en Mallorca en 2026, con el objetivo de que pueda tomar una decisión informada antes de estructurar su inversión.',
+        },
+        {
+          type: 'h2',
+          text: '¿Qué es una sociedad patrimonial?',
+        },
+        {
+          type: 'p',
+          text: 'Una sociedad patrimonial es una Sociedad Limitada española cuyo activo principal y actividad fundamental consiste en la tenencia de bienes inmuebles. Conforme a la Ley del Impuesto sobre Sociedades (LIS), una sociedad se considera «de mera tenencia de bienes» o patrimonial cuando más de la mitad de su activo no está afecto a una actividad económica real —es decir, cuando funciona esencialmente como vehículo de inversión y no como empresa operativa—. Esta calificación tiene implicaciones fiscales específicas: entre otras, restringe la aplicación de ciertos beneficios del IS, como el tipo reducido del 23% previsto para empresas de reducida dimensión. En la práctica, muchos inversores estructuran la sociedad de forma que también desarrolle una actividad de gestión activa del alquiler (contratos, mantenimiento, relación con inquilinos), lo que puede excluir la calificación como patrimonial y permitir acceder a un tratamiento fiscal más favorable en el Impuesto sobre Sociedades.',
+        },
+        {
+          type: 'h2',
+          text: 'Ventajas de comprar a través de una sociedad en Mallorca',
+        },
+        {
+          type: 'h3',
+          text: '1. Menor tributación de los rendimientos del alquiler',
+        },
+        {
+          type: 'p',
+          text: 'Los rendimientos del alquiler percibidos por una persona física tributan en el IRPF como rendimientos de capital inmobiliario, integrándose en la base imponible general y sometidos a los tipos marginales progresivos, que en las Islas Baleares pueden alcanzar el 47% a partir de 120.000 € de renta total. A través de una sociedad, los beneficios del alquiler tributan en el Impuesto sobre Sociedades al tipo general del 25% (o al 23% para sociedades con cifra de negocios inferior a 1 millón de euros, si no son patrimoniales). Para inversores con rentas elevadas, esta diferencia puede ser muy significativa. Ejemplo: ingresos netos del alquiler de 50.000 € al año. Como persona física con tipo marginal del 40%: IRPF de aproximadamente 20.000 €. A través de una SL al 25%: IS de 12.500 €. Ahorro anual: 7.500 €, que puede reinvertirse en el propio patrimonio.',
+        },
+        {
+          type: 'h3',
+          text: '2. Deducibilidad de gastos',
+        },
+        {
+          type: 'p',
+          text: 'Una sociedad puede deducir en el Impuesto sobre Sociedades un abanico más amplio y flexible de gastos que una persona física que alquila a título personal: la amortización del inmueble (3% anual sobre el valor de construcción, excluido el suelo), los intereses de la hipoteca o del préstamo de adquisición, los honorarios de gestión y administración, los gastos de seguro, las reparaciones y obras de mantenimiento, los honorarios de asesoría contable y jurídica y, en determinadas circunstancias, los gastos de vehículo cuando están vinculados a la actividad. Las personas físicas que alquilan también pueden deducir muchos de estos conceptos en el IRPF, pero la estructura societaria ofrece en general mayor flexibilidad y capacidad de planificación en la deducción de gastos, especialmente en carteras con múltiples inmuebles.',
+        },
+        {
+          type: 'h3',
+          text: '3. Ventajas en la transmisión generacional',
+        },
+        {
+          type: 'p',
+          text: 'La transmisión directa de un inmueble por herencia o donación implica tributar en el Impuesto sobre Sucesiones y Donaciones (ISD) sobre el valor de mercado del bien. Transmitir participaciones de una sociedad que es propietaria del inmueble puede ser mucho más eficiente fiscalmente: si la sociedad califica como empresa familiar en los términos del artículo 4.Ocho de la Ley del Impuesto sobre el Patrimonio y cumple los requisitos de la reducción del artículo 20.2.c) de la Ley del ISD, las participaciones pueden beneficiarse de una reducción del 95% en la base imponible del ISD en las Islas Baleares. En un inmueble de 1.000.000 €, esta reducción puede suponer un ahorro fiscal de cientos de miles de euros en la transmisión generacional, lo que convierte a la estructura societaria en una de las herramientas más potentes de planificación sucesoria.',
+        },
+        {
+          type: 'h3',
+          text: '4. Protección patrimonial',
+        },
+        {
+          type: 'p',
+          text: 'La titularidad del inmueble a través de una sociedad limitada ofrece una separación entre el patrimonio personal de los socios y las responsabilidades derivadas del inmueble. En caso de litigios con inquilinos, reclamaciones por defectos constructivos, accidentes en el inmueble u otras contingencias relacionadas con la propiedad, la responsabilidad queda en principio limitada al patrimonio de la sociedad, sin afectar directamente al patrimonio personal de los socios. Esta protección puede tener un valor considerable para inversores con múltiples propiedades o con un patrimonio personal significativo que quieran compartimentar los riesgos.',
+        },
+        {
+          type: 'h2',
+          text: 'Inconvenientes y costes de la estructura societaria',
+        },
+        {
+          type: 'h3',
+          text: '1. IVA en la compra (obra nueva)',
+        },
+        {
+          type: 'p',
+          text: 'Cuando una sociedad adquiere un inmueble de obra nueva a un promotor, paga el IVA del 10% —igual que una persona física—. Sin embargo, la sociedad solo puede deducir este IVA soportado si el inmueble se destina a una actividad sujeta y no exenta de IVA. El alquiler residencial en España está exento de IVA con carácter general, lo que significa que la sociedad no puede recuperar el IVA pagado en la compra. Únicamente si el inmueble se arrienda para uso comercial u oficinas (alquiler sujeto a IVA) puede recuperarse el impuesto íntegramente. Para inmuebles residenciales destinados al alquiler, la situación frente al IVA es similar a la de la compra como persona física, por lo que este factor no constituye per se una ventaja de la estructura societaria.',
+        },
+        {
+          type: 'h3',
+          text: '2. Costes de constitución y mantenimiento',
+        },
+        {
+          type: 'p',
+          text: 'La constitución de una SL en España tiene un coste aproximado de entre 1.000 y 2.000 euros (notario, Registro Mercantil, gestión). Los costes anuales de contabilidad, presentación de cuentas anuales y declaraciones fiscales (IS, IVA si procede, declaraciones informativas) oscilan habitualmente entre 1.500 y 4.000 euros anuales, dependiendo de la complejidad de la estructura. Estos costes fijos solo se justifican si el ahorro fiscal generado los supera con claridad, lo que en la práctica suele requerir inmuebles con un valor de mercado superior a 300.000 € o ingresos anuales de alquiler superiores a 30.000 €. Para inversiones más pequeñas o de uso principalmente personal, la estructura societaria puede resultar más gravosa que la titularidad directa.',
+        },
+        {
+          type: 'h3',
+          text: '3. Doble tributación en la distribución de dividendos',
+        },
+        {
+          type: 'p',
+          text: 'Los beneficios generados en la sociedad tributan en el IS al 25%. Cuando se distribuyen a los socios como dividendos, vuelven a tributar en el IRPF del socio como rendimientos del capital mobiliario, a los tipos de la base del ahorro: 19% hasta 6.000 €, 21% de 6.001 a 50.000 €, 23% de 50.001 a 200.000 €, 27% de 200.001 a 300.000 € y 28% a partir de 300.000 € (escala 2026). Esta doble imposición puede erosionar significativamente el ahorro fiscal generado si los beneficios se distribuyen regularmente. La estructura societaria resulta más eficiente cuando los beneficios se reinvierten dentro de la propia sociedad —por ejemplo, para adquirir nuevos inmuebles o amortizar deuda— en lugar de distribuirse anualmente como dividendos.',
+        },
+        {
+          type: 'h3',
+          text: '4. Restricciones fiscales específicas de las sociedades patrimoniales',
+        },
+        {
+          type: 'p',
+          text: 'Las sociedades calificadas como patrimoniales por la LIS no pueden aplicar el tipo reducido del 23% previsto para empresas de reducida dimensión. Tampoco pueden acogerse a determinados regímenes especiales del IS que pueden resultar favorables en otros contextos. Adicionalmente, presentan restricciones en la compensación de bases imponibles negativas y en la deducción de pérdidas. Para los socios no residentes, la sociedad patrimonial puede generar obligaciones específicas en el Impuesto sobre la Renta de No Residentes (IRNR) tanto en la distribución de dividendos como en la transmisión de las participaciones, por lo que el análisis debe ser especialmente cuidadoso cuando la estructura tiene socios internacionales.',
+        },
+        {
+          type: 'h2',
+          text: '¿Cuándo tiene sentido comprar a través de una sociedad en Mallorca?',
+        },
+        {
+          type: 'ul',
+          items: [
+            'Inversores con varios inmuebles en Mallorca que quieren centralizar la gestión y optimizar la carga fiscal global del portfolio',
+            'Propietarios con rendimientos de alquiler superiores a 30.000 € anuales que tributan en IRPF a tipo marginal alto (más del 37%)',
+            'Familias que planifican la transmisión hereditaria de inmuebles de valor elevado y quieren aprovechar las reducciones de empresa familiar en el ISD',
+            'Inversores no residentes que quieren simplificar sus obligaciones fiscales en España y limitar su exposición al IRNR personal',
+            'Propietarios que quieren proteger su patrimonio personal de posibles contingencias derivadas del inmueble',
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'Cuándo NO merece la pena',
+        },
+        {
+          type: 'ul',
+          items: [
+            'Una sola propiedad de uso personal (vivienda habitual): no genera rentas que justifiquen la estructura',
+            'Inversores con rentas totales bajas que tributan a tipos marginales del IRPF reducidos (menos del 30%)',
+            'Cuando el inmueble se va a vender en el corto plazo: los costes de constitución y liquidación de la sociedad pueden superar el ahorro',
+            'Compradores que necesitan financiación hipotecaria: los bancos son más reticentes a conceder hipotecas a sociedades patrimoniales y las condiciones suelen ser peores',
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'Caso práctico: inversor con tres pisos en alquiler en Mallorca',
+        },
+        {
+          type: 'p',
+          text: 'Supongamos un inversor con una renta total en IRPF de 150.000 € anuales (salario más rendimientos de capital). Tiene tres pisos en alquiler en Mallorca que generan 60.000 € netos al año. Su tipo marginal en IRPF es del 47%. Opción A —titularidad personal—: paga aproximadamente 28.200 € en IRPF sobre los rendimientos del alquiler. Opción B —sociedad limitada—: paga 15.000 € de IS al 25%. Ahorro anual bruto: 13.200 €. Descontando los costes de asesoría y contabilidad de la sociedad (estimados en 3.000 € anuales), el beneficio neto es de aproximadamente 10.200 € al año. En un horizonte de diez años, el ahorro acumulado supera los 100.000 €, cifra que más que justifica la complejidad adicional de la estructura societaria.',
+        },
+        {
+          type: 'cta',
+          title: '¿Está valorando crear una sociedad para su inmueble en Mallorca?',
+          body: 'Analizamos su situación personal y fiscal para determinar si la estructura societaria le conviene y, si es así, cómo constituirla de forma eficiente. Primera consulta sin coste.',
+          button: 'Hablar con un asesor',
+        },
+        {
+          type: 'links',
+          title: 'Servicios relacionados',
+          items: [
+            { label: 'Planificación Patrimonial Inmobiliaria', href: '/es/servicios/planificacion-patrimonial-inmobiliaria', desc: 'Estructuración de patrimonios inmobiliarios: sociedad, herencia y transmisión generacional.' },
+            { label: 'Inversión Inmobiliaria en Mallorca', href: '/es/servicios/inversion-inmobiliaria-mallorca', desc: 'Análisis de rentabilidad y estructura fiscal para inversores.' },
+            { label: 'Asesoría Fiscal Inmobiliaria', href: '/es/servicios/asesoria-fiscal-inmobiliaria-mallorca', desc: 'IS, IRPF, IRNR y planificación fiscal integral de su cartera inmobiliaria.' },
+          ],
+        },
+      ],
+    },
+    en: {
+      seoTitle: 'Buying property in Mallorca through a company: pros, cons and when it makes sense (2026)',
+      metaDescription: 'Should you buy a property in Mallorca through a holding company? Analysis of tax advantages, drawbacks and when it makes sense in 2026.',
+      h1: 'Buying property in Mallorca through a company: pros, cons and when it makes sense (2026)',
+      category: 'Wealth Planning',
+      tags: ['property holding company', 'Spanish SL real estate', 'Mallorca investment structure', 'IS vs IRPF', 'tax planning Mallorca'],
+      excerpt: 'Many investors in Mallorca wonder whether buying through a Spanish limited company is more tax-efficient. The answer depends on several factors: the intended use of the property, total wealth and the investment horizon. We explain when it makes sense — and when it does not.',
+      blocks: [
+        {
+          type: 'p',
+          text: 'This is the question most frequently raised by investors holding a high-value property or a portfolio of several assets. The answer is not universal: it depends on each person\'s specific situation — their income level, total wealth, intended use of the property, time horizon and succession objectives. This article analyses the tax and legal factors that determine whether acquisition through a Spanish limited company (SL — Sociedad Limitada) makes sense for a Mallorca property in 2026, with the aim of enabling an informed decision before structuring your investment.',
+        },
+        {
+          type: 'h2',
+          text: 'What is a sociedad patrimonial (property holding company)?',
+        },
+        {
+          type: 'p',
+          text: 'A sociedad patrimonial is a Spanish limited company (SL) whose main asset and purpose is holding real estate. Under Spanish Corporate Income Tax law (LIS — Ley del Impuesto sobre Sociedades), a company is classified as a holding entity (de mera tenencia de bienes) when more than half its assets are not linked to an actual economic activity — in other words, when it functions essentially as an investment vehicle rather than an operating business. This classification carries specific tax implications, including restrictions on certain Corporate Tax benefits, such as the 23% reduced rate available to smaller companies. In practice, many investors structure their company to also carry out active property management (leases, maintenance, tenant relations), which may exclude the holding classification and allow access to more favourable Corporate Tax treatment.',
+        },
+        {
+          type: 'h2',
+          text: 'Advantages of buying through a company in Mallorca',
+        },
+        {
+          type: 'h3',
+          text: '1. Lower taxation on rental income',
+        },
+        {
+          type: 'p',
+          text: 'Rental income received by an individual is subject to Personal Income Tax (IRPF) at progressive marginal rates, which in the Balearic Islands can reach 47% on income above €120,000. Through a company, rental profits are taxed at the general Corporate Income Tax rate of 25% (or 23% for companies with turnover below €1 million, provided they do not qualify as holding entities). For investors in high income-tax brackets, this difference can be very substantial. Example: net rental income of €50,000 per year. As an individual at a 40% marginal rate: approximately €20,000 in IRPF. Through an SL at 25%: €12,500 in Corporate Tax. Annual saving: €7,500, which can be reinvested within the company.',
+        },
+        {
+          type: 'h3',
+          text: '2. Deductibility of expenses',
+        },
+        {
+          type: 'p',
+          text: 'A company can deduct a broader and more flexible range of expenses against its Corporate Tax liability than an individual letting property personally: depreciation of the building (3% per year on the construction value, excluding land), mortgage or acquisition loan interest, management and administration fees, insurance, repairs and maintenance, legal and accounting advisory fees, and in certain circumstances vehicle costs when linked to the activity. Individuals renting property can also deduct many of these items under IRPF, but the corporate structure generally offers greater flexibility and planning scope — particularly for portfolios with multiple properties.',
+        },
+        {
+          type: 'h3',
+          text: '3. Advantages in generational wealth transfer',
+        },
+        {
+          type: 'p',
+          text: 'Transferring a property directly by inheritance or gift triggers Inheritance and Gift Tax (ISD) on the full market value of the asset. Transferring shares in a company that owns the property can be significantly more tax-efficient: if the company qualifies as a family business under Article 4.Eight of the Wealth Tax Law and meets the requirements of Article 20.2(c) of the ISD Law, the shares may benefit from a 95% reduction in the ISD taxable base in the Balearic Islands. On a property worth €1,000,000, this reduction can represent a tax saving of hundreds of thousands of euros on generational transfer, making the corporate structure one of the most powerful estate planning tools available.',
+        },
+        {
+          type: 'h3',
+          text: '4. Asset protection',
+        },
+        {
+          type: 'p',
+          text: 'Holding a property through a limited company creates a separation between the personal assets of the shareholders and the liabilities arising from the property. In the event of disputes with tenants, construction defect claims, accidents on the premises or other property-related contingencies, liability is in principle limited to the company\'s assets, without directly affecting the personal wealth of the shareholders. This protection can be particularly valuable for investors with multiple properties or significant personal assets who wish to compartmentalise their risks.',
+        },
+        {
+          type: 'h2',
+          text: 'Drawbacks and costs of the corporate structure',
+        },
+        {
+          type: 'h3',
+          text: '1. VAT on new-build purchases',
+        },
+        {
+          type: 'p',
+          text: 'When a company buys a new-build property from a developer, it pays 10% VAT — the same as an individual. However, the company can only reclaim this input VAT if the property is used for a taxable, VAT-applicable activity. Residential rental in Spain is generally VAT-exempt, meaning the company cannot recover the VAT paid on the purchase. Only if the property is rented commercially — for offices or business premises (a VAT-applicable rental) — can the VAT be fully reclaimed. For residential properties intended for letting, the VAT position is similar to that of an individual purchase, so this factor does not constitute an inherent advantage of the corporate structure.',
+        },
+        {
+          type: 'h3',
+          text: '2. Set-up and ongoing maintenance costs',
+        },
+        {
+          type: 'p',
+          text: 'Setting up a Spanish SL costs approximately €1,000–€2,000 (notary, Mercantile Registry, professional fees). Annual accounting, filing of annual accounts and tax returns (Corporate Tax, VAT if applicable, information returns) typically cost between €1,500 and €4,000 per year depending on the complexity of the structure. These fixed costs are only justified when the tax savings clearly exceed them — which in practice generally requires properties with a market value above €300,000 or annual rental income above €30,000. For smaller investments or primarily personal-use assets, the corporate structure may prove more costly than direct ownership.',
+        },
+        {
+          type: 'h3',
+          text: '3. Double taxation on dividend distributions',
+        },
+        {
+          type: 'p',
+          text: 'Profits generated within the company are taxed at 25% Corporate Tax. When distributed to shareholders as dividends, they are taxed again under the shareholder\'s personal income tax at savings-base rates: 19% up to €6,000; 21% from €6,001 to €50,000; 23% from €50,001 to €200,000; 27% from €200,001 to €300,000; and 28% above €300,000 (2026 scale). This double taxation can significantly erode the tax saving if profits are distributed regularly. The corporate structure is most efficient when profits are reinvested within the company — for example, to acquire further properties or pay down debt — rather than being distributed annually as dividends.',
+        },
+        {
+          type: 'h3',
+          text: '4. Specific tax restrictions on holding companies',
+        },
+        {
+          type: 'p',
+          text: 'Companies classified as holding entities under LIS cannot apply the 23% reduced Corporate Tax rate available to smaller companies, nor access certain favourable special tax regimes. They also face restrictions on the use of tax losses and the offset of negative taxable bases. For non-resident shareholders, a holding company structure can generate specific Non-Resident Income Tax (IRNR) implications both on dividend distributions and on the sale of the company\'s shares, making a thorough analysis particularly important when the structure has international shareholders.',
+        },
+        {
+          type: 'h2',
+          text: 'When does buying through a company make sense in Mallorca?',
+        },
+        {
+          type: 'ul',
+          items: [
+            'Investors with several properties in Mallorca who want to centralise management and optimise the overall tax burden on their portfolio',
+            'Owners with rental income exceeding €30,000 per year who are taxed at a high IRPF marginal rate (above 37%)',
+            'Families planning the generational transfer of high-value properties who want to take advantage of family business reductions in Inheritance and Gift Tax',
+            'Non-resident investors who want to simplify their tax obligations in Spain and limit their personal IRNR exposure',
+            'Owners who want to protect their personal assets from potential liabilities arising from the property',
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'When it is NOT worth it',
+        },
+        {
+          type: 'ul',
+          items: [
+            'A single property for personal use (primary residence): generates no income to justify the structure',
+            'Investors with low total income taxed at low IRPF marginal rates (below 30%)',
+            'When the property will be sold in the short term: set-up and winding-up costs may exceed the savings',
+            'Buyers who need mortgage financing: banks are more reluctant to lend to holding companies and the terms are generally less favourable',
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'Practical case: investor with three rental properties in Mallorca',
+        },
+        {
+          type: 'p',
+          text: 'Consider an investor with total annual IRPF income of €150,000 (salary plus capital income). Three properties in Mallorca generating €60,000 net per year in rent. Marginal IRPF rate: 47%. Option A — personal ownership: approximately €28,200 in IRPF on rental income. Option B — limited company: €15,000 in Corporate Tax at 25%. Gross annual saving: €13,200. Deducting annual accounting and advisory costs for the company (estimated at €3,000), the net benefit is approximately €10,200 per year. Over a ten-year horizon, the cumulative saving exceeds €100,000 — a figure that more than justifies the additional complexity of the corporate structure.',
+        },
+        {
+          type: 'cta',
+          title: 'Are you considering setting up a company for your Mallorca property?',
+          body: 'We analyse your personal and tax situation to determine whether the corporate structure suits you and, if so, how to set it up efficiently. First consultation at no charge.',
+          button: 'Speak with an adviser',
+        },
+        {
+          type: 'links',
+          title: 'Related services',
+          items: [
+            { label: 'Real Estate Wealth Planning', href: '/en/servicios/planificacion-patrimonial-inmobiliaria', desc: 'Structuring real estate assets: company vehicles, inheritance and generational transfer.' },
+            { label: 'Property Investment in Mallorca', href: '/en/servicios/inversion-inmobiliaria-mallorca', desc: 'Yield analysis and tax structuring for investors.' },
+            { label: 'Real Estate Tax Advisory', href: '/en/servicios/asesoria-fiscal-inmobiliaria-mallorca', desc: 'Corporate Tax, IRPF, IRNR and integrated fiscal planning for your property portfolio.' },
+          ],
+        },
+      ],
+    },
+  },
+
+  // ─── POST C: Vender piso Mallorca impuestos 2026 ────────────────────────────
+  {
+    slug: 'vender-piso-mallorca-impuestos-2026',
+    date: '2026-03-21',
+    readingTime: 9,
+    authorKey: 'gonzalo',
+    es: {
+      seoTitle: 'Vender un piso en Mallorca en 2026: impuestos, pasos y costes',
+      metaDescription: 'Guía completa para vender un piso en Mallorca en 2026: IRPF, plusvalía municipal, retención del 3% para no residentes, documentos necesarios y plazos.',
+      h1: 'Vender un piso en Mallorca en 2026: impuestos, pasos y qué debe saber antes de firmar',
+      category: 'Compraventa Inmobiliaria',
+      tags: ['vender piso Mallorca', 'IRPF venta inmueble', 'IRNR no residente', 'retención 3%', 'plusvalía municipal'],
+      excerpt: 'Vender un piso en Mallorca implica más que encontrar comprador. Hay impuestos que calcular, documentos que preparar y plazos que cumplir. Esta guía explica todo lo que necesita saber como vendedor en 2026, tanto si reside en España como si vive en el extranjero.',
+      blocks: [
+        {
+          type: 'p',
+          text: 'Vender un inmueble en Mallorca en 2026 supone afrontar una serie de pasos fiscales, jurídicos y administrativos que muchos vendedores subestiman. Más allá de la negociación del precio y la cita ante notario, el vendedor debe calcular y declarar varios impuestos, obtener documentación específica y, en algunos casos, gestionar la retención del 3% del precio de venta que realiza el comprador. No planificar estos aspectos con antelación puede traducirse en costes inesperados o en problemas de cumplimiento tributario que conviene evitar.',
+        },
+        {
+          type: 'h2',
+          text: 'Impuestos que paga el vendedor en Mallorca',
+        },
+        {
+          type: 'p',
+          text: 'El vendedor de un inmueble en Mallorca está sujeto a dos impuestos principales: el IRPF (para residentes fiscales en España) o el IRNR (para no residentes), que gravan la ganancia patrimonial derivada de la venta; y la plusvalía municipal (IIVTNU), que grava el incremento del valor del suelo urbano durante el período de tenencia. Ambos tributos deben liquidarse en plazos distintos y con procedimientos diferentes. El IVA, en cambio, lo paga el comprador en las compraventas de obra nueva a promotores, y el ITP en las ventas entre particulares de segunda mano.',
+        },
+        {
+          type: 'h3',
+          text: '1. IRPF para residentes fiscales en España',
+        },
+        {
+          type: 'p',
+          text: 'La ganancia patrimonial en el IRPF se calcula como la diferencia entre el valor de transmisión (precio de venta menos gastos inherentes a la venta: honorarios de agencia, notaría a cargo del vendedor, plusvalía municipal) y el valor de adquisición (precio de compra más gastos pagados en su día: ITP o IVA/AJD, notaría, registro, e inversiones en mejoras debidamente acreditadas). La ganancia resultante se integra en la base del ahorro y tributa a los siguientes tipos en 2026: 19% sobre los primeros 6.000 €; 21% de 6.001 a 50.000 €; 23% de 50.001 a 200.000 €; 27% de 200.001 a 300.000 €; y 28% a partir de 300.000 €. Existen exenciones relevantes: si el inmueble es la vivienda habitual del vendedor y reinvierte la totalidad del importe obtenido en la adquisición de una nueva vivienda habitual en el plazo de dos años, la ganancia queda exenta. Si el vendedor tiene más de 65 años y vende su vivienda habitual, la ganancia está íntegramente exenta sin necesidad de reinversión.',
+        },
+        {
+          type: 'h3',
+          text: '2. IRNR para vendedores no residentes en España',
+        },
+        {
+          type: 'p',
+          text: 'Los vendedores que no son residentes fiscales en España tributan por la ganancia patrimonial en el Impuesto sobre la Renta de No Residentes (IRNR). El tipo aplicable es del 19% para residentes en la Unión Europea o el Espacio Económico Europeo, y del 24% para residentes en terceros países fuera del EEE. La ganancia se calcula de forma análoga al IRPF. La diferencia clave es la retención del 3%: el comprador está obligado a retener el 3% del precio de venta e ingresarlo en la AEAT en el plazo de un mes mediante el Modelo 211. Esta retención tiene carácter de pago a cuenta del IRNR del vendedor no residente. El vendedor debe posteriormente presentar el Modelo 210 (declaración del IRNR) en el plazo de tres meses desde la venta. Si la retención del 3% supera el impuesto efectivamente debido, el vendedor tiene derecho a solicitar la devolución del exceso; si la retención es insuficiente, debe ingresar la diferencia.',
+        },
+        {
+          type: 'table',
+          headers: ['Concepto', 'Residente fiscal España', 'No residente (UE/EEE)', 'No residente (fuera UE)'],
+          rows: [
+            ['Impuesto aplicable', 'IRPF (base ahorro)', 'IRNR', 'IRNR'],
+            ['Tipo impositivo', '19%-28% (tramos)', '19% sobre ganancia', '24% sobre ganancia'],
+            ['Retención por comprador', 'No aplica', '3% del precio de venta', '3% del precio de venta'],
+            ['Plazo declaración', 'IRPF anual (abril-junio)', '3 meses desde la venta', '3 meses desde la venta'],
+            ['Exención vivienda habitual', 'Sí, con condiciones', 'No aplica', 'No aplica'],
+          ],
+        },
+        {
+          type: 'h3',
+          text: '3. Plusvalía municipal (IIVTNU)',
+        },
+        {
+          type: 'p',
+          text: 'La plusvalía municipal es un tributo local que recaudan los ayuntamientos sobre el incremento del valor del suelo urbano durante el tiempo de tenencia del inmueble. En 2026, el vendedor puede elegir entre el método objetivo (basado en coeficientes aprobados por Orden Ministerial) y el método real (basado en la ganancia efectiva del suelo), optando por el que resulte más favorable. En el Ayuntamiento de Palma, el tipo máximo aplicable es del 30% sobre la base imponible. El plazo para liquidarla es de 30 días hábiles desde la firma de la escritura. Esta materia se aborda en detalle en nuestra guía específica sobre la plusvalía municipal en Mallorca, donde encontrará ejemplos de cálculo y los escenarios en los que la cuota puede ser cero.',
+        },
+        {
+          type: 'h2',
+          text: 'Documentos necesarios para vender un piso en Mallorca',
+        },
+        {
+          type: 'ul',
+          items: [
+            'Escritura de compra original o nota simple actualizada del Registro de la Propiedad',
+            'Último recibo del IBI (Impuesto sobre Bienes Inmuebles) al corriente de pago',
+            'Certificado de la comunidad de propietarios acreditando que no hay cuotas pendientes',
+            'Certificado de eficiencia energética vigente (obligatorio desde 2013 para la venta)',
+            'Cédula de habitabilidad (cédula de idoneidad en Baleares) si el inmueble la requiere',
+            'DNI/NIE del vendedor en vigor',
+            'Certificado de deuda pendiente de hipoteca si el inmueble está hipotecado',
+            'Últimas facturas de suministros (agua, luz, gas) para facilitar el cambio de titularidad',
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'El proceso de venta paso a paso',
+        },
+        {
+          type: 'ul',
+          items: [
+            'Paso 1 — Valoración y estrategia de precio: fijar un precio realista basado en comparables reales del mercado mallorquín, no en portales online que mezclan distintas calidades y zonas',
+            'Paso 2 — Due diligence previa: antes de comercializar, revisar que la documentación está completa y que no hay cargas sorpresa que puedan retrasar o frustrar la venta',
+            'Paso 3 — Contrato de arras: negociar y firmar un contrato de arras penitenciales o confirmatorias. La elección importa: las arras penitenciales permiten al vendedor retener el doble si el comprador incumple',
+            'Paso 4 — Preparación notarial: el notario necesita varios días para preparar la escritura. El vendedor debe coordinar con el banco hipotecante (si hay hipoteca) para la cancelación simultánea',
+            'Paso 5 — Firma ante notario: otorgamiento de la escritura pública de compraventa. En el mismo acto se produce la entrega de llaves y el pago del precio (generalmente mediante cheque bancario o transferencia SWIFT)',
+            'Paso 6 — Liquidación de impuestos: en los 30 días siguientes a la firma, el vendedor debe liquidar la plusvalía municipal. El IRPF/IRNR se declara en los plazos indicados',
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'Planificación fiscal antes de firmar: claves para no pagar más de lo necesario',
+        },
+        {
+          type: 'p',
+          text: 'El mensaje más importante de esta guía es que la planificación fiscal debe realizarse antes de firmar la escritura, no después. Una vez que la escritura está otorgada, la obligación tributaria queda fijada y las opciones de optimización son muy limitadas. Antes de firmar, es esencial revisar: (1) si las mejoras realizadas en el inmueble —nueva cocina, baños, ventanas, instalaciones— están acreditadas con facturas que pueden incrementar el valor de adquisición y reducir la ganancia; (2) si todos los gastos de adquisición de la compra original están correctamente documentados; (3) en el caso de vendedores mayores de 65 años, si se cumplen los requisitos para la exención por venta de vivienda habitual; (4) para los no residentes, calcular si la retención del 3% será suficiente o si cabe esperar una devolución o un pago adicional; (5) si el momento de la firma puede estructurarse de forma que resulte más eficiente desde el punto de vista fiscal en relación con el cierre del ejercicio fiscal.',
+        },
+        {
+          type: 'cta',
+          title: '¿Va a vender su piso en Mallorca?',
+          body: 'Le calculamos todos los impuestos antes de firmar y gestionamos la venta de principio a fin: arras, notaría, plusvalía e IRPF/IRNR. Primera consulta sin coste.',
+          button: 'Hablar con un asesor',
+        },
+        {
+          type: 'links',
+          title: 'Servicios y recursos relacionados',
+          items: [
+            { label: 'Compraventa de Inmuebles en Mallorca', href: '/es/servicios/vender-piso-mallorca', desc: 'Gestión completa de la venta: precio, compradores, contratos, notaría e impuestos.' },
+            { label: 'Asesoría Fiscal Inmobiliaria', href: '/es/servicios/asesoria-fiscal-inmobiliaria-mallorca', desc: 'Planificación de IRPF, IRNR, plusvalía y optimización fiscal de la operación.' },
+            { label: 'Plusvalía municipal en Mallorca: cómo se calcula', href: '/es/blog/plusvalia-municipal-mallorca-como-se-calcula-2026', desc: 'Guía completa: método objetivo vs. real y cuándo puede ser cero.' },
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'Preguntas frecuentes sobre la venta de un piso en Mallorca',
+        },
+        {
+          type: 'h3',
+          text: '¿Cuánto tiempo se tarda en vender un piso en Mallorca en 2026?',
+        },
+        {
+          type: 'p',
+          text: 'En el mercado actual de Mallorca (2026), un inmueble con precio adecuado a su mercado tarda habitualmente entre dos y cuatro meses desde la comercialización hasta la firma de la escritura. El plazo entre la firma del contrato de arras y la escritura final ante notario es típicamente de seis a diez semanas, aunque puede alargarse si el comprador necesita financiación hipotecaria (los bancos pueden tardar entre cuatro y ocho semanas en formalizar la hipoteca). Las propiedades de lujo —por encima de 1,5 millones de euros— pueden requerir entre seis y doce meses para encontrar al comprador adecuado, dado el menor volumen de demanda en ese segmento.',
+        },
+        {
+          type: 'h3',
+          text: 'Soy no residente y vendo mi piso en Mallorca. ¿Cuándo recupero el 3% si me deben devolver?',
+        },
+        {
+          type: 'p',
+          text: 'El comprador tiene la obligación de ingresar el 3% del precio de venta en la AEAT en el plazo de un mes desde la firma mediante el Modelo 211. A continuación, el vendedor no residente debe presentar el Modelo 210 (declaración del IRNR) en el plazo de tres meses desde la fecha de la escritura. Si el cálculo del impuesto efectivo arroja una cuota inferior al 3% retenido, el vendedor tiene derecho a la devolución del exceso. La AEAT suele tardar entre seis y dieciocho meses en procesar estas devoluciones, que se realizan mediante transferencia bancaria a la cuenta indicada en el Modelo 210. Es importante designar un representante fiscal en España o disponer de una cuenta bancaria española activa para recibir la devolución sin incidencias.',
+        },
+        {
+          type: 'h3',
+          text: '¿Puedo vender si tengo la hipoteca sin cancelar?',
+        },
+        {
+          type: 'p',
+          text: 'Sí, es una situación muy habitual. La hipoteca se cancela simultáneamente en el mismo acto notarial de la compraventa: el precio pagado por el comprador se destina en primer lugar a liquidar la deuda hipotecaria pendiente, y el remanente se entrega al vendedor. Para ello, el banco del vendedor debe emitir un certificado de deuda pendiente y enviar a un representante (apoderado) al notario para firmar la cancelación registral de la hipoteca en el mismo acto. El vendedor debe coordinar con su banco con suficiente antelación —al menos dos semanas antes de la firma— para evitar retrasos de última hora.',
+        },
+      ],
+    },
+    en: {
+      seoTitle: 'Selling a property in Mallorca in 2026: taxes, steps and what you need to know',
+      metaDescription: 'Complete guide to selling a property in Mallorca in 2026: capital gains tax, municipal tax, 3% withholding for non-residents, required documents and deadlines.',
+      h1: 'Selling a property in Mallorca in 2026: taxes, steps and what you need to know before signing',
+      category: 'Property Sales',
+      tags: ['selling property Mallorca', 'capital gains tax Spain', 'non-resident IRNR', '3% withholding Spain', 'plusvalía municipal'],
+      excerpt: 'Selling a property in Mallorca involves more than finding a buyer. There are taxes to calculate, documents to prepare and deadlines to meet. This guide explains everything you need to know as a seller in 2026, whether you are a Spanish tax resident or live abroad.',
+      blocks: [
+        {
+          type: 'p',
+          text: 'Selling a property in Mallorca in 2026 involves a series of tax, legal and administrative steps that many sellers underestimate. Beyond price negotiation and the notary appointment, the seller must calculate and declare several taxes, obtain specific documents and, in some cases, manage the 3% withholding of the sale price by the buyer. Failing to plan these aspects in advance can result in unexpected costs or tax compliance issues that are best avoided.',
+        },
+        {
+          type: 'h2',
+          text: 'Taxes paid by the seller in Mallorca',
+        },
+        {
+          type: 'p',
+          text: 'A seller in Mallorca is subject to two main taxes: Personal Income Tax (IRPF, for Spanish tax residents) or Non-Resident Income Tax (IRNR, for non-residents), which apply to the capital gain derived from the sale; and the municipal capital gains tax (plusvalía municipal or IIVTNU), which applies to the increase in urban land value during the period of ownership. Both taxes must be settled within different deadlines and through separate procedures. VAT, by contrast, is paid by the buyer on new-build purchases from developers, while Transfer Tax (ITP) applies to second-hand sales between private parties.',
+        },
+        {
+          type: 'h3',
+          text: '1. Personal Income Tax (IRPF) for Spanish tax residents',
+        },
+        {
+          type: 'p',
+          text: 'The capital gain for IRPF purposes is calculated as the difference between the transfer value (sale price minus inherent selling costs: agency fees, notary costs borne by the seller, municipal capital gains tax) and the acquisition value (original purchase price plus costs paid at the time: ITP or VAT/stamp duty, notary, land registry, and documented capital improvements). The resulting gain is included in the savings tax base and taxed at the following rates in 2026: 19% on the first €6,000; 21% from €6,001 to €50,000; 23% from €50,001 to €200,000; 27% from €200,001 to €300,000; and 28% above €300,000. Key exemptions: if the property is the seller\'s primary residence (vivienda habitual) and the entire proceeds are reinvested in a new primary residence within two years, the gain is fully exempt. If the seller is over 65 and selling their primary residence, the gain is entirely exempt with no reinvestment requirement.',
+        },
+        {
+          type: 'h3',
+          text: '2. Non-Resident Income Tax (IRNR) for non-resident sellers',
+        },
+        {
+          type: 'p',
+          text: 'Sellers who are not Spanish tax residents are taxed on the capital gain under the Non-Resident Income Tax (IRNR). The applicable rate is 19% for residents in the European Union or European Economic Area, and 24% for residents in third countries outside the EEA. The gain is calculated in the same way as for IRPF. The key difference is the 3% withholding: the buyer is legally required to retain 3% of the sale price and pay it to the AEAT within one month using Modelo 211. This retention serves as a payment on account of the seller\'s IRNR liability. The seller must then file Modelo 210 (the non-resident tax return) within three months of the sale. If the 3% retention exceeds the actual tax due, the seller is entitled to claim a refund of the excess; if the retention falls short, the seller must pay the difference.',
+        },
+        {
+          type: 'table',
+          headers: ['Item', 'Spanish tax resident', 'Non-resident (EU/EEA)', 'Non-resident (outside EU)'],
+          rows: [
+            ['Applicable tax', 'IRPF (savings base)', 'IRNR', 'IRNR'],
+            ['Tax rate', '19%–28% (bands)', '19% on gain', '24% on gain'],
+            ['Buyer withholding', 'Not applicable', '3% of sale price', '3% of sale price'],
+            ['Filing deadline', 'Annual IRPF (April–June)', '3 months from sale', '3 months from sale'],
+            ['Primary residence exemption', 'Yes, with conditions', 'Not applicable', 'Not applicable'],
+          ],
+        },
+        {
+          type: 'h3',
+          text: '3. Municipal Capital Gains Tax (plusvalía municipal / IIVTNU)',
+        },
+        {
+          type: 'p',
+          text: 'The municipal capital gains tax is a local tax collected by the local authority on the increase in urban land value during the period of ownership. In 2026, sellers can choose between the objective method (based on coefficients approved by Ministerial Order) and the real method (based on the actual land value increase), opting for whichever is more favourable. In the Palma City Council area, the maximum applicable rate is 30% on the taxable base. The deadline for settlement is 30 business days from the signing of the title deed. This topic is covered in detail in our dedicated guide on municipal capital gains tax in Mallorca, where you will find calculation examples and the scenarios in which the liability can be zero.',
+        },
+        {
+          type: 'h2',
+          text: 'Documents required to sell a property in Mallorca',
+        },
+        {
+          type: 'ul',
+          items: [
+            'Original purchase deed or an up-to-date nota simple from the Land Registry',
+            'Most recent IBI (Property Tax) receipt showing payment is up to date',
+            'Certificate from the owners\' community confirming no outstanding service charges',
+            'Valid energy performance certificate (mandatory since 2013 for all sales)',
+            'Certificate of habitability (cédula de idoneidad in the Balearic Islands) where applicable',
+            'Valid Spanish national ID (DNI) or Foreigner\'s Identity Number (NIE) of the seller',
+            'Outstanding mortgage balance certificate if the property is mortgaged',
+            'Recent utility bills (water, electricity, gas) to facilitate transfer of accounts',
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'The sale process step by step',
+        },
+        {
+          type: 'ul',
+          items: [
+            'Step 1 — Valuation and pricing strategy: set a realistic price based on genuine comparable sales in the Mallorca market, not on online portals that mix different qualities and locations',
+            'Step 2 — Pre-sale due diligence: before marketing, verify that all documentation is complete and that there are no unexpected encumbrances that could delay or derail the sale',
+            'Step 3 — Deposit contract (arras): negotiate and sign a deposit agreement. The choice between penitential and confirmatory arras matters: penitential arras allow the seller to retain double the deposit if the buyer defaults',
+            'Step 4 — Notary preparation: the notary needs several days to prepare the deed. The seller must coordinate with the mortgage lender (if applicable) for simultaneous cancellation at the notary',
+            'Step 5 — Signing at the notary: execution of the public title deed. Keys are handed over and payment of the price is made at the same time (typically by banker\'s draft or SWIFT bank transfer)',
+            'Step 6 — Tax settlement: within 30 business days of signing, the seller must settle the municipal capital gains tax. IRPF/IRNR is declared within the stated deadlines',
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'Tax planning before signing: key points to avoid overpaying',
+        },
+        {
+          type: 'p',
+          text: 'The most important message of this guide is that tax planning must take place before signing the deed, not after. Once the escritura is executed, the tax liability is fixed and the options for optimisation are very limited. Before signing, it is essential to review: (1) whether improvements made to the property — new kitchen, bathrooms, windows, installations — are backed by receipts that can increase the acquisition value and reduce the taxable gain; (2) whether all acquisition costs from the original purchase are properly documented; (3) for sellers over 65, whether the conditions for the primary residence exemption are met; (4) for non-residents, whether the 3% withholding will be sufficient or whether a refund or additional payment is expected; (5) whether the timing of signing can be structured to be most tax-efficient relative to the end of the fiscal year.',
+        },
+        {
+          type: 'cta',
+          title: 'Are you selling your property in Mallorca?',
+          body: 'We calculate all taxes before you sign and manage the entire sale from start to finish: deposit contract, notary, municipal tax and IRPF/IRNR. First consultation at no charge.',
+          button: 'Speak with an adviser',
+        },
+        {
+          type: 'links',
+          title: 'Related services and resources',
+          items: [
+            { label: 'Property Sales in Mallorca', href: '/en/servicios/vender-piso-mallorca', desc: 'Complete sale management: pricing, buyers, contracts, notary and taxes.' },
+            { label: 'Real Estate Tax Advisory', href: '/en/servicios/asesoria-fiscal-inmobiliaria-mallorca', desc: 'IRPF, IRNR, municipal tax planning and full fiscal optimisation of your transaction.' },
+            { label: 'Municipal Capital Gains Tax in Mallorca: how it is calculated', href: '/en/blog/plusvalia-municipal-mallorca-como-se-calcula-2026', desc: 'Complete guide: objective vs. real method and when it can be zero.' },
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'Frequently asked questions about selling a property in Mallorca',
+        },
+        {
+          type: 'h3',
+          text: 'How long does it take to sell a property in Mallorca in 2026?',
+        },
+        {
+          type: 'p',
+          text: 'In the current Mallorca market (2026), a property priced correctly for its market segment typically takes two to four months from listing to signing. The period between signing the deposit contract (arras) and the final notary deed is typically six to ten weeks, though it can extend if the buyer requires mortgage financing (banks may take four to eight weeks to formalise the mortgage). Luxury properties — above €1.5 million — may take six to twelve months to find the right buyer, given the lower volume of demand in that segment.',
+        },
+        {
+          type: 'h3',
+          text: 'I am a non-resident selling my property in Mallorca. When do I get the 3% back if a refund is due?',
+        },
+        {
+          type: 'p',
+          text: 'The buyer must pay the 3% of the sale price to AEAT within one month of the signing date using Modelo 211. The non-resident seller must then file Modelo 210 (the IRNR return) within three months of the deed date. If the effective tax calculation shows a liability below the 3% retained, the seller is entitled to a refund of the difference. AEAT typically takes between six and eighteen months to process these refunds, which are made by bank transfer to the account specified in Modelo 210. It is important to have an active Spanish bank account or to appoint a tax representative in Spain to receive the refund without complications.',
+        },
+        {
+          type: 'h3',
+          text: 'Can I sell if the mortgage has not been paid off?',
+        },
+        {
+          type: 'p',
+          text: 'Yes, this is a very common situation. The mortgage is cancelled at the same notary appointment as the sale: the buyer\'s payment is applied first to settle the outstanding mortgage balance, with the remainder going to the seller. To do this, the seller\'s bank must issue an outstanding debt certificate and send a representative to the notary to sign the formal cancellation of the mortgage charge in the same act. The seller must coordinate with their bank well in advance — at least two weeks before the signing date — to avoid any last-minute delays.',
         },
       ],
     },
