@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { CheckCircle2, ArrowRight, Phone, Mail } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -77,10 +76,7 @@ export default async function ServicioPage({
     mainEntity: s.faqs.map((faq) => ({
       "@type": "Question",
       name: faq.q,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: faq.a,
-      },
+      acceptedAnswer: { "@type": "Answer", text: faq.a },
     })),
   };
 
@@ -88,7 +84,6 @@ export default async function ServicioPage({
 
   return (
     <>
-      {/* JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -96,81 +91,157 @@ export default async function ServicioPage({
 
       <Navbar />
 
-      <main style={{ paddingTop: "76px" }}>
-        {/* ── Hero ── */}
-        <section className="bg-stone-900 text-white pt-16 pb-20 px-6">
-          <div className="max-w-4xl mx-auto">
-            <nav className="text-sm text-stone-400 mb-6 flex items-center gap-2">
-              <Link href={`/${locale}`} className="hover:text-white transition-colors">
-                {isEs ? "Inicio" : "Home"}
-              </Link>
-              <span>/</span>
-              <Link href={`/${locale}#servicios`} className="hover:text-white transition-colors">
-                {isEs ? "Servicios" : "Services"}
-              </Link>
-              <span>/</span>
-              <span className="text-stone-300">{s.keyword}</span>
-            </nav>
+      <main style={{ backgroundColor: "#faf8f5", paddingTop: "76px" }}>
 
-            <h1 className="text-3xl md:text-5xl font-bold leading-tight mb-6">
+        {/* ── Breadcrumb ── */}
+        <div style={{ backgroundColor: "#fff", borderBottom: "1px solid #e8e4de", padding: "13px 24px" }}>
+          <div style={{ maxWidth: "1280px", margin: "0 auto", display: "flex", alignItems: "center", gap: "8px", flexWrap: "wrap" }}>
+            <Link href={`/${locale}`} style={{ fontSize: "12px", color: "#9b9590", textDecoration: "none" }}>
+              {isEs ? "Inicio" : "Home"}
+            </Link>
+            <span style={{ color: "#b8964a", fontSize: "11px" }}>›</span>
+            <Link href={`/${locale}#servicios`} style={{ fontSize: "12px", color: "#9b9590", textDecoration: "none" }}>
+              {isEs ? "Servicios" : "Services"}
+            </Link>
+            <span style={{ color: "#b8964a", fontSize: "11px" }}>›</span>
+            <span style={{ fontSize: "12px", color: "#1a2332", fontWeight: 400 }}>{s.keyword}</span>
+          </div>
+        </div>
+
+        {/* ── Hero ── */}
+        <header style={{ backgroundColor: "#1a2332", padding: "72px 24px 64px", position: "relative", overflow: "hidden" }}>
+          {/* Grid decoration */}
+          <div style={{
+            position: "absolute", inset: 0,
+            backgroundImage: "linear-gradient(rgba(184,150,74,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(184,150,74,0.04) 1px, transparent 1px)",
+            backgroundSize: "60px 60px",
+            pointerEvents: "none",
+          }} />
+          <div style={{ maxWidth: "860px", margin: "0 auto", position: "relative" }}>
+            {/* Category badge */}
+            <span style={{
+              display: "inline-block", fontSize: "10px", fontWeight: 500,
+              letterSpacing: "0.18em", textTransform: "uppercase",
+              color: "#b8964a", border: "1px solid rgba(184,150,74,0.4)",
+              padding: "4px 12px", borderRadius: "2px", marginBottom: "28px",
+            }}>
+              {isEs ? "Nuestros Servicios" : "Our Services"}
+            </span>
+
+            <h1 style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: "clamp(26px, 3.8vw, 46px)",
+              fontWeight: 300,
+              color: "#fff",
+              lineHeight: 1.2,
+              marginBottom: "24px",
+            }}>
               {s.h1}
             </h1>
-            <p className="text-stone-300 text-lg md:text-xl leading-relaxed max-w-3xl mb-10">
+
+            <p style={{
+              fontSize: "17px", fontWeight: 300, lineHeight: 1.75,
+              color: "rgba(255,255,255,0.55)",
+              marginBottom: "40px", maxWidth: "660px",
+            }}>
               {s.subtitle}
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4">
-              <a
-                href="tel:+34971000000"
-                className="inline-flex items-center gap-2 bg-amber-500 hover:bg-amber-400 text-stone-900 font-semibold px-6 py-3 rounded-lg transition-colors"
-              >
-                <Phone className="w-4 h-4" />
-                {isEs ? "Hablar con un asesor" : "Speak to an advisor"}
-              </a>
-              <a
+            {/* CTAs */}
+            <div style={{ display: "flex", gap: "14px", flexWrap: "wrap" }}>
+              <Link
                 href={`/${locale}#contacto`}
-                className="inline-flex items-center gap-2 border border-stone-500 hover:border-white text-white px-6 py-3 rounded-lg transition-colors"
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: "8px",
+                  backgroundColor: "#b8964a", color: "#fff",
+                  fontSize: "12px", fontWeight: 500, letterSpacing: "0.08em",
+                  textTransform: "uppercase", textDecoration: "none",
+                  padding: "13px 28px", transition: "background-color 0.2s",
+                }}
               >
-                <Mail className="w-4 h-4" />
-                {isEs ? "Consulta gratuita" : "Free consultation"}
-              </a>
+                {isEs ? "Consulta gratuita" : "Free consultation"} →
+              </Link>
+              <Link
+                href={`/${locale}#contacto`}
+                style={{
+                  display: "inline-flex", alignItems: "center", gap: "8px",
+                  border: "1px solid rgba(255,255,255,0.25)", color: "rgba(255,255,255,0.8)",
+                  fontSize: "12px", fontWeight: 500, letterSpacing: "0.08em",
+                  textTransform: "uppercase", textDecoration: "none",
+                  padding: "13px 28px", transition: "border-color 0.2s",
+                }}
+              >
+                {isEs ? "Hablar con un asesor" : "Speak to an advisor"}
+              </Link>
             </div>
           </div>
-        </section>
+        </header>
+
+        {/* Gold bar */}
+        <div style={{ height: "3px", backgroundColor: "#b8964a" }} />
 
         {/* ── Intro ── */}
-        <section className="py-16 px-6 bg-white">
-          <div className="max-w-3xl mx-auto">
-            {s.intro.split("\n\n").map((para, i) => (
-              <p key={i} className="text-stone-700 text-lg leading-relaxed mb-6 last:mb-0">
-                {para}
-              </p>
-            ))}
-          </div>
+        <section style={{ maxWidth: "780px", margin: "0 auto", padding: "64px 24px" }}>
+          {s.intro.split("\n\n").map((para, i) => (
+            <p key={i} style={{
+              fontSize: "17px", fontWeight: 300, lineHeight: 2,
+              color: "#4a4540", marginBottom: "24px",
+            }}>
+              {para}
+            </p>
+          ))}
         </section>
 
         {/* ── What's included ── */}
-        <section className="py-16 px-6 bg-stone-50">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-stone-900 mb-3">
-              {isEs ? "Qué incluye el servicio" : "What the service includes"}
-            </h2>
-            <p className="text-stone-500 mb-10">
-              {isEs
-                ? "Cada elemento forma parte de un proceso coordinado, no de servicios sueltos."
-                : "Each element is part of a coordinated process, not isolated services."}
-            </p>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <section style={{ backgroundColor: "#fff", borderTop: "1px solid #e8e4de", borderBottom: "1px solid #e8e4de", padding: "72px 24px" }}>
+          <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+            <div style={{ maxWidth: "640px", marginBottom: "56px" }}>
+              <p style={{
+                fontSize: "10px", fontWeight: 500, letterSpacing: "0.2em",
+                textTransform: "uppercase", color: "#b8964a", marginBottom: "8px",
+              }}>
+                {isEs ? "Alcance del servicio" : "Service scope"}
+              </p>
+              <div style={{ width: "28px", height: "1px", backgroundColor: "#b8964a", marginBottom: "24px" }} />
+              <h2 style={{
+                fontFamily: "'Playfair Display', serif",
+                fontSize: "clamp(24px, 2.8vw, 36px)",
+                fontWeight: 300, color: "#1a2332", lineHeight: 1.2,
+              }}>
+                {isEs ? "Qué incluye el servicio" : "What the service includes"}
+              </h2>
+              <p style={{ fontSize: "15px", fontWeight: 300, color: "#5c5650", marginTop: "16px", lineHeight: 1.7 }}>
+                {isEs
+                  ? "Cada elemento forma parte de un proceso coordinado, no son servicios sueltos."
+                  : "Each element is part of a coordinated process, not isolated services."}
+              </p>
+            </div>
+
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "2px", backgroundColor: "#e8e4de" }} className="svc-includes-grid">
               {s.includes.map((item, i) => (
-                <div
-                  key={i}
-                  className="bg-white border border-stone-200 rounded-xl p-6 hover:shadow-md transition-shadow"
+                <div key={i} style={{
+                  backgroundColor: "#faf8f5", padding: "36px 32px",
+                  transition: "background-color 0.2s",
+                }}
+                  onMouseEnter={(e) => ((e.currentTarget as HTMLDivElement).style.backgroundColor = "#fff")}
+                  onMouseLeave={(e) => ((e.currentTarget as HTMLDivElement).style.backgroundColor = "#faf8f5")}
                 >
-                  <div className="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center mb-4">
-                    <span className="text-amber-700 font-bold text-sm">{i + 1}</span>
+                  <div style={{
+                    fontSize: "11px", fontWeight: 500, letterSpacing: "0.15em",
+                    color: "#b8964a", marginBottom: "16px",
+                  }}>
+                    0{i + 1}
                   </div>
-                  <h3 className="font-semibold text-stone-900 mb-2">{item.title}</h3>
-                  <p className="text-stone-600 text-sm leading-relaxed">{item.desc}</p>
+                  <h3 style={{
+                    fontFamily: "'Playfair Display', serif",
+                    fontSize: "18px", fontWeight: 500, color: "#1a2332",
+                    marginBottom: "12px", lineHeight: 1.3,
+                  }}>
+                    {item.title}
+                  </h3>
+                  <p style={{ fontSize: "13px", fontWeight: 300, lineHeight: 1.85, color: "#5c5650" }}>
+                    {item.desc}
+                  </p>
                 </div>
               ))}
             </div>
@@ -178,26 +249,58 @@ export default async function ServicioPage({
         </section>
 
         {/* ── Differentiator + Who for ── */}
-        <section className="py-16 px-6 bg-white">
-          <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12">
+        <section style={{ padding: "72px 24px" }}>
+          <div style={{ maxWidth: "1280px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "80px", alignItems: "start" }} className="diff-grid">
+
             {/* Differentiator */}
             <div>
-              <h2 className="text-xl md:text-2xl font-bold text-stone-900 mb-5">
+              <p style={{
+                fontSize: "10px", fontWeight: 500, letterSpacing: "0.2em",
+                textTransform: "uppercase", color: "#b8964a", marginBottom: "8px",
+              }}>
                 {isEs ? "Por qué Benavides" : "Why Benavides"}
+              </p>
+              <div style={{ width: "28px", height: "1px", backgroundColor: "#b8964a", marginBottom: "24px" }} />
+              <h2 style={{
+                fontFamily: "'Playfair Display', serif",
+                fontSize: "clamp(22px, 2.4vw, 30px)",
+                fontWeight: 300, color: "#1a2332", lineHeight: 1.25, marginBottom: "24px",
+              }}>
+                {isEs ? "Lo que nos diferencia" : "What sets us apart"}
               </h2>
-              <p className="text-stone-700 leading-relaxed">{s.differentiator}</p>
+              <p style={{ fontSize: "15px", fontWeight: 300, lineHeight: 1.9, color: "#5c5650" }}>
+                {s.differentiator}
+              </p>
             </div>
 
             {/* Who for */}
             <div>
-              <h2 className="text-xl md:text-2xl font-bold text-stone-900 mb-5">
-                {isEs ? "Para quién es este servicio" : "Who this service is for"}
+              <p style={{
+                fontSize: "10px", fontWeight: 500, letterSpacing: "0.2em",
+                textTransform: "uppercase", color: "#b8964a", marginBottom: "8px",
+              }}>
+                {isEs ? "Para quién" : "Who it's for"}
+              </p>
+              <div style={{ width: "28px", height: "1px", backgroundColor: "#b8964a", marginBottom: "24px" }} />
+              <h2 style={{
+                fontFamily: "'Playfair Display', serif",
+                fontSize: "clamp(22px, 2.4vw, 30px)",
+                fontWeight: 300, color: "#1a2332", lineHeight: 1.25, marginBottom: "28px",
+              }}>
+                {isEs ? "Este servicio es para usted si…" : "This service is for you if…"}
               </h2>
-              <ul className="space-y-3">
+              <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "16px" }}>
                 {s.whoFor.map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
-                    <span className="text-stone-700 text-sm leading-relaxed">{item}</span>
+                  <li key={i} style={{ display: "flex", gap: "16px", alignItems: "flex-start" }}>
+                    <span style={{
+                      flexShrink: 0, width: "20px", height: "20px",
+                      border: "1px solid #b8964a", borderRadius: "50%",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      color: "#b8964a", fontSize: "10px", marginTop: "2px",
+                    }}>✓</span>
+                    <span style={{ fontSize: "15px", fontWeight: 300, lineHeight: 1.7, color: "#5c5650" }}>
+                      {item}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -206,40 +309,66 @@ export default async function ServicioPage({
         </section>
 
         {/* ── CTA band ── */}
-        <section className="bg-amber-500 py-12 px-6">
-          <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+        <section style={{ backgroundColor: "#1a2332", padding: "56px 24px", position: "relative", overflow: "hidden" }}>
+          <div style={{
+            position: "absolute", inset: 0,
+            backgroundImage: "linear-gradient(rgba(184,150,74,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(184,150,74,0.04) 1px, transparent 1px)",
+            backgroundSize: "60px 60px", pointerEvents: "none",
+          }} />
+          <div style={{ maxWidth: "860px", margin: "0 auto", display: "flex", flexDirection: "column", alignItems: "flex-start", gap: "24px", position: "relative" }} className="cta-band">
             <div>
-              <p className="font-bold text-stone-900 text-xl md:text-2xl">
-                {isEs
-                  ? "¿Tiene dudas sobre su operación?"
-                  : "Questions about your transaction?"}
+              <p style={{
+                fontFamily: "'Playfair Display', serif",
+                fontSize: "clamp(22px, 2.4vw, 30px)",
+                fontWeight: 300, color: "#fff", marginBottom: "10px", lineHeight: 1.3,
+              }}>
+                {isEs ? "¿Tiene dudas sobre su operación?" : "Questions about your transaction?"}
               </p>
-              <p className="text-stone-800 mt-1">
+              <p style={{ fontSize: "15px", fontWeight: 300, color: "rgba(255,255,255,0.5)" }}>
                 {isEs
-                  ? "Primera consulta gratuita. Respuesta en menos de 24 horas."
+                  ? "Primera consulta sin coste. Le respondemos en menos de 24 horas."
                   : "Free first consultation. We respond within 24 hours."}
               </p>
             </div>
-            <a
+            <Link
               href={`/${locale}#contacto`}
-              className="shrink-0 inline-flex items-center gap-2 bg-stone-900 hover:bg-stone-800 text-white font-semibold px-6 py-3 rounded-lg transition-colors"
+              style={{
+                display: "inline-flex", alignItems: "center", gap: "8px",
+                backgroundColor: "#b8964a", color: "#fff",
+                fontSize: "12px", fontWeight: 500, letterSpacing: "0.08em",
+                textTransform: "uppercase", textDecoration: "none",
+                padding: "13px 28px",
+              }}
             >
-              {isEs ? "Contactar ahora" : "Contact us now"}
-              <ArrowRight className="w-4 h-4" />
-            </a>
+              {isEs ? "Contactar ahora" : "Contact us now"} →
+            </Link>
           </div>
         </section>
 
+        {/* Gold bar */}
+        <div style={{ height: "3px", backgroundColor: "#b8964a" }} />
+
         {/* ── FAQ ── */}
-        <section className="py-16 px-6 bg-white" id="faq">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold text-stone-900 mb-3">
-              {isEs ? "Preguntas frecuentes" : "Frequently asked questions"}
+        <section style={{ backgroundColor: "#fff", padding: "72px 24px", borderBottom: "1px solid #e8e4de" }}>
+          <div style={{ maxWidth: "780px", margin: "0 auto" }}>
+            <p style={{
+              fontSize: "10px", fontWeight: 500, letterSpacing: "0.2em",
+              textTransform: "uppercase", color: "#b8964a", marginBottom: "8px",
+            }}>
+              {isEs ? "Preguntas frecuentes" : "FAQ"}
+            </p>
+            <div style={{ width: "28px", height: "1px", backgroundColor: "#b8964a", marginBottom: "24px" }} />
+            <h2 style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: "clamp(24px, 2.8vw, 36px)",
+              fontWeight: 300, color: "#1a2332", lineHeight: 1.2, marginBottom: "12px",
+            }}>
+              {isEs ? "Respuestas directas a las dudas más habituales" : "Direct answers to the most common questions"}
             </h2>
-            <p className="text-stone-500 mb-10">
+            <p style={{ fontSize: "15px", fontWeight: 300, color: "#5c5650", marginBottom: "48px", lineHeight: 1.7 }}>
               {isEs
-                ? "Respuestas directas a las dudas más habituales sobre este servicio."
-                : "Direct answers to the most common questions about this service."}
+                ? "Si tiene más preguntas, no dude en contactarnos directamente."
+                : "If you have further questions, feel free to contact us directly."}
             </p>
             <ServicioFAQ faqs={s.faqs} />
           </div>
@@ -247,26 +376,50 @@ export default async function ServicioPage({
 
         {/* ── Related services ── */}
         {related.length > 0 && (
-          <section className="py-16 px-6 bg-stone-50">
-            <div className="max-w-5xl mx-auto">
-              <h2 className="text-2xl font-bold text-stone-900 mb-8">
+          <section style={{ backgroundColor: "#faf8f5", padding: "72px 24px" }}>
+            <div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+              <p style={{
+                fontSize: "10px", fontWeight: 500, letterSpacing: "0.2em",
+                textTransform: "uppercase", color: "#b8964a", marginBottom: "8px",
+              }}>
                 {isEs ? "Servicios relacionados" : "Related services"}
-              </h2>
-              <div className="grid md:grid-cols-3 gap-6">
+              </p>
+              <div style={{ width: "28px", height: "1px", backgroundColor: "#b8964a", marginBottom: "48px" }} />
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "2px", backgroundColor: "#e8e4de" }} className="related-svc-grid">
                 {related.map((rel) => (
                   <Link
                     key={rel.slug}
                     href={`/${locale}/servicios/${rel.slug}`}
-                    className="group bg-white border border-stone-200 rounded-xl p-6 hover:shadow-md hover:border-amber-300 transition-all"
+                    style={{ textDecoration: "none" }}
                   >
-                    <h3 className="font-semibold text-stone-900 mb-2 group-hover:text-amber-700 transition-colors">
-                      {rel.keyword}
-                    </h3>
-                    <p className="text-stone-500 text-sm line-clamp-2">{rel.metaDescription}</p>
-                    <span className="mt-4 inline-flex items-center gap-1 text-amber-600 text-sm font-medium">
-                      {isEs ? "Ver servicio" : "View service"}
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </span>
+                    <div style={{
+                      backgroundColor: "#faf8f5", padding: "40px 32px",
+                      display: "flex", flexDirection: "column", height: "100%",
+                      transition: "background-color 0.2s",
+                    }}
+                      onMouseEnter={(e) => ((e.currentTarget as HTMLDivElement).style.backgroundColor = "#fff")}
+                      onMouseLeave={(e) => ((e.currentTarget as HTMLDivElement).style.backgroundColor = "#faf8f5")}
+                    >
+                      <h3 style={{
+                        fontFamily: "'Playfair Display', serif",
+                        fontSize: "20px", fontWeight: 500, color: "#1a2332",
+                        marginBottom: "12px", lineHeight: 1.3,
+                      }}>
+                        {rel.keyword}
+                      </h3>
+                      <p style={{
+                        fontSize: "13px", fontWeight: 300, lineHeight: 1.85,
+                        color: "#5c5650", flex: 1,
+                      }}>
+                        {rel.metaDescription}
+                      </p>
+                      <span style={{
+                        marginTop: "20px", fontSize: "11px", fontWeight: 500,
+                        letterSpacing: "0.1em", textTransform: "uppercase", color: "#b8964a",
+                      }}>
+                        {isEs ? "Ver servicio" : "View service"} →
+                      </span>
+                    </div>
                   </Link>
                 ))}
               </div>
@@ -275,40 +428,73 @@ export default async function ServicioPage({
         )}
 
         {/* ── Final CTA ── */}
-        <section className="py-20 px-6 bg-stone-900 text-white text-center">
-          <div className="max-w-2xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              {isEs
-                ? "Empiece con una consulta gratuita"
-                : "Start with a free consultation"}
+        <section style={{ backgroundColor: "#fff", borderTop: "1px solid #e8e4de", padding: "80px 24px" }}>
+          <div style={{ maxWidth: "640px", margin: "0 auto", textAlign: "center" }}>
+            <p style={{
+              fontSize: "10px", fontWeight: 500, letterSpacing: "0.2em",
+              textTransform: "uppercase", color: "#b8964a", marginBottom: "8px",
+            }}>
+              {isEs ? "Siguiente paso" : "Next step"}
+            </p>
+            <div style={{ width: "28px", height: "1px", backgroundColor: "#b8964a", margin: "0 auto 28px" }} />
+            <h2 style={{
+              fontFamily: "'Playfair Display', serif",
+              fontSize: "clamp(24px, 3vw, 38px)",
+              fontWeight: 300, color: "#1a2332", lineHeight: 1.2, marginBottom: "20px",
+            }}>
+              {isEs ? "Empiece con una consulta gratuita" : "Start with a free consultation"}
             </h2>
-            <p className="text-stone-300 mb-8">
+            <p style={{ fontSize: "15px", fontWeight: 300, color: "#5c5650", lineHeight: 1.8, marginBottom: "40px" }}>
               {isEs
                 ? "Sin compromiso. Le respondemos en menos de 24 horas con una valoración inicial de su caso."
                 : "No commitment. We will respond within 24 hours with a preliminary assessment of your case."}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
+            <div style={{ display: "flex", gap: "14px", justifyContent: "center", flexWrap: "wrap" }}>
+              <Link
                 href={`/${locale}#contacto`}
-                className="inline-flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-stone-900 font-semibold px-8 py-3 rounded-lg transition-colors"
+                style={{
+                  display: "inline-flex", alignItems: "center",
+                  backgroundColor: "#1a2332", color: "#fff",
+                  fontSize: "12px", fontWeight: 500, letterSpacing: "0.08em",
+                  textTransform: "uppercase", textDecoration: "none",
+                  padding: "14px 32px", transition: "background-color 0.2s",
+                }}
               >
-                {isEs ? "Enviar consulta" : "Send enquiry"}
-                <ArrowRight className="w-4 h-4" />
-              </a>
-              <a
-                href="tel:+34971000000"
-                className="inline-flex items-center justify-center gap-2 border border-stone-500 hover:border-white text-white px-8 py-3 rounded-lg transition-colors"
+                {isEs ? "Enviar consulta" : "Send enquiry"} →
+              </Link>
+              <Link
+                href={`/${locale}#contacto`}
+                style={{
+                  display: "inline-flex", alignItems: "center",
+                  border: "1px solid #e8e4de", color: "#1a2332",
+                  fontSize: "12px", fontWeight: 500, letterSpacing: "0.08em",
+                  textTransform: "uppercase", textDecoration: "none",
+                  padding: "14px 32px", transition: "border-color 0.2s",
+                }}
               >
-                <Phone className="w-4 h-4" />
-                {isEs ? "Llamar ahora" : "Call now"}
-              </a>
+                {isEs ? "Hablar con un asesor" : "Speak to an advisor"}
+              </Link>
             </div>
           </div>
         </section>
+
       </main>
 
       <Footer />
       <WhatsAppButton />
+
+      <style>{`
+        @media (max-width: 960px) {
+          .svc-includes-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .related-svc-grid { grid-template-columns: repeat(2, 1fr) !important; }
+          .diff-grid { grid-template-columns: 1fr !important; gap: 48px !important; }
+        }
+        @media (max-width: 600px) {
+          .svc-includes-grid { grid-template-columns: 1fr !important; }
+          .related-svc-grid { grid-template-columns: 1fr !important; }
+          .cta-band { align-items: stretch !important; }
+        }
+      `}</style>
     </>
   );
 }
