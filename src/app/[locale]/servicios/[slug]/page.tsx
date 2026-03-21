@@ -96,9 +96,9 @@ export default async function ServicioPage({
 
       <Navbar />
 
-      <main>
+      <main style={{ paddingTop: "76px" }}>
         {/* ── Hero ── */}
-        <section className="bg-stone-900 text-white pt-32 pb-20 px-6">
+        <section className="bg-stone-900 text-white pt-16 pb-20 px-6">
           <div className="max-w-4xl mx-auto">
             <nav className="text-sm text-stone-400 mb-6 flex items-center gap-2">
               <Link href={`/${locale}`} className="hover:text-white transition-colors">
