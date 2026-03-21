@@ -219,13 +219,10 @@ export default async function ServicioPage({
 
             <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "2px", backgroundColor: "#e8e4de" }} className="svc-includes-grid">
               {s.includes.map((item, i) => (
-                <div key={i} style={{
+                <div key={i} className="svc-card" style={{
                   backgroundColor: "#faf8f5", padding: "36px 32px",
                   transition: "background-color 0.2s",
-                }}
-                  onMouseEnter={(e) => ((e.currentTarget as HTMLDivElement).style.backgroundColor = "#fff")}
-                  onMouseLeave={(e) => ((e.currentTarget as HTMLDivElement).style.backgroundColor = "#faf8f5")}
-                >
+                }}>
                   <div style={{
                     fontSize: "11px", fontWeight: 500, letterSpacing: "0.15em",
                     color: "#b8964a", marginBottom: "16px",
@@ -392,14 +389,11 @@ export default async function ServicioPage({
                     href={`/${locale}/servicios/${rel.slug}`}
                     style={{ textDecoration: "none" }}
                   >
-                    <div style={{
+                    <div className="svc-card" style={{
                       backgroundColor: "#faf8f5", padding: "40px 32px",
                       display: "flex", flexDirection: "column", height: "100%",
                       transition: "background-color 0.2s",
-                    }}
-                      onMouseEnter={(e) => ((e.currentTarget as HTMLDivElement).style.backgroundColor = "#fff")}
-                      onMouseLeave={(e) => ((e.currentTarget as HTMLDivElement).style.backgroundColor = "#faf8f5")}
-                    >
+                    }}>
                       <h3 style={{
                         fontFamily: "'Playfair Display', serif",
                         fontSize: "20px", fontWeight: 500, color: "#1a2332",
@@ -484,6 +478,7 @@ export default async function ServicioPage({
       <WhatsAppButton />
 
       <style>{`
+        .svc-card:hover { background-color: #fff !important; }
         @media (max-width: 960px) {
           .svc-includes-grid { grid-template-columns: repeat(2, 1fr) !important; }
           .related-svc-grid { grid-template-columns: repeat(2, 1fr) !important; }
