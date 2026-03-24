@@ -6,6 +6,7 @@ export type Block =
   | { type: 'table'; headers: string[]; rows: string[][] }
   | { type: 'cta'; title: string; body: string; button: string }
   | { type: 'links'; title: string; items: { label: string; href: string; desc: string }[] }
+  | { type: 'faq'; eyebrow?: string; items: { q: string; a: string }[] }
 
 export interface PostTranslation {
   seoTitle: string;
@@ -23,6 +24,7 @@ export interface BlogPost {
   updatedDate?: string;
   readingTime: number;
   authorKey: 'alfonso' | 'german' | 'gonzalo';
+  image?: { src: string; alt: string };
   es: PostTranslation;
   en: PostTranslation;
 }
@@ -57,6 +59,10 @@ export const posts: BlogPost[] = [
     date: '2025-03-19',
     readingTime: 10,
     authorKey: 'gonzalo',
+    image: {
+      src: 'https://images.pexels.com/photos/42093/pexels-photo-42093.jpeg',
+      alt: 'Catedral de Palma de Mallorca — impuestos al comprar vivienda en Mallorca para no residentes',
+    },
     es: {
       seoTitle: 'Impuestos al comprar una vivienda en Mallorca: guía completa para no residentes',
       metaDescription:
@@ -222,6 +228,41 @@ export const posts: BlogPost[] = [
         {
           type: 'p',
           text: 'El incumplimiento de las obligaciones fiscales como propietario no residente puede tener consecuencias económicas significativas. La Agencia Tributaria española dispone de herramientas para identificar a los propietarios no residentes que no cumplen con sus obligaciones declarativas, incluyendo el cruce de información con registros de la propiedad y las administraciones de otros países con los que España tiene acuerdos de intercambio de información fiscal. Las sanciones por no presentar el Modelo 210 pueden incluir recargos por presentación fuera de plazo (del 5% al 20% según el retraso), intereses de demora, y en los casos más graves, sanciones formales que pueden alcanzar el 50% de la cuota no declarada. Además, el incumplimiento continuado puede complicar futuras operaciones sobre el inmueble, incluida su eventual venta.',
+        },
+        {
+          type: 'faq',
+          eyebrow: 'Preguntas frecuentes sobre impuestos al comprar en Mallorca',
+          items: [
+            {
+              q: '¿Cuánto se paga de ITP al comprar una vivienda de segunda mano en Mallorca?',
+              a: 'En las Islas Baleares el ITP es progresivo: 8% hasta 400.000 €, 9% de 400.001 a 600.000 €, 10% de 600.001 a 1.000.000 €, y 11% por encima de 1.000.000 €. Para una vivienda de 500.000 € el ITP asciende a 41.000 € (tipo efectivo del 8,2%). A esto hay que añadir los gastos de notaría, registro y gestoría, que suman entre 1.500 y 3.000 € adicionales.',
+            },
+            {
+              q: '¿Qué impuestos paga un no residente al comprar en Mallorca?',
+              a: 'Un no residente paga los mismos impuestos de adquisición que un residente: ITP (segunda mano) o IVA+AJD (obra nueva). Adicionalmente, como propietario no residente, deberá declarar anualmente el Impuesto sobre la Renta de No Residentes (IRNR): si alquila la propiedad, tributa sobre los rendimientos; si no la alquila, tributa por una renta imputada del 1,1% del valor catastral. También deberá declarar el Impuesto sobre el Patrimonio si el valor de sus bienes en España supera los 700.000 €.',
+            },
+            {
+              q: '¿Cuánto cuesta comprar una vivienda de 600.000 € en Mallorca incluyendo todos los impuestos?',
+              a: 'Para una vivienda de segunda mano de 600.000 € en Mallorca, el ITP asciende a 50.000 € (8% sobre los primeros 400.000 € = 32.000 € + 9% sobre los siguientes 200.000 € = 18.000 €). Añadiendo notaría (aprox. 1.200 €), registro (aprox. 600 €) y gestoría (aprox. 400 €), el coste total adicional al precio de compra se sitúa en torno a los 52.200 €, lo que equivale a un 8,7% sobre el precio escriturado.',
+            },
+            {
+              q: '¿Necesito un NIE para comprar una vivienda en Mallorca?',
+              a: 'Sí, el NIE (Número de Identificación de Extranjero) es absolutamente obligatorio. Sin NIE ningún notario autorizará la escritura de compraventa, no es posible pagar los impuestos derivados de la compra ni inscribir la propiedad en el Registro. El NIE puede obtenerse en España en cualquier comisaría de policía con competencias en extranjería, o desde el extranjero en el consulado español de tu país de residencia. El proceso suele tardar entre 1 y 4 semanas.',
+            },
+            {
+              q: '¿Hay alguna exención o reducción del ITP para compradores en Mallorca?',
+              a: 'Las Islas Baleares contemplan algunas bonificaciones del ITP para determinados colectivos: tipo reducido del 4% para familias numerosas que adquieren su vivienda habitual, tipo reducido para jóvenes menores de 36 años en la compra de su primera vivienda habitual (con límites de precio), y tipo del 0,1% para víctimas de violencia de género. Estas bonificaciones son incompatibles entre sí y están sujetas a requisitos específicos que conviene verificar con un asesor antes de la firma.',
+            },
+          ],
+        },
+        {
+          type: 'links',
+          title: 'Servicios y recursos relacionados',
+          items: [
+            { label: 'Inmobiliaria en Mallorca', href: '/es/inmobiliaria-mallorca', desc: 'Más de 10 años asesorando compraventas en toda la isla con asesoría legal y fiscal incluida.' },
+            { label: 'Comprar Casa en Mallorca', href: '/es/comprar-casa-mallorca', desc: 'Due diligence, análisis fiscal y representación independiente del comprador.' },
+            { label: 'Asesoría Fiscal Inmobiliaria', href: '/es/servicios/asesoria-fiscal-inmobiliaria-mallorca', desc: 'ITP, IVA, IRNR, plusvalía y planificación fiscal de operaciones inmobiliarias.' },
+          ],
         },
       ],
     },
@@ -391,6 +432,37 @@ export const posts: BlogPost[] = [
           type: 'p',
           text: 'Failure to comply with tax obligations as a non-resident property owner can have significant financial consequences. The Spanish Tax Agency has tools to identify non-resident property owners who are not meeting their reporting obligations, including cross-referencing information with Land Registry records and the tax administrations of other countries with which Spain has information-sharing agreements. Penalties for failing to file Form 210 can include surcharges for late filing (ranging from 5% to 20% depending on the delay), late payment interest, and in more serious cases, formal penalties that can reach 50% of the undeclared tax liability. Furthermore, persistent non-compliance can complicate future transactions relating to the property, including any eventual sale.',
         },
+        {
+          type: 'faq',
+          eyebrow: 'Frequently asked questions about buying property in Mallorca',
+          items: [
+            {
+              q: 'How much Transfer Tax (ITP) do you pay on a second-hand property in Mallorca?',
+              a: 'In the Balearic Islands, ITP is progressive: 8% up to €400,000; 9% from €400,001 to €600,000; 10% from €600,001 to €1,000,000; and 11% above €1,000,000. For a property costing €500,000, the ITP amounts to €41,000 (effective rate of 8.2%). Notary, land registry and administration fees add a further €1,500–3,000.',
+            },
+            {
+              q: 'What taxes does a non-resident pay when buying property in Mallorca?',
+              a: 'A non-resident pays the same acquisition taxes as a resident: ITP (second-hand) or VAT+AJD (new build). As a non-resident owner, they must also file an annual Non-Resident Income Tax return (IRNR): if the property is rented out, they are taxed on the rental income; if not, they are taxed on an imputed income of 1.1% of the cadastral value. Wealth Tax (Impuesto sobre el Patrimonio) must also be declared if the value of assets in Spain exceeds €700,000.',
+            },
+            {
+              q: 'Do I need a Spanish bank account to buy property in Mallorca?',
+              a: 'A Spanish bank account is not legally mandatory, but it is highly advisable. In practice, it is often essential: Spanish banks typically require a local account for mortgage applications, and it greatly simplifies payment of the purchase price at the notary (via banker\'s cheque), direct debits for ongoing costs (community fees, IBI property tax, utilities) and receipt of any tax refunds from the Spanish Tax Agency.',
+            },
+            {
+              q: 'Can I buy property in Mallorca without visiting Spain?',
+              a: 'Yes. You can purchase a property in Mallorca without being physically present by granting a notarial power of attorney (poder notarial) to a lawyer in Spain, authorising them to act on your behalf at all stages: signing contracts, completing at the notary, paying taxes and registering the property. The power of attorney can be granted at a Spanish consulate in your country of residence or, if already in Spain, before a Spanish notary.',
+            },
+          ],
+        },
+        {
+          type: 'links',
+          title: 'Related services and resources',
+          items: [
+            { label: 'Real Estate Agency in Mallorca', href: '/es/inmobiliaria-mallorca', desc: 'Over 10 years advising property transactions across the whole island.' },
+            { label: 'Buy Property in Mallorca', href: '/en/buy-property-mallorca', desc: 'Due diligence, tax analysis and independent buyer representation.' },
+            { label: 'Property Tax Advisory', href: '/es/servicios/asesoria-fiscal-inmobiliaria-mallorca', desc: 'ITP, VAT, IRNR, capital gains and transaction tax planning.' },
+          ],
+        },
       ],
     },
   },
@@ -403,6 +475,10 @@ export const posts: BlogPost[] = [
     date: '2025-03-12',
     readingTime: 12,
     authorKey: 'alfonso',
+    image: {
+      src: 'https://images.pexels.com/photos/12267705/pexels-photo-12267705.jpeg',
+      alt: 'Puerto de Mallorca al atardecer — invertir en inmobiliario en Mallorca rentabilidad',
+    },
     es: {
       seoTitle: 'Cómo invertir en inmobiliario en Mallorca: guía para maximizar la rentabilidad',
       metaDescription:
@@ -573,6 +649,41 @@ export const posts: BlogPost[] = [
         {
           type: 'p',
           text: 'Esta es una de las decisiones más importantes de la inversión y no tiene una respuesta universal. Depende del volumen de la inversión, del número de propiedades previstas, de la fiscalidad personal del inversor en su país de residencia y de los planes a largo plazo. Para inversiones de cierta envergadura o portfolios con varios activos, una Sociedad Limitada española puede ofrecer ventajas fiscales significativas: tributación al 25% sobre beneficio neto (frente al 19-24% del IRNR sobre ingresos brutos para no residentes), posibilidad de deducir todos los gastos, facilidad para transmitir acciones en lugar de inmuebles, y optimización del Impuesto sobre el Patrimonio. Recomendamos realizar un análisis fiscal completo antes de tomar esta decisión.',
+        },
+        {
+          type: 'faq',
+          eyebrow: 'Preguntas frecuentes sobre inversión inmobiliaria en Mallorca',
+          items: [
+            {
+              q: '¿Cuál es la rentabilidad media del alquiler en Mallorca?',
+              a: 'La rentabilidad bruta por alquiler en Mallorca oscila entre el 3% y el 6% anual dependiendo de la zona, la tipología del inmueble y el tipo de alquiler (residencial de larga duración vs. vacacional). Las zonas con mayor rentabilidad bruta suelen ser las menos exclusivas: Palma residencial, Alcúdia y el norte de la isla. Las zonas prime (Andratx, Son Vida, Deià) ofrecen menor rentabilidad corriente pero mayor apreciación de capital a largo plazo. El alquiler vacacional en zonas turísticas puede generar rentabilidades brutas del 5-8%, aunque conlleva costes de gestión más elevados y mayor dependencia de la estacionalidad.',
+            },
+            {
+              q: '¿Qué zonas de Mallorca son mejores para invertir en inmobiliario?',
+              a: 'Depende del objetivo de inversión. Para rentabilidad por alquiler de larga duración, las mejores zonas son los barrios residenciales de Palma (Santa Catalina, Son Espanyolet, Camp Redó) y poblaciones con demanda local consolidada como Inca o Manacor. Para revalorización de capital a largo plazo, las zonas prime del suroeste (Andratx, Santa Ponça) y el norte (Puerto Pollensa, Alcúdia) han mostrado una apreciación sostenida durante la última década. Para alquiler vacacional, las zonas costeras con acceso a playa y alta demanda turística ofrecen los mayores ingresos brutos, pero están sujetas a restricciones de licencia.',
+            },
+            {
+              q: '¿Cuánto capital mínimo se necesita para invertir en inmobiliario en Mallorca?',
+              a: 'El precio de entrada en el mercado mallorquín varía enormemente por zona. Es posible encontrar pisos en Palma por debajo de 200.000 €, aunque en zonas con mayor demanda los precios parten de 300.000-400.000 €. Para propiedades de inversión con potencial de revalorización significativo en zonas premium, el umbral práctico suele estar en 500.000-800.000 €. A esto hay que añadir los costes de adquisición (ITP del 8-11% + gastos de notaría y registro) y, si la propiedad necesita reforma, el presupuesto correspondiente.',
+            },
+            {
+              q: '¿Es mejor invertir en alquiler vacacional o residencial en Mallorca?',
+              a: 'El alquiler vacacional ofrece mayor rentabilidad bruta pero requiere gestión activa, tiene una estacionalidad marcada (alta demanda de junio a septiembre, baja el resto del año) y está sujeto a regulación de licencias turísticas, que en Mallorca son muy restrictivas. El alquiler residencial de larga duración ofrece menor rentabilidad bruta pero mayor estabilidad, menos gestión y sin restricciones de licencia. La elección depende del perfil del inversor: quien busca ingresos pasivos estables prefiere el residencial; quien puede gestionar activamente y asume mayor volatilidad puede optar por el vacacional.',
+            },
+            {
+              q: '¿Qué impuestos tiene que pagar un inversor no residente en Mallorca?',
+              a: 'Un inversor no residente que alquila una propiedad en Mallorca debe declarar trimestralmente el Impuesto sobre la Renta de No Residentes (IRNR) mediante el Modelo 210. El tipo impositivo es del 19% para residentes en la UE/EEE y del 24% para el resto. Puede deducir los gastos relacionados con el alquiler si es residente en la UE. Además, si el valor de sus bienes en España supera los 700.000 €, debe declarar el Impuesto sobre el Patrimonio. En caso de venta futura, tributará por la ganancia patrimonial y el comprador le retendrá el 3% del precio como pago a cuenta del IRNR.',
+            },
+          ],
+        },
+        {
+          type: 'links',
+          title: 'Servicios y recursos relacionados',
+          items: [
+            { label: 'Inmobiliaria en Mallorca', href: '/es/inmobiliaria-mallorca', desc: 'Más de 10 años asesorando compraventas e inversiones en toda la isla.' },
+            { label: 'Invertir en Inmobiliario en Mallorca', href: '/es/invertir-inmobiliario-mallorca', desc: 'Análisis de rentabilidad, estructura jurídica y gestión de portfolio.' },
+            { label: 'Sociedad Patrimonial para Inmuebles', href: '/es/blog/sociedad-patrimonial-comprar-inmueble-mallorca-2026', desc: '¿Conviene comprar a través de una SL? Ventajas, inconvenientes y cuándo tiene sentido.' },
+          ],
         },
       ],
     },
@@ -747,6 +858,37 @@ export const posts: BlogPost[] = [
           type: 'p',
           text: 'This is one of the most important decisions in the investment and has no universal answer. It depends on the size of the investment, the number of properties planned, the investor\'s personal tax situation in their country of residence and long-term plans. For investments of a certain scale or portfolios with multiple assets, a Spanish limited company can offer significant tax advantages: 25% tax on net profit (compared to 19-24% IRNR on gross income for non-residents), ability to deduct all expenses, ease of transferring shares rather than properties, and Wealth Tax optimisation. We recommend carrying out a full tax analysis before making this decision.',
         },
+        {
+          type: 'faq',
+          eyebrow: 'Frequently asked questions about investing in Mallorca real estate',
+          items: [
+            {
+              q: 'What is the average rental yield in Mallorca?',
+              a: 'Gross rental yields in Mallorca range from 3% to 6% per year depending on the area, property type and rental model (long-term residential vs. holiday let). Higher gross yields are typically found in less exclusive areas: residential Palma, Alcúdia and the north of the island. Prime areas (Andratx, Son Vida, Deià) offer lower current yields but stronger long-term capital appreciation. Holiday rentals in tourist areas can generate gross yields of 5–8%, though with higher management costs and greater seasonality risk.',
+            },
+            {
+              q: 'Which areas of Mallorca are best for property investment?',
+              a: 'It depends on the investment objective. For long-term rental yield, the best areas are the residential districts of Palma and towns with consolidated local demand such as Inca or Manacor. For long-term capital appreciation, the prime southwest (Andratx, Santa Ponça) and north (Puerto Pollensa, Alcúdia) have shown sustained appreciation over the past decade. For holiday letting, coastal areas with beach access and high tourist demand generate the highest gross income but are subject to strict licensing restrictions.',
+            },
+            {
+              q: 'Is it better to invest in holiday or long-term rentals in Mallorca?',
+              a: 'Holiday rentals offer higher gross yields but require active management, have marked seasonality (high demand June–September, low the rest of the year) and are subject to tourist licence regulations, which are very restrictive in Mallorca. Long-term residential rentals offer lower gross yields but greater stability, less management and no licensing restrictions. The choice depends on the investor profile: those seeking passive stable income prefer long-term; those able to manage actively and accept greater volatility may opt for holiday lets.',
+            },
+            {
+              q: 'What taxes does a non-resident investor pay in Mallorca?',
+              a: 'A non-resident investor who rents out a property in Mallorca must file quarterly Non-Resident Income Tax returns (IRNR) using Modelo 210. The tax rate is 19% for EU/EEA residents and 24% for others. EU residents can deduct related rental expenses. If the value of their assets in Spain exceeds €700,000, Wealth Tax must also be declared. On a future sale, the capital gain is taxed and the buyer will withhold 3% of the sale price as an advance payment of the IRNR.',
+            },
+          ],
+        },
+        {
+          type: 'links',
+          title: 'Related services and resources',
+          items: [
+            { label: 'Real Estate Agency in Mallorca', href: '/es/inmobiliaria-mallorca', desc: 'Over 10 years advising property transactions and investments across the whole island.' },
+            { label: 'Invest in Mallorca Real Estate', href: '/en/invest-mallorca-real-estate', desc: 'Yield analysis, legal structure and property portfolio management.' },
+            { label: 'Buying through a company in Mallorca', href: '/es/blog/sociedad-patrimonial-comprar-inmueble-mallorca-2026', desc: 'When does a holding company make sense for Mallorca property?' },
+          ],
+        },
       ],
     },
   },
@@ -759,6 +901,10 @@ export const posts: BlogPost[] = [
     date: '2025-03-05',
     readingTime: 11,
     authorKey: 'german',
+    image: {
+      src: 'https://images.pexels.com/photos/26832624/pexels-photo-26832624.jpeg',
+      alt: 'Cala de aguas turquesas en Mallorca — comprar casa en Mallorca siendo no residente',
+    },
     es: {
       seoTitle: 'Cómo comprar una casa en Mallorca siendo no residente: guía legal paso a paso',
       metaDescription:
@@ -920,6 +1066,41 @@ export const posts: BlogPost[] = [
         {
           type: 'p',
           text: 'La nota simple es un documento emitido por el Registro de la Propiedad que recoge la información esencial sobre un inmueble: su titular registral, su descripción física (superficie, situación, referencia registral), y todas las cargas y gravámenes que pesan sobre él (hipotecas, embargos, servidumbres, anotaciones preventivas). La nota simple es el primer documento que cualquier abogado o asesor solicita antes de hacer cualquier oferta o iniciar la negociación, porque permite conocer el estado jurídico real del inmueble y detectar posibles problemas antes de comprometer ningún dinero. Se puede solicitar online a través del portal del Colegio de Registradores de España por un coste de pocos euros y suele estar disponible en horas.',
+        },
+        {
+          type: 'faq',
+          eyebrow: 'Preguntas frecuentes sobre comprar casa en Mallorca',
+          items: [
+            {
+              q: '¿Cuánto tiempo tarda el proceso de compra de una vivienda en Mallorca?',
+              a: 'Desde que se identifica la propiedad hasta la firma de la escritura ante notario, el proceso suele durar entre 6 y 14 semanas. El período entre la firma del contrato de arras y la escritura final es típicamente de 6 a 10 semanas. Si el comprador necesita financiación hipotecaria, los bancos pueden tardar entre 4 y 8 semanas adicionales en formalizar la hipoteca. La obtención del NIE, si aún no se tiene, puede añadir entre 1 y 4 semanas más.',
+            },
+            {
+              q: '¿Qué es el contrato de arras y qué pasa si me arrepiento?',
+              a: 'El contrato de arras es un contrato privado que reserva la propiedad y fija las condiciones esenciales de la compraventa (precio, forma de pago, plazo para la escritura). El depósito habitual es el 10% del precio. Si el comprador se arrepiente, pierde el depósito. Si el vendedor se arrepiente, está obligado a devolver el doble del depósito recibido. Por eso es fundamental revisar este contrato con un abogado antes de firmarlo: las condiciones suspensivas (aprobación de hipoteca, resultado de la due diligence) pueden ser decisivas.',
+            },
+            {
+              q: '¿Puedo conseguir hipoteca en España siendo no residente?',
+              a: 'Sí, los no residentes pueden obtener hipotecas en España, aunque en condiciones generalmente menos favorables que los residentes. Los bancos españoles suelen financiar hasta el 60-70% del valor de tasación para no residentes (frente al 80% habitual para residentes). El plazo máximo suele ser de 20-25 años. Se exige acreditar ingresos regulares y una buena situación patrimonial. Los principales bancos con oferta específica para no residentes son CaixaBank, BBVA, Sabadell y Bankinter.',
+            },
+            {
+              q: '¿Qué es la due diligence inmobiliaria y por qué es importante?',
+              a: 'La due diligence inmobiliaria es la revisión exhaustiva del estado legal, urbanístico, registral y fiscal de una propiedad antes de comprarla. Incluye: verificar que el vendedor es el titular registral legítimo, comprobar que no existen cargas, hipotecas o embargos ocultos, revisar la situación urbanística (licencias, clasificación del suelo, posibles infracciones), verificar el estado de pago de cuotas de comunidad e IBI, y comprobar la situación de suministros. Omitir la due diligence es uno de los errores más costosos que puede cometer un comprador.',
+            },
+            {
+              q: '¿Qué gastos adicionales al precio tengo que pagar al comprar en Mallorca?',
+              a: 'Además del precio de compra, debes presupuestar entre el 10% y el 13% adicional en impuestos y gastos: ITP del 8-11% (segunda mano) o IVA del 10% + AJD del 1,2% (obra nueva), más notaría (600-1.500 €), Registro de la Propiedad (400-800 €) y gestoría (300-600 €). Si contratas un abogado para la due diligence y representación (muy recomendable), añade entre 1.500 y 4.000 € dependiendo del valor de la operación.',
+            },
+          ],
+        },
+        {
+          type: 'links',
+          title: 'Servicios y recursos relacionados',
+          items: [
+            { label: 'Inmobiliaria en Mallorca', href: '/es/inmobiliaria-mallorca', desc: 'Más de 10 años asesorando compraventas en toda la isla con asesoría legal y fiscal.' },
+            { label: 'Comprar Casa en Mallorca', href: '/es/comprar-casa-mallorca', desc: 'Due diligence, análisis fiscal y representación independiente del comprador.' },
+            { label: 'Impuestos al comprar en Mallorca', href: '/es/blog/impuestos-comprar-vivienda-mallorca-no-residentes', desc: 'Guía completa: ITP, IVA, AJD, IRNR y costes totales.' },
+          ],
         },
       ],
     },
@@ -1085,6 +1266,37 @@ export const posts: BlogPost[] = [
           type: 'p',
           text: 'The nota simple is a document issued by the Land Registry (Registro de la Propiedad) that contains essential information about a property: its registered owner, its physical description (floor area, location, registry reference) and all encumbrances and charges registered against it (mortgages, attachments, easements, preventive annotations). The nota simple is the first document that any lawyer or adviser requests before making any offer or entering into negotiations, because it allows you to understand the true legal status of the property and identify any potential issues before committing any money. It can be requested online through the portal of the Spanish College of Registrars for a small fee and is usually available within hours.',
         },
+        {
+          type: 'faq',
+          eyebrow: 'Frequently asked questions about buying property in Mallorca as a non-resident',
+          items: [
+            {
+              q: 'How long does the property purchase process take in Mallorca?',
+              a: 'From identifying the property to signing the deed before a notary, the process typically takes between 6 and 14 weeks. The period between signing the deposit contract (arras) and the final deed is usually 6 to 10 weeks. If the buyer requires mortgage financing, Spanish banks may take 4 to 8 additional weeks to formalise the loan. Obtaining the NIE, if not already held, can add a further 1 to 4 weeks.',
+            },
+            {
+              q: 'What is a contrato de arras and what happens if I change my mind?',
+              a: 'The contrato de arras is a private preliminary contract that reserves the property and sets the essential terms of the sale (price, payment terms, deadline for the public deed). The standard deposit is 10% of the price. If the buyer withdraws, they forfeit the deposit. If the vendor withdraws, they must return double the deposit received. This is why it is essential to have the contract reviewed by a lawyer before signing — particularly regarding suspensive conditions such as mortgage approval or due diligence outcome.',
+            },
+            {
+              q: 'Can I get a mortgage in Spain as a non-resident?',
+              a: 'Yes, non-residents can obtain mortgages in Spain, though generally on less favourable terms than residents. Spanish banks typically lend up to 60–70% of the appraised value for non-residents (versus the usual 80% for residents). The maximum term is usually 20–25 years. Regular income and a solid financial position must be demonstrated. The main banks with specific non-resident offerings are CaixaBank, BBVA, Sabadell and Bankinter.',
+            },
+            {
+              q: 'What additional costs do I need to budget for when buying in Mallorca?',
+              a: 'In addition to the purchase price, budget for 10–13% in taxes and costs: ITP of 8–11% (second-hand property) or VAT at 10% plus AJD at 1.2% (new build), plus notary fees (€600–1,500), Land Registry fees (€400–800) and administration (€300–600). If you engage a lawyer for due diligence and representation — which is highly recommended — add €1,500–4,000 depending on the transaction value.',
+            },
+          ],
+        },
+        {
+          type: 'links',
+          title: 'Related services and resources',
+          items: [
+            { label: 'Real Estate Agency in Mallorca', href: '/es/inmobiliaria-mallorca', desc: 'Over 10 years advising property transactions across the whole island.' },
+            { label: 'Buy Property in Mallorca', href: '/en/buy-property-mallorca', desc: 'Due diligence, tax analysis and independent buyer representation.' },
+            { label: 'Taxes when buying property in Mallorca', href: '/es/blog/impuestos-comprar-vivienda-mallorca-no-residentes', desc: 'Complete guide: ITP, VAT, AJD, IRNR and total purchase costs.' },
+          ],
+        },
       ],
     },
   },
@@ -1095,6 +1307,10 @@ export const posts: BlogPost[] = [
     date: '2026-03-21',
     readingTime: 8,
     authorKey: 'gonzalo',
+    image: {
+      src: 'https://images.pexels.com/photos/25489922/pexels-photo-25489922.jpeg',
+      alt: 'Vista aérea de Palma de Mallorca — plusvalía municipal al vender propiedad en Mallorca',
+    },
     es: {
       seoTitle: 'Plusvalía municipal en Mallorca: cómo se calcula y cuándo no se paga (2026)',
       metaDescription: 'Guía completa sobre la plusvalía municipal al vender un piso en Mallorca en 2026: método objetivo vs. real, cálculo con ejemplos y cuándo puede ser cero.',
@@ -1347,6 +1563,10 @@ export const posts: BlogPost[] = [
     date: '2026-03-21',
     readingTime: 10,
     authorKey: 'alfonso',
+    image: {
+      src: 'https://images.pexels.com/photos/30862292/pexels-photo-30862292.jpeg',
+      alt: 'Catedral de Palma y Palacio Real de Mallorca — sociedad patrimonial para compra de inmueble en Baleares',
+    },
     es: {
       seoTitle: 'Sociedad patrimonial para comprar un inmueble en Mallorca: ventajas e inconvenientes (2026)',
       metaDescription: '¿Conviene comprar un inmueble en Mallorca a través de una sociedad patrimonial? Análisis de ventajas fiscales, inconvenientes y cuándo tiene sentido en 2026.',
@@ -1643,6 +1863,10 @@ export const posts: BlogPost[] = [
     date: '2026-03-21',
     readingTime: 9,
     authorKey: 'gonzalo',
+    image: {
+      src: 'https://images.pexels.com/photos/27500284/pexels-photo-27500284.jpeg',
+      alt: 'Playa de Santanyí, Mallorca — impuestos al vender un piso en Mallorca 2026',
+    },
     es: {
       seoTitle: 'Vender un piso en Mallorca en 2026: impuestos, pasos y costes',
       metaDescription: 'Guía completa para vender un piso en Mallorca en 2026: IRPF, plusvalía municipal, retención del 3% para no residentes, documentos necesarios y plazos.',
@@ -1920,6 +2144,1254 @@ export const posts: BlogPost[] = [
         {
           type: 'p',
           text: 'Yes, this is a very common situation. The mortgage is cancelled at the same notary appointment as the sale: the buyer\'s payment is applied first to settle the outstanding mortgage balance, with the remainder going to the seller. To do this, the seller\'s bank must issue an outstanding debt certificate and send a representative to the notary to sign the formal cancellation of the mortgage charge in the same act. The seller must coordinate with their bank well in advance — at least two weeks before the signing date — to avoid any last-minute delays.',
+        },
+      ],
+    },
+  },
+
+  // ─────────────────────────────────────────────────────────────────
+  // POST — Mejores zonas para comprar casa en Mallorca 2026
+  // ─────────────────────────────────────────────────────────────────
+  {
+    slug: 'mejores-zonas-comprar-casa-mallorca-2026',
+    date: '2026-03-21',
+    readingTime: 9,
+    authorKey: 'gonzalo',
+    image: {
+      src: 'https://images.pexels.com/photos/31934689/pexels-photo-31934689.jpeg',
+      alt: 'Cala de aguas turquesas en Mallorca — mejores zonas para comprar casa en Mallorca 2026',
+    },
+    es: {
+      seoTitle: 'Mejores zonas para comprar casa en Mallorca en 2026: precios y tendencias',
+      metaDescription: 'Guía por zonas del mercado inmobiliario en Mallorca en 2026: precios por m², demanda, perfil de comprador y qué esperar en Palma, Andratx, Pollensa, Sóller y más.',
+      h1: 'Mejores zonas para comprar casa en Mallorca en 2026: precios y tendencias por zona',
+      category: 'Mercado Inmobiliario',
+      tags: ['zonas Mallorca', 'precio m2 Mallorca', 'comprar casa Mallorca', 'mercado inmobiliario Mallorca', 'inmobiliaria Mallorca'],
+      excerpt: 'El precio de la vivienda en Mallorca varía enormemente según la zona. Desde los 2.500 €/m² en municipios del interior hasta más de 8.000 €/m² en el suroeste de lujo. Esta guía analiza zona por zona qué esperar en 2026.',
+      blocks: [
+        {
+          type: 'p',
+          text: 'El mercado inmobiliario de Mallorca no es uniforme. Hablar de "el precio de la vivienda en Mallorca" sin especificar la zona es tan impreciso como hablar del precio de la vivienda en toda España con un único número. La isla concentra mercados muy distintos en apenas 3.640 km²: desde urbanizaciones de lujo en el suroeste con villas que superan los diez millones de euros, hasta municipios del interior con propiedades rústicas por debajo del medio millón. Entender esta geografía de precios es el primer paso antes de buscar cualquier propiedad. En este artículo analizamos las principales zonas de Mallorca, su comportamiento de mercado en 2026, el perfil de comprador predominante y qué tipo de propiedades encontrarás en cada una.',
+        },
+        {
+          type: 'h2',
+          text: 'Palma de Mallorca: capital con mercados dentro del mercado',
+        },
+        {
+          type: 'p',
+          text: 'Palma concentra aproximadamente el 40% de la población de la isla y ofrece la mayor diversidad de tipologías y precios. No es un mercado homogéneo: dentro de la ciudad conviven submercados muy distintos que responden a lógicas diferentes.',
+        },
+        {
+          type: 'h3',
+          text: 'Centro histórico y Casc Antic',
+        },
+        {
+          type: 'p',
+          text: 'El centro histórico de Palma —con sus palacetes, patios mallorquines y calles empedradas— es uno de los mercados más exclusivos de la isla. Los inmuebles reformados con criterios de lujo alcanzan fácilmente los 5.000-7.000 €/m². La demanda proviene principalmente de compradores nacionales de alto poder adquisitivo y de extranjeros que buscan una base urbana en la isla. La oferta es muy limitada dado el pequeño número de inmuebles susceptibles de reforma de calidad y las restricciones del planeamiento del conjunto histórico-artístico.',
+        },
+        {
+          type: 'h3',
+          text: 'Son Vida',
+        },
+        {
+          type: 'p',
+          text: 'La urbanización de Son Vida, situada en las colinas al noroeste de Palma, es la zona residencial de más alto standing de la ciudad. Villas de gran superficie con vistas panorámicas y parcelas amplias. El precio medio oscila entre 4.000 y 8.000 €/m² según el estado y la calidad de la reforma. El perfil de comprador es predominantemente internacional —alemán, centroeuropeo y latinoamericano de alto poder adquisitivo— y el mercado es muy selecto, con pocas transacciones anuales pero de importe muy elevado.',
+        },
+        {
+          type: 'h3',
+          text: 'Santa Catalina y Nou Camp',
+        },
+        {
+          type: 'p',
+          text: 'Santa Catalina es el barrio más dinámico de Palma en términos de demanda residencial. Muy popular entre residentes nacionales y extranjeros que buscan una base urbana activa. Pisos reformados de 60-100 m² se venden habitualmente entre 350.000 y 550.000 €. Es un mercado con alta rotación y demanda sostenida todo el año, sin la estacionalidad tan marcada de las zonas costeras.',
+        },
+        {
+          type: 'h2',
+          text: 'Suroeste: Andratx, Puerto Andratx, Camp de Mar y Santa Ponça',
+        },
+        {
+          type: 'p',
+          text: 'El suroeste de Mallorca es la zona de mayor concentración de demanda internacional de lujo en la isla. Puerto Andratx en particular es referencia europea en inmobiliaria de alta gama: villas con vistas al mar, puerto deportivo y privacidad a precios que oscilan entre los 2 y los 20 millones de euros. El precio medio de las transacciones en esta zona supera con frecuencia los 5.000-8.000 €/m² en propiedades de primera línea.',
+        },
+        {
+          type: 'ul',
+          items: [
+            'Andratx pueblo: propiedades más asequibles, entre 2.500 y 4.000 €/m², con fuerte demanda alemana',
+            'Puerto Andratx: zona prime del suroeste, villas desde 1,5 M€ hasta 20 M€, compradores de toda Europa',
+            'Camp de Mar: más tranquilo, propiedades entre 600.000 € y 2,5 M€, muy demandado por familias',
+            'Santa Ponça: alta densidad residencial, buen nivel de servicios, entre 2.500 y 4.500 €/m²',
+            'Calvià y Nova Santa Ponça: municipio con buenas infraestructuras, perfil mixto nacional-internacional',
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'Norte: Puerto Pollensa, Pollensa, Alcúdia y Artà',
+        },
+        {
+          type: 'p',
+          text: 'El norte de Mallorca ofrece un paisaje distinto al suroeste: menos densificado, más verde, con la Serra de Tramuntana como telón de fondo y bahías de aguas turquesas. Puerto Pollensa es una de las zonas más demandadas por compradores británicos y escandinavos, que valoran la tranquilidad, la calidad de vida y el carácter más local del mercado frente al bullicio de las zonas del suroeste.',
+        },
+        {
+          type: 'ul',
+          items: [
+            'Puerto Pollensa: villas y casas cerca de la playa entre 600.000 € y 3,5 M€, alta demanda británica y alemana',
+            'Pollensa pueblo: propiedades con carácter, precios más contenidos (2.000-3.500 €/m²)',
+            'Alcúdia: propiedades familiares y apartamentos, entre 200.000 y 600.000 €, perfil mixto',
+            'Artà y Can Picafort: interior y costa norte, precios más asequibles, mercado en crecimiento',
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'Serra de Tramuntana: Sóller, Deià y Valldemossa',
+        },
+        {
+          type: 'p',
+          text: 'La Sierra de Tramuntana, declarada Patrimonio Mundial de la UNESCO en 2011, concentra algunos de los inmuebles más especiales y cotizados de la isla: fincas históricas, casas de piedra restauradas y propiedades únicas en un entorno de belleza singular. Sóller —accesible por el famoso tren de madera— tiene un mercado muy activo con fuerte presencia de compradores alemanes y franceses. Deià es uno de los pueblos más cotizados de toda Mallorca, con propiedades que alcanzan cifras de siete dígitos. La oferta es escasa y la demanda es constante, lo que mantiene los precios al alza.',
+        },
+        {
+          type: 'table',
+          headers: ['Zona', 'Precio medio €/m²', 'Perfil comprador predominante', 'Tipología más buscada'],
+          rows: [
+            ['Palma centro / Son Vida', '4.000 – 7.500', 'Nacional + internacional alto standing', 'Palacete reformado / villa'],
+            ['Santa Catalina / Palma', '3.500 – 5.500', 'Nacional + residente extranjero', 'Piso reformado'],
+            ['Puerto Andratx', '5.000 – 9.000+', 'Internacional europeo lujo', 'Villa con vistas al mar'],
+            ['Santa Ponça / Calvià', '2.500 – 4.500', 'Nacional + centroeuropeo', 'Chalet / adosado'],
+            ['Puerto Pollensa', '3.000 – 6.000', 'Británico / alemán / escandinavo', 'Villa / casa tradicional'],
+            ['Sóller / Deià', '4.000 – 8.000+', 'Alemán / francés / internacional', 'Finca / casa de piedra'],
+            ['Alcúdia / norte', '1.800 – 3.500', 'Nacional + centroeuropeo', 'Apartamento / chalet'],
+            ['Interior (Inca, Sineu)', '1.500 – 2.800', 'Nacional / residente', 'Finca rústica / casa pueblo'],
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'Qué tener en cuenta antes de elegir zona en Mallorca',
+        },
+        {
+          type: 'p',
+          text: 'La zona no solo determina el precio: determina también la liquidez futura del activo, el tipo de demanda de alquiler si buscas rentabilidad, las restricciones urbanísticas aplicables y la vida cotidiana si la propiedad es para uso propio. Algunas consideraciones prácticas que conviene analizar antes de decidir:',
+        },
+        {
+          type: 'ul',
+          items: [
+            'Uso previsto: uso propio todo el año, segunda residencia estacional o inversión para alquiler. Cada objetivo apunta a zonas distintas',
+            'Liquidez: zonas con mayor demanda internacional (suroeste, norte) tienen mayor liquidez en caso de futura reventa',
+            'Restricciones turísticas: no todos los inmuebles en Mallorca pueden obtener licencia de alquiler turístico. Verificar antes de comprar si ese es el objetivo',
+            'Suelo rústico vs urbano: las fincas en suelo rústico tienen limitaciones de edificabilidad importantes que afectan al valor y a las posibilidades de reforma',
+            'Infraestructuras: la distancia al aeropuerto, a Palma o a los servicios médicos puede ser relevante según el perfil del comprador',
+          ],
+        },
+        {
+          type: 'cta',
+          title: '¿Buscas propiedad en Mallorca y no sabes por qué zona empezar?',
+          body: 'En Benavides Real Estate llevamos más de 10 años asesorando compradores en toda la isla. Te ayudamos a encontrar la zona y la propiedad que mejor encajan con tu objetivo, con análisis fiscal y legal incluido.',
+          button: 'Hablar con un asesor',
+        },
+        {
+          type: 'faq',
+          eyebrow: 'Preguntas frecuentes sobre las zonas de Mallorca',
+          items: [
+            {
+              q: '¿Cuál es la zona más cara de Mallorca?',
+              a: 'Las zonas más caras de Mallorca son el suroeste (Puerto Andratx, Andratx, Camp de Mar), Son Vida en Palma y los pueblos de la Serra de Tramuntana como Deià y Valldemossa. En estas zonas, los precios de villas de lujo superan habitualmente los 5.000-9.000 €/m², y las propiedades más exclusivas pueden alcanzar los 15-20 millones de euros. El precio no solo refleja la calidad del inmueble sino también la escasez de la oferta: en zonas protegidas como la Tramuntana apenas existe suelo para nuevas construcciones.',
+            },
+            {
+              q: '¿Qué zona de Mallorca es mejor para vivir todo el año?',
+              a: 'Para vivir todo el año en Mallorca, las zonas más recomendadas son Palma (con toda la oferta de servicios, educación y sanidad de la capital), los municipios del Raiguer como Inca o Binissalem (bien comunicados, con servicios completos y precios más asequibles) y algunas zonas del norte como Pollensa pueblo o Alcúdia. Las zonas costeras más turísticas (Magaluf, S\'Arenal, Can Picafort) son menos adecuadas para residencia permanente por su marcada estacionalidad.',
+            },
+            {
+              q: '¿En qué zona de Mallorca puedo comprar con menos de 300.000 euros?',
+              a: 'Por debajo de 300.000 € es posible encontrar propiedades en municipios del interior como Inca, Sineu, Llucmajor, Sa Pobla o Muro. En Palma, el precio de entrada para un piso razonable en barrios intermedios está actualmente en torno a los 200.000-280.000 €. En las zonas costeras prime (Andratx, Puerto Pollensa, Sóller) es prácticamente imposible encontrar propiedades por debajo de 400.000-500.000 €. El mercado de Mallorca ha experimentado una apreciación significativa en los últimos años, especialmente desde 2020.',
+            },
+            {
+              q: '¿Es mejor comprar en el norte o en el sur de Mallorca?',
+              a: 'Depende del perfil y los objetivos. El sur y suroeste (Palma, Calvià, Andratx) tienen mejor conectividad con el aeropuerto (25-45 minutos), mayor densidad de servicios y una demanda internacional más consolidada. El norte (Pollensa, Alcúdia, Artà) ofrece paisajes más vírgenes, precios algo más asequibles en las zonas no premium, y una mayor proporción de demanda británica y alemana que busca tranquilidad. Ambas zonas tienen mercados muy activos; la elección depende principalmente del estilo de vida buscado.',
+            },
+          ],
+        },
+        {
+          type: 'links',
+          title: 'Recursos relacionados',
+          items: [
+            { label: 'Inmobiliaria en Mallorca', href: '/es/inmobiliaria-mallorca', desc: 'Conócenos: cómo trabajamos y qué nos diferencia como agencia en Mallorca.' },
+            { label: 'Comprar Casa en Mallorca', href: '/es/comprar-casa-mallorca', desc: 'Due diligence, análisis fiscal y representación independiente del comprador.' },
+            { label: 'Invertir en Inmobiliario en Mallorca', href: '/es/invertir-inmobiliario-mallorca', desc: 'Rentabilidad, estructura jurídica y gestión de portfolio inmobiliario.' },
+          ],
+        },
+      ],
+    },
+    en: {
+      seoTitle: 'Best areas to buy property in Mallorca in 2026: prices and market trends by zone',
+      metaDescription: 'Zone-by-zone guide to the Mallorca property market in 2026: price per m², demand, buyer profiles and what to expect in Palma, Andratx, Pollensa, Sóller and more.',
+      h1: 'Best areas to buy property in Mallorca in 2026: prices and trends by zone',
+      category: 'Property Market',
+      tags: ['Mallorca zones', 'price per m2 Mallorca', 'buy property Mallorca', 'Mallorca real estate market'],
+      excerpt: 'Property prices in Mallorca vary enormously by area. From €2,500/m² in inland municipalities to over €8,000/m² in the luxury southwest. This guide analyses each zone and what to expect in 2026.',
+      blocks: [
+        {
+          type: 'p',
+          text: 'The Mallorca property market is not uniform. Referring to "the price of property in Mallorca" without specifying the area is as imprecise as quoting a single average price for the whole of Spain. In just 3,640 km², the island contains remarkably different markets: from luxury developments in the southwest with villas exceeding ten million euros, to inland rural municipalities where properties sell for under half a million. Understanding this price geography is the essential first step before beginning any property search. This article analyses the main zones of Mallorca, their market behaviour in 2026, the predominant buyer profile and the types of property you will find in each.',
+        },
+        {
+          type: 'h2',
+          text: 'Palma de Mallorca: a capital with markets within markets',
+        },
+        {
+          type: 'p',
+          text: 'Palma is home to approximately 40% of the island\'s population and offers the greatest diversity of property types and price points. It is not a homogeneous market: within the city several very different sub-markets coexist, each responding to its own logic.',
+        },
+        {
+          type: 'h2',
+          text: 'Southwest: Andratx, Puerto Andratx, Camp de Mar and Santa Ponça',
+        },
+        {
+          type: 'p',
+          text: 'The southwest of Mallorca has the highest concentration of international luxury demand on the island. Puerto Andratx in particular is a European benchmark for high-end real estate: villas overlooking the sea, a yacht marina and privacy at prices ranging from €2 million to €20 million. The average transaction price in this area frequently exceeds €5,000–8,000/m² for seafront properties.',
+        },
+        {
+          type: 'h2',
+          text: 'North: Puerto Pollensa, Pollensa, Alcúdia and Artà',
+        },
+        {
+          type: 'p',
+          text: 'Northern Mallorca offers a different landscape from the southwest: less densely developed, greener, with the Serra de Tramuntana as a backdrop and turquoise bays. Puerto Pollensa is one of the most sought-after areas among British and Scandinavian buyers, who value its tranquillity, quality of life and more local character compared to the busier southwest resorts.',
+        },
+        {
+          type: 'h2',
+          text: 'Serra de Tramuntana: Sóller, Deià and Valldemossa',
+        },
+        {
+          type: 'p',
+          text: 'The Tramuntana mountain range, declared a UNESCO World Heritage Site in 2011, is home to some of the island\'s most special and sought-after properties: historic fincas, restored stone houses and unique homes in an outstandingly beautiful setting. Sóller — accessible via the famous vintage wooden train — has a very active market with a strong German and French buyer presence. Deià is one of the most prestigious villages in all of Mallorca, with properties reaching seven-figure sums.',
+        },
+        {
+          type: 'cta',
+          title: 'Looking for property in Mallorca but unsure which area to start with?',
+          body: 'At Benavides Real Estate we have been advising buyers across the island for over 10 years. We help you identify the area and property that best match your objectives, with tax and legal analysis included.',
+          button: 'Speak to an advisor',
+        },
+        {
+          type: 'links',
+          title: 'Related resources',
+          items: [
+            { label: 'Real Estate Agency in Mallorca', href: '/es/inmobiliaria-mallorca', desc: 'Learn about us: how we work and what sets us apart as a Mallorca agency.' },
+            { label: 'Buy Property in Mallorca', href: '/en/buy-property-mallorca', desc: 'Due diligence, tax analysis and independent buyer representation.' },
+            { label: 'Invest in Mallorca Real Estate', href: '/en/invest-mallorca-real-estate', desc: 'Yield, legal structure and property portfolio management.' },
+          ],
+        },
+      ],
+    },
+  },
+
+  // ─────────────────────────────────────────────────────────────────
+  // POST — Cuánto cobra una inmobiliaria en Mallorca
+  // ─────────────────────────────────────────────────────────────────
+  {
+    slug: 'cuanto-cobra-inmobiliaria-mallorca-comisiones-honorarios',
+    date: '2026-03-21',
+    readingTime: 7,
+    authorKey: 'gonzalo',
+    image: {
+      src: 'https://images.pexels.com/photos/12229121/pexels-photo-12229121.jpeg',
+      alt: 'Catedral de Mallorca — comisiones y honorarios de inmobiliaria en Mallorca',
+    },
+    es: {
+      seoTitle: '¿Cuánto cobra una inmobiliaria en Mallorca? Comisiones y honorarios en 2026',
+      metaDescription: 'Todo sobre lo que cobra una inmobiliaria en Mallorca en 2026: comisión sobre el precio de venta, honorarios fijos, quién paga y cómo comparar antes de firmar un mandato.',
+      h1: '¿Cuánto cobra una inmobiliaria en Mallorca? Comisiones, honorarios y qué preguntar antes de firmar',
+      category: 'Guías para Vendedores',
+      tags: ['comisión inmobiliaria Mallorca', 'honorarios inmobiliaria', 'inmobiliaria Mallorca', 'vender propiedad Mallorca', 'mandato de venta'],
+      excerpt: 'Antes de firmar con una inmobiliaria en Mallorca, conviene entender exactamente cuánto te va a costar y qué recibes a cambio. Las comisiones varían entre el 3% y el 6%, pero el modelo de honorarios importa tanto como el porcentaje.',
+      blocks: [
+        {
+          type: 'p',
+          text: 'Una de las primeras preguntas que cualquier propietario se hace cuando decide vender en Mallorca es cuánto le va a costar la inmobiliaria. La respuesta honesta es: depende del modelo de negocio que tenga esa agencia, y entender ese modelo es fundamental antes de firmar cualquier mandato de venta. No todas las inmobiliarias cobran igual, ni ofrecen lo mismo, ni trabajan con los mismos incentivos. En este artículo explicamos los distintos modelos de honorarios que existen en el mercado mallorquín, qué incluyen realmente, quién paga y qué preguntas conviene hacer antes de comprometerse.',
+        },
+        {
+          type: 'h2',
+          text: 'El modelo de comisión: lo más habitual en Mallorca',
+        },
+        {
+          type: 'p',
+          text: 'El modelo más extendido entre las agencias inmobiliarias tradicionales en Mallorca es el de comisión sobre el precio de venta. La agencia no cobra nada hasta que se cierra la operación y cobra un porcentaje del precio escriturado. Este porcentaje varía según la agencia, el segmento de precio y el tipo de mandato (exclusivo o no exclusivo):',
+        },
+        {
+          type: 'ul',
+          items: [
+            'Mandato no exclusivo (multiagencia): entre el 4% y el 6% sobre el precio de venta',
+            'Mandato exclusivo: entre el 3% y el 5%, con mayor implicación de la agencia en la comercialización',
+            'Segmento de lujo (por encima de 2 M€): puede negociarse a la baja, generalmente entre el 2% y el 3,5%',
+            'La comisión la paga habitualmente el vendedor, aunque en algunas operaciones se reparte entre vendedor y comprador',
+          ],
+        },
+        {
+          type: 'p',
+          text: 'Para una propiedad de 500.000 €, una comisión del 5% supone 25.000 € que el vendedor paga a la inmobiliaria en el momento del cierre. Sobre ese importe, el vendedor también paga IVA (21%), lo que eleva la factura real a 30.250 €. No incluir el IVA en el análisis previo es un error frecuente.',
+        },
+        {
+          type: 'h2',
+          text: 'El conflicto de interés del modelo de comisión',
+        },
+        {
+          type: 'p',
+          text: 'El modelo de comisión sobre precio genera un conflicto de interés estructural que conviene entender: la agencia tiene incentivo económico en que la venta se cierre rápido, porque cada mes sin venta es un coste de oportunidad para ella. Esto puede traducirse en presión hacia el vendedor para aceptar ofertas por debajo del precio óptimo. Por otro lado, una comisión que depende del precio final puede generar el efecto contrario: sobrevalorar el inmueble en la captación para ganar el mandato frente a otra agencia, lo que resulta en meses sin vender y posterior reducción de precio. Reconocer este incentivo no significa que las agencias de comisión actúen siempre con mala fe — significa que el propietario debe entenderlo para filtrar mejor los consejos que recibe.',
+        },
+        {
+          type: 'h2',
+          text: 'El modelo de honorarios fijos: una alternativa diferente',
+        },
+        {
+          type: 'p',
+          text: 'Algunas agencias especializadas — como Benavides Real Estate — trabajan con honorarios fijos acordados desde el inicio, independientemente del precio de venta. Este modelo elimina el conflicto de interés inherente a la comisión: la agencia no tiene ningún incentivo para empujar el precio a la baja ni para sobrevaluar en la captación. El importe se acuerda antes de iniciar la comercialización y cubre servicios definidos: valoración, revisión legal y fiscal, comercialización, negociación y cierre. La transparencia es total desde el primer momento.',
+        },
+        {
+          type: 'h2',
+          text: 'Mandato exclusivo vs. no exclusivo: ¿cuál conviene?',
+        },
+        {
+          type: 'p',
+          text: 'Muchos propietarios creen que dar el piso a varias agencias simultáneamente aumenta las posibilidades de venta. En la práctica, ocurre con frecuencia lo contrario: las agencias sin exclusiva tienen poco incentivo para invertir en la comercialización de ese inmueble (fotografía profesional, publicidad pagada, visitas acompañadas) porque saben que otra agencia puede cerrar la venta y llevarse la comisión. El resultado es que el inmueble aparece listado en los portales con distintos precios, distintas fotografías y distintas descripciones —lo que genera confusión en el comprador y puede depreciar la percepción de la propiedad—.',
+        },
+        {
+          type: 'ul',
+          items: [
+            'Mandato no exclusivo: mayor exposición teórica, pero menor implicación real de cada agencia',
+            'Mandato exclusivo: una única agencia se responsabiliza de toda la comercialización con incentivo claro',
+            'El mandato exclusivo debe ser por un período limitado (3-6 meses) con posibilidad de rescisión si los resultados no acompañan',
+            'Conviene incluir en el mandato qué acciones concretas se van a realizar: portales, redes, fotografía, visitas, etc.',
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'Qué preguntar antes de firmar con una inmobiliaria en Mallorca',
+        },
+        {
+          type: 'p',
+          text: 'Antes de firmar ningún mandato, estas son las preguntas que deberías hacer y cuyas respuestas deberían quedar por escrito:',
+        },
+        {
+          type: 'ul',
+          items: [
+            '¿El honorario está sujeto a IVA? (Sí, siempre: 21% adicional)',
+            '¿Cuándo se devenga el honorario? ¿Al firmar arras, al firmar escritura, o en ambos momentos?',
+            '¿Qué pasa si la venta no se cierra? ¿Tengo algún coste igualmente?',
+            '¿El mandato es exclusivo? ¿Por cuánto tiempo? ¿Hay penalización por rescisión anticipada?',
+            '¿Qué acciones concretas de marketing están incluidas?',
+            '¿Quién paga los gastos de fotografía, vídeo, publicidad en portales de pago o traducción de documentos?',
+            '¿La agencia revisa la documentación del inmueble antes de comercializar?',
+            '¿Tienen asesoría fiscal para calcular mi beneficio neto antes de fijar el precio?',
+          ],
+        },
+        {
+          type: 'cta',
+          title: '¿Quieres saber cuánto te costaría vender con Benavides Real Estate?',
+          body: 'Trabajamos con honorarios fijos y transparentes, sin comisiones ocultas ni IVA sorpresa. Primera consulta gratuita: te explicamos exactamente qué incluye nuestro servicio y cuánto cuesta.',
+          button: 'Solicitar información',
+        },
+        {
+          type: 'faq',
+          eyebrow: 'Preguntas frecuentes sobre honorarios inmobiliarios en Mallorca',
+          items: [
+            {
+              q: '¿Quién paga la comisión de la inmobiliaria en Mallorca, el comprador o el vendedor?',
+              a: 'En la práctica habitual del mercado mallorquín, la comisión la paga el vendedor. Algunas agencias, especialmente en el segmento de lujo, cobran también al comprador una tarifa por su servicio de búsqueda y representación. Cuando ambas partes de una operación están representadas por la misma agencia (lo que en el sector se llama "doble agencia"), conviene revisar con especial cuidado el contrato, ya que puede existir un conflicto de interés al representar simultáneamente intereses contrapuestos.',
+            },
+            {
+              q: '¿Qué debe incluir el servicio de una inmobiliaria en Mallorca?',
+              a: 'Un servicio inmobiliario completo en Mallorca debe incluir como mínimo: valoración de mercado del inmueble, elaboración de material comercial (fotografía profesional, descripción, plano), difusión en portales inmobiliarios y red de contactos, gestión de visitas y filtrado de compradores, acompañamiento en la negociación, revisión o coordinación de los contratos (arras y escritura) y seguimiento hasta la firma notarial. Un servicio de mayor valor añadido incluye además due diligence legal, análisis fiscal previo y liquidación de impuestos post-venta.',
+            },
+            {
+              q: '¿Qué es un mandato de exclusiva y cuándo conviene firmarlo?',
+              a: 'Un mandato de exclusiva es un contrato por el que el propietario se compromete a comercializar su propiedad únicamente a través de una agencia durante un período determinado (habitualmente 3-6 meses). A cambio, la agencia se compromete a invertir en la comercialización activa del inmueble. Conviene firmarlo cuando la agencia tiene una propuesta de valor clara y diferenciada, cuando el plazo es razonable y cuando el contrato incluye cláusula de rescisión anticipada si no se alcanzan los resultados comprometidos. No conviene cuando las condiciones no están bien definidas o el plazo es excesivamente largo.',
+            },
+            {
+              q: '¿Puedo negociar la comisión con una inmobiliaria en Mallorca?',
+              a: 'Sí, la comisión es negociable, especialmente en propiedades de precio elevado. Para propiedades por encima de 1-1,5 millones de euros, es habitual negociar la comisión a la baja, ya que el importe absoluto es significativo incluso con un porcentaje reducido. Para propiedades de menor valor, la negociación es más difícil porque la comisión debe cubrir los costes fijos de la agencia. En todo caso, el criterio principal no debe ser solo el porcentaje de comisión sino el valor real que aporta la agencia: una agencia que vende rápido al precio correcto con comisión del 5% puede ser más beneficiosa que una que vende mal o tarde con comisión del 3%.',
+            },
+          ],
+        },
+        {
+          type: 'links',
+          title: 'Lecturas relacionadas',
+          items: [
+            { label: 'Inmobiliaria en Mallorca', href: '/es/inmobiliaria-mallorca', desc: 'Cómo trabajamos y en qué nos diferenciamos de las agencias tradicionales.' },
+            { label: 'Vender Casa en Mallorca', href: '/es/vender-casa-mallorca', desc: 'Valoración independiente, revisión jurídica y planificación fiscal previa.' },
+            { label: 'Asesoría Fiscal Inmobiliaria', href: '/es/servicios/asesoria-fiscal-inmobiliaria-mallorca', desc: 'Calcula tu beneficio neto real antes de decidir el precio de venta.' },
+          ],
+        },
+      ],
+    },
+    en: {
+      seoTitle: 'How much does a real estate agent charge in Mallorca? Fees and commissions in 2026',
+      metaDescription: 'Everything about what a Mallorca estate agent charges in 2026: percentage commission, fixed fees, who pays and what to ask before signing a mandate.',
+      h1: 'How much does a real estate agent charge in Mallorca? Commissions, fees and what to ask before signing',
+      category: 'Seller Guides',
+      tags: ['real estate commission Mallorca', 'estate agent fees Mallorca', 'selling property Mallorca', 'Mallorca real estate agent'],
+      excerpt: 'Before signing with a real estate agent in Mallorca, it is worth understanding exactly what it will cost and what you get in return. Commissions range from 3% to 6%, but the fee model matters as much as the percentage.',
+      blocks: [
+        {
+          type: 'p',
+          text: 'One of the first questions any property owner asks when deciding to sell in Mallorca is how much the estate agent will charge. The honest answer is: it depends on the business model that agency operates, and understanding that model is essential before signing any sales mandate. Not all estate agents charge the same, offer the same services or work with the same incentives. This article explains the different fee models in the Mallorcan market, what they actually include, who pays and what questions to ask before committing.',
+        },
+        {
+          type: 'h2',
+          text: 'The commission model: the most common in Mallorca',
+        },
+        {
+          type: 'p',
+          text: 'The most widespread model among traditional estate agents in Mallorca is a commission on the sale price. The agent charges nothing until the transaction closes, at which point they take a percentage of the price recorded in the notarial deed. This percentage varies depending on the agency, the price segment and the type of mandate (exclusive or non-exclusive): between 3% and 6% of the sale price, plus 21% VAT on the commission.',
+        },
+        {
+          type: 'h2',
+          text: 'The conflict of interest in the commission model',
+        },
+        {
+          type: 'p',
+          text: 'Commission-based models generate a structural conflict of interest worth understanding: the agency has a financial incentive to close the sale quickly, because every month without a sale is an opportunity cost. This can translate into pressure on the vendor to accept offers below the optimal price. Understanding this incentive does not mean commission-based agents always act in bad faith — it means the owner should factor it in when weighing the advice they receive.',
+        },
+        {
+          type: 'h2',
+          text: 'The fixed-fee model: a different approach',
+        },
+        {
+          type: 'p',
+          text: 'Some specialist agencies — such as Benavides Real Estate — work with fixed fees agreed from the outset, regardless of the final sale price. This model eliminates the inherent conflict of interest: the agency has no incentive to push the price down or to overprice in order to win the mandate. The amount is agreed before marketing begins and covers defined services: valuation, legal and tax review, marketing, negotiation and completion.',
+        },
+        {
+          type: 'cta',
+          title: 'Want to know what it would cost to sell with Benavides Real Estate?',
+          body: 'We work with fixed, transparent fees — no hidden commissions. Free first consultation: we explain exactly what our service includes and what it costs.',
+          button: 'Request information',
+        },
+        {
+          type: 'links',
+          title: 'Related reading',
+          items: [
+            { label: 'Real Estate Agency in Mallorca', href: '/es/inmobiliaria-mallorca', desc: 'How we work and what sets us apart from traditional agencies.' },
+            { label: 'Sell Property in Mallorca', href: '/en/sell-property-mallorca', desc: 'Independent valuation, legal review and pre-sale tax planning.' },
+            { label: 'Property Tax Advisory', href: '/es/servicios/asesoria-fiscal-inmobiliaria-mallorca', desc: 'Calculate your real net proceeds before setting the asking price.' },
+          ],
+        },
+      ],
+    },
+  },
+
+  // ─────────────────────────────────────────────────────────────────
+  // POST — Cuánto vale mi casa en Mallorca
+  // ─────────────────────────────────────────────────────────────────
+  {
+    slug: 'cuanto-vale-mi-casa-mallorca-valoracion-inmobiliaria',
+    date: '2026-03-21',
+    readingTime: 8,
+    authorKey: 'gonzalo',
+    image: {
+      src: 'https://images.pexels.com/photos/19765743/pexels-photo-19765743.jpeg',
+      alt: 'Catedral de Palma de Mallorca — valoración inmobiliaria precio de mercado viviendas Mallorca',
+    },
+    es: {
+      seoTitle: '¿Cuánto vale mi casa en Mallorca? Cómo se calcula el valor de mercado en 2026',
+      metaDescription: 'Aprende cómo se valora una propiedad en Mallorca: qué factores determinan el precio de mercado, por qué los portales online no son fiables y cómo obtener una valoración real.',
+      h1: '¿Cuánto vale mi casa en Mallorca? Cómo se calcula el valor de mercado y por qué importa hacerlo bien',
+      category: 'Guías para Vendedores',
+      tags: ['valoración inmobiliaria Mallorca', 'cuánto vale mi casa', 'precio mercado Mallorca', 'inmobiliaria Mallorca', 'tasación vivienda Mallorca'],
+      excerpt: 'Saber cuánto vale tu propiedad en Mallorca es el primer paso antes de cualquier decisión: vender, refinanciar, donar o planificar una herencia. Una valoración bien fundamentada puede marcar una diferencia de decenas de miles de euros.',
+      blocks: [
+        {
+          type: 'p',
+          text: 'La pregunta "¿cuánto vale mi casa en Mallorca?" parece sencilla, pero tiene una respuesta más compleja de lo que la mayoría de propietarios esperan. El valor de una propiedad no es un número único y fijo: depende del objetivo de la valoración, del momento del mercado, de la comparativa con operaciones reales recientes y de factores que las herramientas automáticas online no saben detectar. Fijar un precio incorrecto desde el principio —ya sea por exceso o por defecto— es uno de los errores más costosos que puede cometer un propietario antes de vender. En este artículo explicamos cómo se calcula realmente el valor de mercado de una propiedad en Mallorca y qué factores determinan que dos pisos en el mismo edificio puedan valer sumas muy distintas.',
+        },
+        {
+          type: 'h2',
+          text: 'Por qué las valoraciones online no son fiables en Mallorca',
+        },
+        {
+          type: 'p',
+          text: 'Los portales inmobiliarios y las herramientas de valoración automática (AVMs — Automated Valuation Models) ofrecen estimaciones basadas en los precios de oferta publicados en sus plataformas, no en los precios reales de cierre de las operaciones. Esta distinción es crítica: en Mallorca, la diferencia entre el precio de salida al mercado y el precio final escriturado puede oscilar entre un 5% y un 20% dependiendo del segmento y la zona. Un portal te dice a cuánto está listado algo similar. No te dice a cuánto se ha vendido realmente.',
+        },
+        {
+          type: 'ul',
+          items: [
+            'Los portales mezclan propiedades de distintas calidades, estados y orientaciones dentro de la misma zona',
+            'No ponderan el tiempo que llevan en el mercado (una propiedad listada a precio elevado durante 18 meses distorsiona la media)',
+            'No conocen las condiciones específicas de la venta: urgencia del vendedor, financiación del comprador, fecha de entrega',
+            'En el segmento de lujo, muchas operaciones se cierran off-market y nunca aparecen en los portales',
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'Factores que determinan el valor de una propiedad en Mallorca',
+        },
+        {
+          type: 'h3',
+          text: '1. Ubicación y microubicación',
+        },
+        {
+          type: 'p',
+          text: 'La zona importa, pero la microubicación dentro de esa zona importa aún más. En Puerto Pollensa, una villa con vistas directas al mar puede valer el doble que otra a 300 metros tierra adentro con las mismas características. En Palma, un piso en la segunda planta con ascensor y orientación sur puede valer un 20-30% más que otro idéntico en el mismo portal pero en primera planta sin ascensor y con orientación norte. La proximidad a servicios, la tranquilidad de la calle, el nivel del vecindario y la exposición al sol son variables que los algoritmos capturan con mucha dificultad.',
+        },
+        {
+          type: 'h3',
+          text: '2. Superficie y distribución',
+        },
+        {
+          type: 'p',
+          text: 'La superficie construida es el punto de partida, pero no el único factor. La superficie útil (sin muros), la distribución funcional, el número y tamaño de las habitaciones y la relación entre zonas de día y de noche son variables que el comprador valora al ver el inmueble. Una distribución óptima puede justificar un precio por m² significativamente superior al de una propiedad de mayor superficie pero con distribución poco práctica. Además, en Mallorca los espacios exteriores —terrazas, jardines, piscinas— tienen un peso muy relevante en el precio final, especialmente en propiedades de uso vacacional.',
+        },
+        {
+          type: 'h3',
+          text: '3. Estado de conservación y calidad de la reforma',
+        },
+        {
+          type: 'p',
+          text: 'El estado del inmueble es uno de los factores con mayor impacto en el precio. Una propiedad llave en mano con cocina y baños reformados, instalaciones renovadas y certificado energético elevado puede valer entre un 25% y un 40% más que la misma propiedad sin reformar en el mismo edificio. En Mallorca, especialmente en el segmento de compradores internacionales, la preferencia por propiedades llave en mano es muy marcada: el comprador no quiere enfrentarse a una obra, especialmente si no reside en la isla.',
+        },
+        {
+          type: 'h3',
+          text: '4. Documentación urbanística y registral',
+        },
+        {
+          type: 'p',
+          text: 'Una propiedad con cargas registrales, problemas urbanísticos (obras sin legalizar, exceso de edificabilidad, situación en suelo no consolidado) o documentación incompleta vale menos —o directamente es invendible— aunque esté físicamente en perfectas condiciones. En Mallorca, la situación urbanística es especialmente compleja en propiedades rústicas, en zonas ANEI (Área Natural de Especial Interés) y en inmuebles con ampliaciones históricas no legalizadas. La due diligence documental es parte inseparable de cualquier valoración rigurosa.',
+        },
+        {
+          type: 'h3',
+          text: '5. Comparables reales recientes',
+        },
+        {
+          type: 'p',
+          text: 'El método más fiable para valorar una propiedad en Mallorca es el método de comparación: analizar las transacciones efectivamente cerradas en la misma zona y tipología en los últimos 6-12 meses, ajustando por las diferencias objetivas entre los comparables y el inmueble a valorar (superficie, estado, planta, orientación, extras). El acceso a datos de transacciones reales —no de precios de oferta— es lo que distingue una valoración profesional de una estimación automática. Los datos del Notariado, los registros del Colegio de Registradores y las bases de datos de operaciones cerradas son las fuentes primarias de referencia.',
+        },
+        {
+          type: 'table',
+          headers: ['Factor', 'Impacto sobre el precio', 'Comentario'],
+          rows: [
+            ['Zona / microubicación', 'Muy alto (±40%)', 'El factor con mayor peso individual'],
+            ['Vistas al mar (costa)', 'Alto (±20-35%)', 'Especialmente en suroeste y norte'],
+            ['Estado reforma / calidad', 'Alto (±20-40%)', 'Llave en mano vs. a reformar'],
+            ['Superficie exterior (jardín, piscina)', 'Alto en segunda residencia (±15-30%)', 'Menor peso en uso urbano habitual'],
+            ['Documentación en regla', 'Crítico (puede bloquear la venta)', 'Cargas o urbanística irregular'],
+            ['Certificado energético', 'Moderado (±5-10%)', 'Creciente importancia para compradores europeos'],
+            ['Orientación y luz', 'Moderado (±10-20%)', 'Sur vs norte, planta, sombras'],
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'Cuándo necesitas una valoración y cuándo una tasación',
+        },
+        {
+          type: 'p',
+          text: 'Conviene distinguir entre dos conceptos que se usan a veces de forma indistinta pero que tienen propósitos diferentes. La valoración de mercado es un análisis profesional del precio al que un inmueble puede venderse en las condiciones actuales del mercado. La elabora un agente inmobiliario o un asesor especializado y sirve para fijar el precio de venta, planificar una donación o herencia o tomar decisiones de inversión. La tasación hipotecaria es un informe homologado elaborado por una sociedad de tasación regulada (ECO) que sirve específicamente para que el banco calcule el importe máximo de financiación que concederá. Tiene validez de seis meses y su coste es de 300-600 € dependiendo del inmueble. Si tu objetivo es vender, necesitas una valoración de mercado, no necesariamente una tasación hipotecaria.',
+        },
+        {
+          type: 'cta',
+          title: '¿Quieres saber cuánto vale tu propiedad en Mallorca?',
+          body: 'En Benavides Real Estate elaboramos valoraciones de mercado basadas en transacciones reales recientes, sin el sesgo de quien quiere captar el mandato de venta a cualquier precio. Sin coste y sin compromiso.',
+          button: 'Solicitar valoración gratuita',
+        },
+        {
+          type: 'faq',
+          eyebrow: 'Preguntas frecuentes sobre valoración de propiedades en Mallorca',
+          items: [
+            {
+              q: '¿Cuánto tarda en hacerse una valoración de una propiedad en Mallorca?',
+              a: 'Una valoración de mercado elaborada por una agencia inmobiliaria o asesor especializado suele estar lista en 48-72 horas desde la visita al inmueble o la revisión de la documentación. Una tasación hipotecaria oficial (elaborada por una sociedad de tasación homologada) suele tardar entre 5 y 10 días hábiles desde la solicitud. Para propiedades complejas (fincas rústicas, inmuebles con problemas urbanísticos, propiedades singulares sin comparables directos) el plazo puede extenderse.',
+            },
+            {
+              q: '¿Cuánto cuesta tasar una propiedad en Mallorca?',
+              a: 'La valoración de mercado que elabora una inmobiliaria o asesor especializado suele ser gratuita como parte del proceso comercial (si están interesados en gestionar la venta). Una tasación hipotecaria oficial, necesaria para solicitar financiación bancaria, tiene un coste de entre 300 y 600 € dependiendo de la superficie y tipología del inmueble. En Benavides Real Estate elaboramos valoraciones de mercado sin coste y sin compromiso para propietarios que están considerando vender.',
+            },
+            {
+              q: '¿Puede el valor catastral usarse como referencia del precio de mercado?',
+              a: 'No, el valor catastral y el valor de mercado son conceptos completamente distintos. El valor catastral es un valor administrativo fijado por el Catastro que sirve de base imponible para tributos como el IBI. En la mayoría de los municipios de Mallorca, el valor catastral está muy por debajo del valor de mercado real (habitualmente entre el 20% y el 50% del precio al que se vendería la propiedad). La base imponible del ITP, sin embargo, no es el valor catastral sino el "valor de referencia" que fija el Catastro y que puede ser más cercano al mercado.',
+            },
+            {
+              q: '¿Qué diferencia hay entre tasación y valoración inmobiliaria?',
+              a: 'La valoración de mercado es un análisis profesional del precio al que un inmueble puede venderse en las condiciones actuales del mercado, elaborado por un agente o asesor inmobiliario. No tiene valor legal vinculante pero es la referencia más útil para fijar el precio de venta. La tasación hipotecaria es un informe oficial elaborado por una sociedad de tasación regulada y homologada por el Banco de España, que sirve específicamente para que la entidad bancaria determine el importe máximo de hipoteca que concederá. Tiene validez de 6 meses y su metodología está regulada por la Orden ECO/805/2003.',
+            },
+            {
+              q: '¿Cuánto ha subido el precio de la vivienda en Mallorca en los últimos años?',
+              a: 'El mercado inmobiliario de Mallorca ha experimentado una apreciación sostenida durante la última década, con aceleración especialmente notable entre 2020 y 2024. Según datos del Colegio de Registradores, el precio medio en Baleares ha aumentado entre un 40% y un 60% en los últimos cinco años en las zonas más demandadas. En el segmento prime (Andratx, Deià, Son Vida), las revalorizaciones han sido aún más pronunciadas. Esta tendencia está impulsada por la limitación estructural de la oferta (suelo escaso y protegido), la demanda internacional consolidada y Mallorca como activo refugio en periodos de incertidumbre.',
+            },
+          ],
+        },
+        {
+          type: 'links',
+          title: 'Recursos relacionados',
+          items: [
+            { label: 'Inmobiliaria en Mallorca', href: '/es/inmobiliaria-mallorca', desc: 'Conócenos: más de 10 años asesorando compraventas en toda la isla.' },
+            { label: 'Vender Casa en Mallorca', href: '/es/vender-casa-mallorca', desc: 'Gestión completa de la venta: valoración, juridico, fiscal y cierre.' },
+            { label: 'Mejores zonas para comprar en Mallorca', href: '/es/blog/mejores-zonas-comprar-casa-mallorca-2026', desc: 'Análisis por zonas: precios, demanda y perfil de comprador en 2026.' },
+          ],
+        },
+      ],
+    },
+    en: {
+      seoTitle: 'How much is my property in Mallorca worth? How market value is calculated in 2026',
+      metaDescription: 'Learn how a property in Mallorca is valued: the factors that determine market price, why online portals are unreliable and how to get a genuine valuation.',
+      h1: 'How much is my property in Mallorca worth? How market value is calculated and why getting it right matters',
+      category: 'Seller Guides',
+      tags: ['property valuation Mallorca', 'how much is my house worth Mallorca', 'Mallorca market price', 'real estate valuation Mallorca'],
+      excerpt: 'Knowing what your property in Mallorca is worth is the essential first step before any decision: selling, refinancing, gifting or estate planning. A well-founded valuation can make a difference of tens of thousands of euros.',
+      blocks: [
+        {
+          type: 'p',
+          text: 'The question "how much is my property in Mallorca worth?" seems straightforward, but the answer is more complex than most owners expect. The value of a property is not a single fixed number: it depends on the purpose of the valuation, the state of the market, comparable recent transactions and factors that automated online tools cannot detect. Setting the wrong price from the outset — whether too high or too low — is one of the most costly mistakes a vendor can make. This article explains how market value is actually calculated for a property in Mallorca, and what factors mean two flats in the same building can be worth very different amounts.',
+        },
+        {
+          type: 'h2',
+          text: 'Why online valuations are unreliable in Mallorca',
+        },
+        {
+          type: 'p',
+          text: 'Property portals and automated valuation tools (AVMs) produce estimates based on listed asking prices on their platforms — not on actual transaction prices. This distinction is critical: in Mallorca, the gap between the initial asking price and the final price recorded in the notarial deed can range from 5% to 20% depending on the segment and area. A portal tells you what something similar is listed for. It does not tell you what it actually sold for.',
+        },
+        {
+          type: 'h2',
+          text: 'Key factors determining property value in Mallorca',
+        },
+        {
+          type: 'ul',
+          items: [
+            'Location and micro-location: often the single most important variable — sea views, street tranquillity, sun exposure',
+            'Floor area and layout: useful area (excluding walls), functional distribution, indoor-outdoor relationship',
+            'Condition and quality of refurbishment: turnkey vs. in need of renovation — gap of 25–40% in price',
+            'Legal and planning documentation: unresolved urbanistic issues can block a sale entirely',
+            'Recent comparable transactions: closed sale prices, not listing prices, are the reference',
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'Want to know what your property in Mallorca is worth?',
+          body: 'At Benavides Real Estate we produce market valuations based on actual recent transactions, free from the bias of someone seeking the sales mandate at any price. No cost, no commitment.',
+          button: 'Request a free valuation',
+        },
+        {
+          type: 'links',
+          title: 'Related resources',
+          items: [
+            { label: 'Real Estate Agency in Mallorca', href: '/es/inmobiliaria-mallorca', desc: 'Over 10 years advising property transactions across the whole island.' },
+            { label: 'Sell Property in Mallorca', href: '/en/sell-property-mallorca', desc: 'Full sale management: valuation, legal, tax and completion.' },
+            { label: 'Best areas to buy property in Mallorca', href: '/es/blog/mejores-zonas-comprar-casa-mallorca-2026', desc: 'Zone-by-zone analysis: prices, demand and buyer profiles in 2026.' },
+          ],
+        },
+      ],
+    },
+  },
+  {
+    slug: 'ayuda-10000-euros-jovenes-comprar-vivienda-mallorca-2026',
+    date: '2026-03-21',
+    readingTime: 7,
+    authorKey: 'gonzalo',
+    image: {
+      src: 'https://images.pexels.com/photos/26832624/pexels-photo-26832624.jpeg',
+      alt: 'Cala de Mallorca — ayuda de 10.000 euros para jóvenes que compran vivienda en Baleares 2026',
+    },
+    es: {
+      seoTitle: 'Ayuda de 10.000 € para jóvenes que compran vivienda en Mallorca: requisitos 2026',
+      metaDescription: 'El Govern Balear reserva 6 millones en ayudas directas de 10.000 € para jóvenes menores de 40 años que compren su primera vivienda en Mallorca. Requisitos, límites de precio e ITP reducido.',
+      h1: 'Ayuda de 10.000 euros para jóvenes que compran vivienda en Mallorca: requisitos, fiscalidad e Hipoteca Joven (2026)',
+      category: 'Actualidad',
+      tags: ['ayuda jóvenes vivienda mallorca', 'subvención 10000 euros baleares', 'ITP jóvenes mallorca', 'hipoteca joven mallorca', 'comprar vivienda mallorca 2026'],
+      excerpt: 'El Govern Balear ha activado una ayuda directa de 10.000 euros a fondo perdido para jóvenes menores de 40 años que compren su primera vivienda en Mallorca. Te explicamos los requisitos exactos, los límites de precio y las ventajas fiscales complementarias.',
+      blocks: [
+        {
+          type: 'p',
+          text: 'El Govern de les Illes Balears ha activado en marzo de 2026 una ayuda directa de 10.000 euros a fondo perdido destinada a jóvenes menores de 40 años que compren su primera vivienda habitual en el archipiélago. La medida, respaldada por un presupuesto de 6 millones de euros, se enmarca en un paquete más amplio de políticas de acceso a la vivienda que incluye también beneficios fiscales en el Impuesto de Transmisiones Patrimoniales y un programa de aval público para hipotecas. En un mercado donde los precios subieron un 13,4% de media en 2025, estas ayudas pueden marcar la diferencia entre poder o no poder comprar.',
+        },
+        {
+          type: 'h2',
+          text: '¿En qué consiste la ayuda directa del Govern?',
+        },
+        {
+          type: 'p',
+          text: 'Se trata de una subvención directa —no un préstamo— de 10.000 euros que el Govern Balear entrega a fondo perdido al comprador joven elegible. El dinero puede destinarse a cubrir parte de la entrada, los gastos de escritura, el ITP u otros costes asociados a la compra. El presupuesto total reservado es de 6 millones de euros, lo que implica que la medida puede beneficiar a aproximadamente 600 compradores mientras haya fondos disponibles.',
+        },
+        {
+          type: 'ul',
+          items: [
+            'Importe: 10.000 euros a fondo perdido',
+            'Presupuesto total: 6 millones de euros (≈ 600 beneficiarios)',
+            'Destino: primera vivienda habitual en Baleares',
+            'No es un préstamo: no se devuelve',
+            'Compatible con otras ayudas estatales y autonómicas vigentes',
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'Requisitos para acceder a la ayuda',
+        },
+        {
+          type: 'p',
+          text: 'Los requisitos publicados por el Govern fijan condiciones tanto para el comprador como para la vivienda. Es importante verificar el cumplimiento de todos antes de iniciar el proceso de compra.',
+        },
+        {
+          type: 'ul',
+          items: [
+            'Edad: menor de 40 años en el momento de la solicitud',
+            'Residencia: empadronado en Baleares durante al menos los últimos 5 años',
+            'Primera vivienda: no puede ser propietario de otra vivienda en ningún lugar de España',
+            'Uso: la vivienda adquirida debe ser residencia habitual y permanente',
+            'Precio máximo en Mallorca: 307.000 euros (Eivissa: 370.000 €; Menorca: 285.000 €)',
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'Límites de precio de la vivienda según isla',
+        },
+        {
+          type: 'p',
+          text: 'El precio máximo de la vivienda elegible varía por isla, reflejando las diferencias de mercado del archipiélago. Para Mallorca, el límite fijado es de 307.000 euros, lo que excluye gran parte del mercado de obra nueva y de las zonas más prime de la isla, pero cubre una parte significativa del mercado de segunda mano en núcleos residenciales del interior y municipios periféricos.',
+        },
+        {
+          type: 'ul',
+          items: [
+            'Mallorca: máximo 307.000 euros',
+            'Eivissa: máximo 370.000 euros',
+            'Menorca: máximo 285.000 euros',
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'Ventajas fiscales adicionales: ITP reducido o exento',
+        },
+        {
+          type: 'p',
+          text: 'Además de la ayuda directa, el paquete del Govern incluye una reducción significativa del Impuesto de Transmisiones Patrimoniales (ITP), que habitualmente se sitúa en el 8% del precio de compra en Baleares. Para los compradores jóvenes, las condiciones son notablemente más favorables:',
+        },
+        {
+          type: 'ul',
+          items: [
+            'Menores de 30 años: exención total del ITP (ahorro de hasta 24.560 € en una vivienda de 307.000 €)',
+            'Entre 30 y 36 años: ITP reducido al 4%, la mitad del tipo general',
+            'Condición: debe ser primera vivienda habitual y cumplir los requisitos generales',
+          ],
+        },
+        {
+          type: 'p',
+          text: 'Este beneficio fiscal es especialmente relevante porque el ITP es uno de los mayores costes al comprar una vivienda de segunda mano. A 307.000 euros, el ITP general supondría 24.560 euros; con la exención para menores de 30 años, ese gasto desaparece completamente. Combinado con los 10.000 euros de ayuda directa, un comprador menor de 30 años podría ahorrarse más de 34.000 euros en los costes de adquisición.',
+        },
+        {
+          type: 'h2',
+          text: 'Hipoteca Joven: financiación hasta el 90% con aval público',
+        },
+        {
+          type: 'p',
+          text: 'El tercer pilar del paquete es el programa Hipoteca Joven, a través del cual el Institut Balear de l\'Habitatge (IBAVI) actúa como avalista público para que los compradores jóvenes puedan acceder a financiación de hasta el 90% del valor del inmueble. La barrera habitual de los bancos —que financian como máximo el 80%— obliga a disponer del 20% del precio más gastos de antemano. Con el aval público, ese porcentaje baja al 10%, lo que reduce sustancialmente el ahorro previo necesario.',
+        },
+        {
+          type: 'ul',
+          items: [
+            'Cobertura del aval: hasta el 90% del valor de tasación',
+            'Gestionado a través del Institut Balear de l\'Habitatge (IBAVI)',
+            'Compatible con las ayudas directas de 10.000 euros',
+            'Permite acceder a la compra con menos ahorro previo acumulado',
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'Contexto: Baleares, la segunda comunidad con vivienda más cara de España',
+        },
+        {
+          type: 'p',
+          text: 'Estas medidas llegan en un momento en que el acceso a la vivienda en Baleares se ha convertido en uno de los principales problemas sociales del archipiélago. Según los datos publicados junto al anuncio, Baleares registró en 2025 un incremento medio de precios del 13,4% respecto a 2024, convirtiéndose en la segunda comunidad autónoma con las viviendas más caras de España, solo por detrás de Madrid. En Mallorca, la combinación de alta demanda internacional, oferta limitada de suelo y restricciones urbanísticas ha creado un mercado estructuralmente tensionado donde los perfiles locales con ingresos medios tienen dificultades crecientes para comprar en la isla donde trabajan y viven.',
+        },
+        {
+          type: 'faq',
+          eyebrow: 'Preguntas frecuentes',
+          items: [
+            {
+              q: '¿Cuándo se puede solicitar la ayuda de 10.000 euros para jóvenes en Mallorca?',
+              a: 'El Govern ha activado el programa en marzo de 2026 con 6 millones de euros reservados. Las solicitudes se tramitan a través del Institut Balear de l\'Habitatge (IBAVI). Es recomendable solicitarla cuanto antes dado que el presupuesto es limitado y cubre aproximadamente 600 beneficiarios.',
+            },
+            {
+              q: '¿Se puede combinar la ayuda de 10.000 euros con la exención del ITP?',
+              a: 'Sí. Ambas medidas son compatibles entre sí. Un comprador menor de 30 años puede acceder simultáneamente a los 10.000 euros de ayuda directa, a la exención total del ITP y al programa Hipoteca Joven de aval público. La combinación puede suponer un ahorro total superior a 34.000 euros en los costes de adquisición.',
+            },
+            {
+              q: '¿El límite de precio de 307.000 euros en Mallorca incluye gastos e impuestos?',
+              a: 'El límite de 307.000 euros se refiere al precio de compra escriturado de la vivienda, sin incluir gastos notariales, registro ni impuestos. Es importante verificar que el precio acordado con el vendedor no supere ese umbral antes de formalizar la operación.',
+            },
+            {
+              q: '¿Qué pasa si tengo entre 36 y 40 años? ¿Tengo derecho a la ayuda directa pero no a la rebaja del ITP?',
+              a: 'Sí. La ayuda directa de 10.000 euros aplica a todos los menores de 40 años que cumplan los requisitos. La reducción del ITP al 4% aplica entre 30 y 36 años, y la exención total del ITP aplica a menores de 30 años. Entre 36 y 40 años, se mantiene el ITP general del 8% pero se puede acceder a los 10.000 euros de subvención y al programa Hipoteca Joven.',
+            },
+            {
+              q: '¿Los 5 años de empadronamiento en Baleares tienen que ser continuados?',
+              a: 'El requisito publicado indica residencia mínima de 5 años en Baleares, sin especificar si deben ser continuados o acumulados. Para obtener confirmación oficial sobre este punto, es recomendable consultar directamente con el IBAVI o con un asesor especializado antes de iniciar la solicitud.',
+            },
+          ],
+        },
+        {
+          type: 'cta',
+          title: '¿Buscas vivienda en Mallorca dentro de este rango de precios?',
+          body: 'En Benavides Real Estate trabajamos el mercado residencial de Mallorca en todos los segmentos. Si estás buscando tu primera vivienda y quieres aprovechar estas ayudas, podemos ayudarte a encontrar propiedades elegibles y acompañarte en todo el proceso de compra.',
+          button: 'Ver propiedades disponibles',
+        },
+        {
+          type: 'links',
+          title: 'Recursos relacionados',
+          items: [
+            {
+              label: 'Comprar casa en Mallorca siendo no residente: guía legal',
+              href: '/es/blog/comprar-casa-mallorca-no-residente-guia-legal',
+              desc: 'Proceso completo de compra para extranjeros: NIE, fiscalidad y pasos legales.',
+            },
+            {
+              label: 'Impuestos al comprar una vivienda en Mallorca',
+              href: '/es/blog/impuestos-comprar-vivienda-mallorca-no-residentes',
+              desc: 'ITP, IVA, AJD y costes totales desglosados.',
+            },
+            {
+              label: 'Servicios de compra en Mallorca',
+              href: '/es/comprar-casa-mallorca',
+              desc: 'Cómo te ayudamos a encontrar y comprar la propiedad adecuada.',
+            },
+          ],
+        },
+      ],
+    },
+    en: {
+      seoTitle: '10,000-euro grant for young buyers in Mallorca: requirements 2026',
+      metaDescription: 'The Balearic Government has reserved 6 million euros in direct grants of 10,000 euros for people under 40 buying their first home in Mallorca. Requirements, price limits and reduced transfer tax explained.',
+      h1: '10,000-euro grant for young people buying property in Mallorca: requirements, tax benefits and young mortgage scheme (2026)',
+      category: 'Market News',
+      tags: ['grant young buyers mallorca', 'first home grant balearics 2026', 'transfer tax reduction mallorca', 'young mortgage mallorca', 'buy property mallorca 2026'],
+      excerpt: 'The Balearic Government has activated a direct grant of 10,000 euros for people under 40 buying their first home in Mallorca. Here are the exact requirements, price limits and additional tax benefits available.',
+      blocks: [
+        {
+          type: 'p',
+          text: 'The Government of the Balearic Islands has activated in March 2026 a direct non-repayable grant of 10,000 euros for people under 40 buying their first habitual residence in the archipelago. The measure, backed by a budget of 6 million euros, is part of a broader housing access package that also includes tax benefits on Property Transfer Tax (ITP) and a public mortgage guarantee scheme. In a market where prices rose an average of 13.4% in 2025, these grants could make the difference between being able or unable to buy.',
+        },
+        {
+          type: 'h2',
+          text: 'What does the direct grant consist of?',
+        },
+        {
+          type: 'p',
+          text: 'This is a direct grant — not a loan — of 10,000 euros that the Balearic Government pays outright to eligible young buyers. The money can be used to cover part of the deposit, notary fees, transfer tax or other acquisition costs. The total budget of 6 million euros means the measure can benefit approximately 600 buyers while funds remain available.',
+        },
+        {
+          type: 'ul',
+          items: [
+            'Amount: 10,000 euros, non-repayable',
+            'Total budget: 6 million euros (≈ 600 beneficiaries)',
+            'Purpose: first habitual residence in the Balearic Islands',
+            'Not a loan: no repayment required',
+            'Compatible with other national and regional housing grants',
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'Requirements to qualify',
+        },
+        {
+          type: 'p',
+          text: 'The requirements published by the Government set conditions for both the buyer and the property. It is important to verify compliance with all of them before starting the purchase process.',
+        },
+        {
+          type: 'ul',
+          items: [
+            'Age: under 40 at the time of application',
+            'Residency: registered in the Balearic Islands for at least the last 5 years',
+            'First home: must not own any other property anywhere in Spain',
+            'Use: the property must become the buyer\'s permanent habitual residence',
+            'Maximum price in Mallorca: 307,000 euros (Ibiza: 370,000 €; Menorca: 285,000 €)',
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'Property price limits by island',
+        },
+        {
+          type: 'p',
+          text: 'The maximum eligible property price varies by island, reflecting the different market conditions across the archipelago. For Mallorca, the limit is set at 307,000 euros, which excludes most of the new-build market and prime areas of the island, but covers a significant portion of the second-hand market in residential towns and peripheral municipalities.',
+        },
+        {
+          type: 'ul',
+          items: [
+            'Mallorca: maximum 307,000 euros',
+            'Ibiza: maximum 370,000 euros',
+            'Menorca: maximum 285,000 euros',
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'Additional tax benefits: reduced or zero transfer tax',
+        },
+        {
+          type: 'p',
+          text: 'In addition to the direct grant, the package includes a significant reduction in Property Transfer Tax (ITP — Impuesto de Transmisiones Patrimoniales), which normally stands at 8% of the purchase price in the Balearic Islands. For young buyers, the conditions are considerably more favourable:',
+        },
+        {
+          type: 'ul',
+          items: [
+            'Under 30 years old: full ITP exemption (saving up to 24,560 € on a 307,000 € property)',
+            'Between 30 and 36 years old: ITP reduced to 4%, half the standard rate',
+            'Condition: must be a first habitual residence meeting the general eligibility requirements',
+          ],
+        },
+        {
+          type: 'p',
+          text: 'This tax benefit is particularly significant because ITP is one of the largest costs when buying a second-hand property. On a 307,000-euro property, standard ITP would amount to 24,560 euros; with the full exemption for under-30s, that cost disappears entirely. Combined with the 10,000-euro direct grant, a buyer under 30 could save over 34,000 euros in acquisition costs.',
+        },
+        {
+          type: 'h2',
+          text: 'Young Mortgage Scheme: up to 90% financing with public guarantee',
+        },
+        {
+          type: 'p',
+          text: 'The third pillar of the package is the Hipoteca Joven (Young Mortgage) programme, through which the Institut Balear de l\'Habitatge (IBAVI) acts as a public guarantor, enabling young buyers to access financing of up to 90% of the property value. The standard bank requirement — a maximum of 80% financing — means buyers must have 20% of the price plus costs saved in advance. With the public guarantee, that figure drops to 10%, substantially reducing the savings required upfront.',
+        },
+        {
+          type: 'ul',
+          items: [
+            'Guarantee coverage: up to 90% of the assessed value',
+            'Managed through the Institut Balear de l\'Habitatge (IBAVI)',
+            'Compatible with the 10,000-euro direct grant',
+            'Allows buyers to purchase with less upfront savings',
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'Context: the Balearic Islands, Spain\'s second most expensive housing market',
+        },
+        {
+          type: 'p',
+          text: 'These measures come at a time when housing access in the Balearic Islands has become one of the archipelago\'s most pressing social issues. According to data published alongside the announcement, the Balearics recorded an average price increase of 13.4% in 2025 compared to 2024, making it the second most expensive autonomous community in Spain for residential property, behind only Madrid. In Mallorca, the combination of high international demand, limited land supply and planning restrictions has created a structurally stressed market where local profiles with median incomes face growing difficulty buying on the island where they live and work.',
+        },
+        {
+          type: 'faq',
+          eyebrow: 'Frequently asked questions',
+          items: [
+            {
+              q: 'When can I apply for the 10,000-euro grant for young buyers in Mallorca?',
+              a: 'The Government activated the programme in March 2026 with 6 million euros reserved. Applications are processed through the Institut Balear de l\'Habitatge (IBAVI). It is advisable to apply as early as possible given the limited budget covering approximately 600 beneficiaries.',
+            },
+            {
+              q: 'Can the 10,000-euro grant be combined with the ITP tax exemption?',
+              a: 'Yes. Both measures are compatible. A buyer under 30 can simultaneously access the 10,000-euro direct grant, the full ITP exemption and the Young Mortgage public guarantee scheme. The combined saving can exceed 34,000 euros in total acquisition costs.',
+            },
+            {
+              q: 'Does the 307,000-euro price limit in Mallorca include taxes and fees?',
+              a: 'The 307,000-euro limit refers to the purchase price stated in the deed, not including notary fees, land registry costs or taxes. It is important to confirm that the agreed price with the seller does not exceed this threshold before formalising the transaction.',
+            },
+            {
+              q: 'I am between 36 and 40 years old. Can I get the direct grant but not the ITP reduction?',
+              a: 'Yes. The 10,000-euro direct grant applies to all buyers under 40 who meet the requirements. The 4% reduced ITP applies to buyers aged 30–36, and the full ITP exemption applies to under-30s. Between 36 and 40, the standard 8% ITP rate applies, but you can still access the 10,000-euro grant and the Young Mortgage scheme.',
+            },
+            {
+              q: 'Do the 5 years of Balearic residency need to be continuous?',
+              a: 'The published requirement states a minimum residency of 5 years in the Balearic Islands, without specifying whether these must be continuous or cumulative. For official clarification on this point, it is advisable to consult directly with the IBAVI or a specialist adviser before starting the application.',
+            },
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'Looking for a property in Mallorca within this price range?',
+          body: 'At Benavides Real Estate we cover the Mallorca residential market across all segments. If you are looking for your first home and want to take advantage of these grants, we can help you find eligible properties and guide you through the entire purchase process.',
+          button: 'View available properties',
+        },
+        {
+          type: 'links',
+          title: 'Related resources',
+          items: [
+            {
+              label: 'Buying property in Mallorca as a non-resident: legal guide',
+              href: '/en/blog/comprar-casa-mallorca-no-residente-guia-legal',
+              desc: 'Complete purchase process for foreign buyers: NIE, taxes and legal steps.',
+            },
+            {
+              label: 'Taxes when buying property in Mallorca',
+              href: '/en/blog/impuestos-comprar-vivienda-mallorca-no-residentes',
+              desc: 'ITP, VAT, stamp duty and total costs broken down.',
+            },
+            {
+              label: 'Buying services in Mallorca',
+              href: '/en/buy-property-mallorca',
+              desc: 'How we help you find and buy the right property.',
+            },
+          ],
+        },
+      ],
+    },
+  },
+
+  // ─────────────────────────────────────────────────────────────────
+  // POST — Cómo instalar el certificado digital en Windows
+  // ─────────────────────────────────────────────────────────────────
+  {
+    slug: 'como-instalar-certificado-digital-windows',
+    date: '2026-03-24',
+    readingTime: 8,
+    authorKey: 'gonzalo',
+    image: {
+      src: 'https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg',
+      alt: 'Certificado digital en ordenador Windows — trámites fiscales e inmobiliarios en España',
+    },
+    es: {
+      seoTitle: 'Cómo instalar el certificado digital en Windows: guía paso a paso',
+      metaDescription:
+        'Aprende a instalar el certificado digital de la FNMT en tu ordenador Windows para realizar trámites con Hacienda, el Registro de la Propiedad y otras administraciones españolas.',
+      h1: 'Cómo instalar el certificado digital en Windows: guía paso a paso',
+      category: 'Trámites y Gestiones',
+      tags: ['certificado digital', 'FNMT', 'Windows', 'trámites', 'Hacienda', 'NIE'],
+      excerpt:
+        'El certificado digital es imprescindible para realizar cualquier trámite telemático con la Agencia Tributaria, el Registro de la Propiedad o el Catastro. En esta guía te explicamos cómo obtenerlo e instalarlo en Windows paso a paso.',
+      blocks: [
+        {
+          type: 'p',
+          text: 'Si estás tramitando la compra o venta de una propiedad en España, o si necesitas presentar declaraciones fiscales ante la Agencia Tributaria, el certificado digital es una herramienta imprescindible. Permite identificarte de forma segura ante cualquier administración pública española desde tu ordenador, sin necesidad de desplazarte a ninguna oficina. En esta guía te explicamos cómo obtener e instalar el certificado digital de la FNMT (Fábrica Nacional de Moneda y Timbre) en un ordenador con Windows, paso a paso.',
+        },
+        {
+          type: 'h2',
+          text: '¿Qué es el certificado digital y para qué sirve?',
+        },
+        {
+          type: 'p',
+          text: 'El certificado digital es un archivo electrónico que acredita tu identidad en internet. Lo emite la FNMT-RCM, organismo oficial del Estado español. Con él puedes realizar trámites como presentar la declaración de la renta, consultar o pagar impuestos como el ITP o el modelo 210 (IRNR), inscribir documentos en el Registro de la Propiedad, gestionar el NIE o el NIF, y acceder a la Sede Electrónica de cualquier administración pública española.',
+        },
+        {
+          type: 'h2',
+          text: 'Requisitos previos',
+        },
+        {
+          type: 'ul',
+          items: [
+            'DNI o NIE en vigor.',
+            'Ordenador con Windows 10 u 11.',
+            'Navegador compatible: Internet Explorer, Edge o Firefox (recomendado Firefox para la solicitud inicial).',
+            'Acceso a una oficina de registro (puede ser una oficina de la AEAT, ayuntamiento o consulado para residentes en el extranjero).',
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'Paso 1: Solicitar el certificado en la web de la FNMT',
+        },
+        {
+          type: 'p',
+          text: 'Accede a la página oficial de la FNMT (www.sede.fnmt.gob.es) y selecciona "Certificados > Persona Física > Obtener certificado software". Introduce tu DNI o NIE y tu correo electrónico. La FNMT te enviará un código de solicitud a ese email. Guarda ese código: lo necesitarás en los pasos siguientes. Es importante realizar todo el proceso desde el mismo ordenador y el mismo navegador. No formatees el equipo ni cambies el navegador hasta terminar.',
+        },
+        {
+          type: 'h2',
+          text: 'Paso 2: Acreditar tu identidad en una oficina de registro',
+        },
+        {
+          type: 'p',
+          text: 'Con el código de solicitud en mano, debes acudir en persona a una oficina de registro habilitada (oficinas de la Agencia Tributaria, Seguridad Social, ayuntamientos, consulados españoles en el extranjero, entre otras). Allí verificarán tu identidad con tu documento de identidad original. Este trámite presencial es obligatorio y no puede realizarse de forma telemática en la modalidad de certificado software. Una vez acreditado, recibirás confirmación y podrás continuar el proceso online.',
+        },
+        {
+          type: 'h2',
+          text: 'Paso 3: Descargar e instalar el certificado',
+        },
+        {
+          type: 'p',
+          text: 'Tras la acreditación presencial, vuelve a la web de la FNMT desde el mismo ordenador y navegador que usaste en el paso 1. Accede a "Descargar certificado" e introduce tu DNI/NIE y el código de solicitud. El certificado se descargará automáticamente e instalará en el almacén de certificados de Windows y del navegador. Una vez instalado, puedes hacer una copia de seguridad exportándolo desde el navegador o desde el Panel de Control de Windows en formato .p12 o .pfx, protegido con contraseña.',
+        },
+        {
+          type: 'h2',
+          text: 'Cómo exportar el certificado para hacer una copia de seguridad',
+        },
+        {
+          type: 'ul',
+          items: [
+            'Abre el Panel de Control de Windows y busca "Administrar certificados de usuario".',
+            'En la carpeta "Personal > Certificados" encontrarás tu certificado instalado.',
+            'Haz clic derecho > Todas las tareas > Exportar.',
+            'Selecciona exportar la clave privada y elige formato .pfx.',
+            'Establece una contraseña segura y guarda el archivo en un lugar seguro (USB, disco externo o nube cifrada).',
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'Cómo importar el certificado en otro ordenador',
+        },
+        {
+          type: 'p',
+          text: 'Si necesitas usar el certificado en otro equipo o navegador, solo tienes que copiar el archivo .pfx y ejecutarlo en el nuevo ordenador. Windows abrirá el asistente de importación: acepta las condiciones, introduce la contraseña que estableciste al exportar y confirma. El certificado quedará disponible en el nuevo equipo sin necesidad de repetir el proceso con la FNMT.',
+        },
+        {
+          type: 'h2',
+          text: 'Preguntas frecuentes',
+        },
+        {
+          type: 'faq',
+          items: [
+            {
+              q: '¿Cuánto tiempo tarda el proceso completo?',
+              a: 'El trámite online es inmediato. La visita presencial a la oficina de registro suele resolverse el mismo día. Si acudes a una oficina de la AEAT sin cita, puede haber espera; es recomendable pedir cita previa en la web de la Agencia Tributaria.',
+            },
+            {
+              q: '¿Tiene algún coste el certificado digital de la FNMT?',
+              a: 'No. El certificado de persona física emitido por la FNMT es completamente gratuito.',
+            },
+            {
+              q: '¿Cuánto tiempo es válido el certificado?',
+              a: 'El certificado de persona física tiene una validez de 4 años. Pasado ese plazo deberás renovarlo. La FNMT te avisará por email con antelación y podrás renovarlo de forma telemática sin necesidad de acudir presencialmente, siempre que lo hagas antes de que caduque.',
+            },
+            {
+              q: '¿Puedo usar el certificado digital desde el extranjero?',
+              a: 'Sí. Una vez instalado en tu ordenador, puedes acceder a la Sede Electrónica de la AEAT o cualquier otro organismo español desde cualquier país. Esto es especialmente útil para no residentes que necesitan gestionar impuestos como el modelo 210 (IRNR) o consultar su situación fiscal en España.',
+            },
+            {
+              q: '¿Qué pasa si pierdo el certificado o formateo el ordenador?',
+              a: 'Si tienes una copia de seguridad en formato .pfx, simplemente impórtala en el nuevo equipo. Si no tienes copia, deberás solicitar un nuevo certificado repitiendo el proceso completo desde el paso 1, incluyendo la visita presencial.',
+            },
+          ],
+        },
+        {
+          type: 'cta',
+          title: '¿Necesitas ayuda con trámites fiscales o inmobiliarios en España?',
+          body: 'En Benavides Real Estate contamos con asesores fiscales y abogados especializados en operaciones inmobiliarias en Mallorca. Si tienes dudas sobre impuestos, certificado digital, NIE u otros trámites relacionados con tu propiedad, contáctanos.',
+          button: 'Contactar con un asesor',
+        },
+        {
+          type: 'links',
+          title: 'Artículos relacionados',
+          items: [
+            {
+              label: 'Impuestos al comprar una vivienda en Mallorca',
+              href: '/es/blog/impuestos-comprar-vivienda-mallorca-no-residentes',
+              desc: 'ITP, IVA, AJD y costes totales desglosados para no residentes.',
+            },
+            {
+              label: 'Comprar casa en Mallorca como no residente: guía legal',
+              href: '/es/blog/comprar-casa-mallorca-no-residente-guia-legal',
+              desc: 'NIE, notaría, registro y todo el proceso de compra explicado.',
+            },
+          ],
+        },
+      ],
+    },
+    en: {
+      seoTitle: 'How to install a digital certificate on Windows: step-by-step guide',
+      metaDescription:
+        'Learn how to install the FNMT digital certificate on your Windows computer to carry out tax and property procedures with Spanish authorities.',
+      h1: 'How to install a digital certificate on Windows: step-by-step guide',
+      category: 'Procedures & Admin',
+      tags: ['digital certificate', 'FNMT', 'Windows', 'tax procedures', 'NIE', 'Spain'],
+      excerpt:
+        'A digital certificate is essential for any online procedure with the Spanish Tax Agency, the Land Registry or the Catastro. This guide walks you through obtaining and installing it on Windows.',
+      blocks: [
+        {
+          type: 'p',
+          text: 'If you are buying or selling a property in Spain, or need to file tax returns with the Spanish Tax Agency (AEAT), a digital certificate is an essential tool. It allows you to identify yourself securely to any Spanish public authority from your computer, without having to visit any office in person. This guide explains how to obtain and install the FNMT (Royal Mint of Spain) digital certificate on a Windows computer, step by step.',
+        },
+        {
+          type: 'h2',
+          text: 'What is a digital certificate and what is it used for?',
+        },
+        {
+          type: 'p',
+          text: 'A digital certificate is an electronic file that verifies your identity online. It is issued by the FNMT-RCM, an official Spanish state body. With it you can file your income tax return, pay taxes such as ITP or Modelo 210 (IRNR for non-residents), register documents with the Land Registry, manage your NIE or NIF, and access the electronic headquarters of any Spanish public authority.',
+        },
+        {
+          type: 'h2',
+          text: 'Prerequisites',
+        },
+        {
+          type: 'ul',
+          items: [
+            'Valid DNI or NIE.',
+            'Computer running Windows 10 or 11.',
+            'Compatible browser: Internet Explorer, Edge or Firefox (Firefox recommended for the initial request).',
+            'Access to a registration office (AEAT office, town hall or Spanish consulate for residents abroad).',
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'Step 1: Request the certificate on the FNMT website',
+        },
+        {
+          type: 'p',
+          text: 'Go to the official FNMT website (www.sede.fnmt.gob.es) and select "Certificates > Individual > Obtain software certificate". Enter your DNI or NIE and your email address. The FNMT will send a request code to that email. Keep that code: you will need it in the following steps. It is important to complete the entire process on the same computer and the same browser. Do not reformat the computer or change the browser until the process is finished.',
+        },
+        {
+          type: 'h2',
+          text: 'Step 2: Verify your identity at a registration office',
+        },
+        {
+          type: 'p',
+          text: 'With your request code, you must visit a registered office in person (AEAT offices, Social Security offices, town halls, or Spanish consulates abroad). They will verify your identity using your original identity document. This in-person step is mandatory and cannot be completed online for the software certificate. Once verified, you will receive confirmation and can continue the process online.',
+        },
+        {
+          type: 'h2',
+          text: 'Step 3: Download and install the certificate',
+        },
+        {
+          type: 'p',
+          text: 'After the in-person verification, return to the FNMT website from the same computer and browser used in step 1. Go to "Download certificate" and enter your DNI/NIE and the request code. The certificate will be downloaded and automatically installed in the Windows and browser certificate store. Once installed, you can make a backup by exporting it from the browser or from the Windows Control Panel in .p12 or .pfx format, protected with a password.',
+        },
+        {
+          type: 'h2',
+          text: 'How to export the certificate as a backup',
+        },
+        {
+          type: 'ul',
+          items: [
+            'Open the Windows Control Panel and search for "Manage user certificates".',
+            'Under "Personal > Certificates" you will find your installed certificate.',
+            'Right-click > All tasks > Export.',
+            'Select to export the private key and choose .pfx format.',
+            'Set a strong password and save the file in a safe place (USB drive, external hard drive or encrypted cloud storage).',
+          ],
+        },
+        {
+          type: 'h2',
+          text: 'How to import the certificate on another computer',
+        },
+        {
+          type: 'p',
+          text: 'If you need to use the certificate on another device or browser, simply copy the .pfx file and run it on the new computer. Windows will launch the import wizard: accept the terms, enter the password you set when exporting, and confirm. The certificate will be available on the new computer without needing to repeat the process with the FNMT.',
+        },
+        {
+          type: 'h2',
+          text: 'Frequently asked questions',
+        },
+        {
+          type: 'faq',
+          items: [
+            {
+              q: 'How long does the whole process take?',
+              a: 'The online steps are immediate. The in-person visit to the registration office is usually resolved the same day. If you go to an AEAT office without an appointment there may be a wait; it is recommended to book an appointment in advance on the Tax Agency website.',
+            },
+            {
+              q: 'Is the FNMT digital certificate free?',
+              a: 'Yes. The individual digital certificate issued by the FNMT is completely free of charge.',
+            },
+            {
+              q: 'How long is the certificate valid?',
+              a: 'The individual certificate is valid for 4 years. After that period you must renew it. The FNMT will notify you by email in advance and you can renew it online without an in-person visit, as long as you do so before it expires.',
+            },
+            {
+              q: 'Can I use the digital certificate from abroad?',
+              a: 'Yes. Once installed on your computer, you can access the AEAT electronic headquarters or any other Spanish authority from any country. This is particularly useful for non-residents who need to manage taxes such as Modelo 210 (IRNR) or check their tax status in Spain.',
+            },
+            {
+              q: 'What happens if I lose the certificate or reformat my computer?',
+              a: 'If you have a backup in .pfx format, simply import it on the new device. If you do not have a backup, you will need to apply for a new certificate by repeating the entire process from step 1, including the in-person visit.',
+            },
+          ],
+        },
+        {
+          type: 'cta',
+          title: 'Need help with tax or property procedures in Spain?',
+          body: 'At Benavides Real Estate we have tax advisors and lawyers specialised in real estate transactions in Mallorca. If you have questions about taxes, digital certificates, NIE or other procedures related to your property, get in touch.',
+          button: 'Contact an advisor',
+        },
+        {
+          type: 'links',
+          title: 'Related articles',
+          items: [
+            {
+              label: 'Taxes when buying property in Mallorca',
+              href: '/en/blog/impuestos-comprar-vivienda-mallorca-no-residentes',
+              desc: 'ITP, VAT, stamp duty and total costs broken down for non-residents.',
+            },
+            {
+              label: 'Buying property in Mallorca as a non-resident: legal guide',
+              href: '/en/blog/comprar-casa-mallorca-no-residente-guia-legal',
+              desc: 'NIE, notary, land registry and the full purchase process explained.',
+            },
+          ],
         },
       ],
     },
