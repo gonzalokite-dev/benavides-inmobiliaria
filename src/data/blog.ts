@@ -3184,7 +3184,55 @@ export const posts: BlogPost[] = [
         },
         {
           type: 'p',
-          text: 'Tras la acreditación presencial, vuelve a la web de la FNMT desde el mismo ordenador y navegador que usaste en el paso 1. Accede a "Descargar certificado" e introduce tu DNI/NIE y el código de solicitud. El certificado se descargará automáticamente e instalará en el almacén de certificados de Windows y del navegador. Una vez instalado, puedes hacer una copia de seguridad exportándolo desde el navegador o desde el Panel de Control de Windows en formato .p12 o .pfx, protegido con contraseña.',
+          text: 'Una vez que hayas ido a la oficina y te hayan dado el visto bueno, ya puedes volver a casa y terminar el proceso desde tu ordenador. No te preocupes: es más sencillo de lo que parece. Solo tienes que seguir estos pasos con calma, uno por uno.',
+        },
+        {
+          type: 'h3',
+          text: '1. Abre el mismo navegador que usaste al principio',
+        },
+        {
+          type: 'p',
+          text: 'El navegador es el programa que usas para entrar a internet. Puede ser Firefox (tiene un logo naranja y morado), Edge (logo azul, viene con Windows) o Internet Explorer. Es muy importante que abras exactamente el mismo que usaste cuando pediste el certificado en el Paso 1. Si no lo recuerdas, prueba primero con Firefox.',
+        },
+        {
+          type: 'h3',
+          text: '2. Entra en la página web de la FNMT',
+        },
+        {
+          type: 'p',
+          text: 'En la barra de arriba del navegador (donde pone la dirección de la página) escribe: www.sede.fnmt.gob.es y pulsa la tecla Intro (o Enter). Se abrirá la página oficial de la Fábrica Nacional de Moneda y Timbre, que es el organismo del Estado que emite los certificados digitales.',
+        },
+        {
+          type: 'h3',
+          text: '3. Busca la opción "Descargar certificado"',
+        },
+        {
+          type: 'p',
+          text: 'Una vez dentro de la página, busca en el menú la opción que dice "Certificados" y después "Persona Física". Verás varias opciones: busca la que dice "Descargar certificado" y haz clic sobre ella. Si no la encuentras a primera vista, mira en la parte de arriba de la página, donde suele haber un menú con varias palabras.',
+        },
+        {
+          type: 'h3',
+          text: '4. Introduce tus datos',
+        },
+        {
+          type: 'p',
+          text: 'La página te pedirá dos cosas: tu DNI o NIE (el número que aparece en tu documento de identidad, por ejemplo: 12345678A) y el código de solicitud que te enviaron por correo electrónico en el Paso 1. Escríbelos con cuidado, sin espacios de más, y luego pulsa el botón que dice "Descargar certificado" o "Aceptar".',
+        },
+        {
+          type: 'h3',
+          text: '5. El certificado se instala solo',
+        },
+        {
+          type: 'p',
+          text: 'Si todo va bien, el ordenador te preguntará si quieres abrir o guardar un archivo. Haz clic en "Abrir" o "Ejecutar". En ese momento Windows instalará el certificado automáticamente. Puede que aparezca una ventana preguntando si confirmas la instalación: haz clic en "Sí" o "Aceptar". Cuando termine verás un mensaje que dice que el certificado se ha instalado correctamente. ¡Ya está! Ya tienes tu certificado digital funcionando.',
+        },
+        {
+          type: 'h3',
+          text: '6. Comprueba que funciona',
+        },
+        {
+          type: 'p',
+          text: 'Para asegurarte de que todo ha ido bien, entra en la página web de la Agencia Tributaria (www.agenciatributaria.es), busca el apartado "Sede Electrónica" y trata de identificarte con tu certificado. El navegador te mostrará una ventana con tu nombre y te pedirá que confirmes. Si lo ves, enhorabuena: el certificado está instalado y listo para usar.',
         },
         {
           type: 'h2',
@@ -3318,7 +3366,55 @@ export const posts: BlogPost[] = [
         },
         {
           type: 'p',
-          text: 'After the in-person verification, return to the FNMT website from the same computer and browser used in step 1. Go to "Download certificate" and enter your DNI/NIE and the request code. The certificate will be downloaded and automatically installed in the Windows and browser certificate store. Once installed, you can make a backup by exporting it from the browser or from the Windows Control Panel in .p12 or .pfx format, protected with a password.',
+          text: 'Once you have visited the office and received confirmation, you can go home and finish the process from your computer. Do not worry: it is simpler than it sounds. Just follow these steps calmly, one at a time.',
+        },
+        {
+          type: 'h3',
+          text: '1. Open the same browser you used at the beginning',
+        },
+        {
+          type: 'p',
+          text: 'The browser is the programme you use to access the internet. It could be Firefox (orange and purple logo), Edge (blue logo, comes with Windows) or Internet Explorer. It is very important to open exactly the same one you used when you requested the certificate in Step 1. If you cannot remember, try Firefox first.',
+        },
+        {
+          type: 'h3',
+          text: '2. Go to the FNMT website',
+        },
+        {
+          type: 'p',
+          text: 'In the address bar at the top of the browser (where the website address is shown), type: www.sede.fnmt.gob.es and press the Enter key. The official website of the Spanish Royal Mint, which issues digital certificates, will open.',
+        },
+        {
+          type: 'h3',
+          text: '3. Find the "Download certificate" option',
+        },
+        {
+          type: 'p',
+          text: 'Once on the page, look in the menu for "Certificates" and then "Individual". You will see several options: find the one that says "Download certificate" and click on it. If you cannot find it straight away, look at the top of the page where there is usually a menu with several words.',
+        },
+        {
+          type: 'h3',
+          text: '4. Enter your details',
+        },
+        {
+          type: 'p',
+          text: 'The page will ask for two things: your DNI or NIE (the number on your identity document, for example: 12345678A) and the request code sent to your email in Step 1. Type them carefully, with no extra spaces, then click the button that says "Download certificate" or "Accept".',
+        },
+        {
+          type: 'h3',
+          text: '5. The certificate installs itself',
+        },
+        {
+          type: 'p',
+          text: 'If everything goes well, the computer will ask whether you want to open or save a file. Click "Open" or "Run". Windows will then install the certificate automatically. A window may appear asking you to confirm the installation: click "Yes" or "Accept". When it finishes you will see a message saying the certificate has been installed successfully. That is it — your digital certificate is now working.',
+        },
+        {
+          type: 'h3',
+          text: '6. Check that it works',
+        },
+        {
+          type: 'p',
+          text: 'To make sure everything went correctly, go to the Spanish Tax Agency website (www.agenciatributaria.es), find the "Electronic Office" section and try to identify yourself with your certificate. The browser will show a window with your name and ask you to confirm. If you see it, congratulations: the certificate is installed and ready to use.',
         },
         {
           type: 'h2',
